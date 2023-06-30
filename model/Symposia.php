@@ -235,7 +235,7 @@ function __construct() {
   $this->sname='localhost';//$DBADDRESS;
   $this->uname='sympadmin';
   $this->passwd='sympadmin@123';//$DBPASSWD;
-  $this->dbname='symposia'; 
+  $this->dbname='sympnp2023'; 
   //$this->Connect();  
 }
 

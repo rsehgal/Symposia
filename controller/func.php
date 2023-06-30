@@ -429,7 +429,7 @@ return Message("Will be available soon.","alert-warning");
 	session_start();
 
 	$obj = new DB();
-	$query = "select contrib_start_date,contrib_end_date from symposium";
+	$query = "select contrib_start_date,contrib_end_date from symposium where volume=67";
 	$result = $obj->GetQueryResult($query);
 	$row = $result->fetch_assoc();
 	$start_date = $row["contrib_start_date"];
@@ -992,7 +992,7 @@ return Message("Will be available soon.","alert-warning");
 function PopulateResubmissionForm(){
 
 $obj=new DB();
-$query="select UploadLocation from symposium";
+$query="select UploadLocation from symposium where volume=67";
 $result = $obj->GetQueryResult($query);
 if($result===false)
                                 return Message("Query execution fails","alert-danger");
@@ -1414,7 +1414,7 @@ if(!EnableMenuItem("ImportantDates"))
 return Message("Will be available soon.","alert-warning");
 
 //return Message("Dates available","alert-danger");
-$query='select reg_end_date,contrib_end_date from symposium';
+$query='select reg_end_date,contrib_end_date from symposium where volume=67';
 $obj = new DB();
 $result = $obj->GetQueryResult($query);
 if($result===false)
@@ -1906,7 +1906,7 @@ function Register(){
 	return Message("Will be available soon.","alert-warning");
 
 	$obj = new DB();
-	$query = "select reg_start_date,reg_end_date from symposium";
+	$query = "select reg_start_date,reg_end_date from symposium where volume=67";
 	$result = $obj->GetQueryResult($query);
 	$row = $result->fetch_assoc();
 	$reg_start_date = $row["reg_start_date"];
