@@ -1,5 +1,5 @@
 <?php
-require "../globals.php";
+//require_once "../globals.php";
 //require "../controller/helpers.php";
 class Symposium {
   public $variable1;
@@ -25,18 +25,23 @@ function __construct(){
 
 }
 
+
 function AddMenuEntry($entry){
 	$menuEntry="";
 	if($entry=="About"){
+/*	$menuEntry= '<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light " id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.'<span>'.$entry.'</span> <span class="arrow">&#9662;</span>'.'</h5></a>';*/
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light " id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
+
 	$subentries=array("Topic","Venue","Important_Dates"); //NASI //removed entry
 	//$subentries=array("Poster","Topic","Venue","Important_Dates"); //NASI //removed entry
 	$menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
-        $subentries=array("Council_Officers","Council_Members","Organizing_Committee");
+        //$subentries=array("Council_Officers","Council_Members","Organizing_Committee");
+        $subentries=array("Advisory_Committee","Organizing_Committee");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Submissions"){
 	$menuEntry= '<li class="nav-item dropdown">
@@ -171,8 +176,10 @@ function Menu(){
 </div>';
 
 
-$result='<nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+//$result='<nav class="navbar navbar-expand-lg  navbar-expand-sm justify-content-center sticky-top">
+$result='<nav class="navbar navbar-expand-lg navbar-light sticky-top custom-navbar">';
+ 
+$result.='<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>';
 

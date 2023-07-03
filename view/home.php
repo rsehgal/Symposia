@@ -18,6 +18,27 @@ The National Academy of Sciences, India, NASI-2023.
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
+
+.custom-navbar,.footer,.header{
+background: #5b2c6f ;
+}
+.colHeader{
+	padding-left:0;
+	padding-right:0;
+}
+
+
+.navbar {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .navbar-nav > li > a {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+
 .btn-custom {
   font-size: 24px;
 }
@@ -85,9 +106,36 @@ $('.nasiMenu,.menuCommon').on('click',function(event){
 	event.preventDefault();
 	var funcName="";
 	var data={};
+	var funcName="SympnpHeader";//$(this).attr("id");
+	//alert(funcName);
+	data['function_name']=funcName;
+	data['value']=$(this).attr("id");
+	//alert(data['value']);
+	console.log(data);
+	$.ajax({
+	    url: "../controller/func.php",
+	    method: "POST",
+	    data : data,
+	    success: function(response) {
+	    $("#headerDiv").hide();
+	    //$("#result").delay(1000).fadeIn();
+	    $("#headerDiv").html(response);
+	    $("#headerDiv").fadeIn(1000);
+	    }
+	  });
+
+});
+
+$('.nasiMenu,.menuCommon').on('click',function(event){
+	//alert("Nasi Menu clicked.......");
+	event.preventDefault();
+	var funcName="";
+	var data={};
 	var funcName=$(this).attr("id");
 	//alert(funcName);
 	data['function_name']=funcName;
+	data['value']=$(this).attr("id");
+	//alert(data['value']);
 	console.log(data);
 	$.ajax({
 	    url: "../controller/func.php",
@@ -95,7 +143,6 @@ $('.nasiMenu,.menuCommon').on('click',function(event){
 	    data : data,
 	    success: function(response) {
 	    $("#result").hide();
-	    //$("#result").delay(1000).fadeIn();
 	    $("#result").html(response);
 	    $("#result").fadeIn(1000);
 	    }
@@ -258,6 +305,7 @@ require "../globals.php";
 require "../model/Symposia.php";
 require "Forms.php";
 require "footer.php";
+require "header.php";
 $objSympo = new Symposia();
 echo "<div class='row'>";
 echo "<div class='col nasiheader'></div>";
@@ -271,6 +319,10 @@ echo "</div>";
 echo "<div class='row' >";
 echo "<div class='col-1'></div>";
 echo "<div class='col maincontent border border-dashed border-primary'>";
+echo "<div id='menuDiv'>";
+echo $objSympo->Menu();
+echo "</div";
+
 
 echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -283,7 +335,7 @@ echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
     <!-- Slides -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../images/header.png" class="d-block w-100" alt="Slide 1">
+        <img src="../images/headerNew.png" class="d-block w-100" alt="Slide 1">
       </div>
        <!-- Add here more blocks to start slide show --> 
      </div>
@@ -303,7 +355,9 @@ echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
 
 ';
 
-echo $objSympo->Menu();
+echo "<div id='headerDiv' class='header'>".SympnpHeader()."
+	</div>";
+//echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
 

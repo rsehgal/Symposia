@@ -4,6 +4,7 @@ require_once "../view/Forms.php";
 require_once "menu.php";
 require_once "helpers.php";
 require_once "mailer.php";
+require_once "../view/header.php";
 function Contact(){
 $forms = new Forms();
   return $forms->Contact();
@@ -394,7 +395,11 @@ function Council_Members(){
 }
 function Organizing_Committee(){
 	//return "Council Officers...";
-	return "<h3 class='display text-primary'>Organizing Committee</h3><br/><table class='table table-striped table-bordered'>".ShowCommittee("OrgMem")."</table>";
+	return "<h3 class='display text-primary'>Organizing Committee</h3><br/><table class='table table-striped table-bordered'>".ShowCommittee("OrgComm")."</table>";
+}
+function Advisory_Committee(){
+	//return "Council Officers...";
+	return "<h3 class='display text-primary'>Advisory Committee</h3><br/><table class='table table-striped table-bordered'>".ShowCommittee("AdvComm")."</table>";
 }
 
 function ShowCommittee($comm){
@@ -402,20 +407,19 @@ function ShowCommittee($comm){
 	$obj = new DB();
 	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
 	//$obj->Connect();
-	$name = $comm."Name";
-	$affil = $comm."Affil";
-	$query = "select $name,$affil from committees";
+	$query = "select Name,Affiliation from ".$comm;
 	$result = $obj->GetQueryResult($query);
 	if($result===false)
                                 return Message("Query execution fails","alert-danger");
 	$table="<tr class='bg-dark text-light'><th>Name</th><th>Affiliation</th></tr>";
 
 	while ($row = $result->fetch_assoc()) {
-		if($row[$name]==""){
+		if($row["Name"]==""){
+
 		}else{
 		 $table.= "<tr>";
-		 $table.="<td>" . $row[$name] . "</td>";
-		 $table.="<td>" . $row[$affil] . "</td>";
+		 $table.="<td>" . $row["Name"] . "</td>";
+		 $table.="<td>" . $row["Affiliation"] . "</td>";
 		 $table.="</tr>";
 		}
 	}
