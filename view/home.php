@@ -34,8 +34,8 @@ background: #5b2c6f ;
     }
 
     .navbar-nav > li > a {
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 
 
@@ -335,7 +335,7 @@ echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
     <!-- Slides -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../images/headerNew.png" class="d-block w-100" alt="Slide 1">
+        <img src="../images/headerNew2.png" class="d-block w-100" alt="Slide 1">
       </div>
        <!-- Add here more blocks to start slide show --> 
      </div>
