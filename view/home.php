@@ -298,6 +298,7 @@ var dataUp=new FormData();
 //$_SESSION["username"]="ABCD";
 //session_write_close();
 //$_SESSION['logged']=TRUE;
+
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -306,6 +307,7 @@ require "../model/Symposia.php";
 require "Forms.php";
 require "footer.php";
 require "header.php";
+require "MyCarousel.php";
 $objSympo = new Symposia();
 echo "<div class='row'>";
 echo "<div class='col nasiheader'></div>";
@@ -321,42 +323,12 @@ echo "<div class='col-1'></div>";
 echo "<div class='col maincontent border border-dashed border-primary'>";
 echo "<div id='menuDiv'>";
 echo $objSympo->Menu();
-echo "</div";
+echo "</div>";
 
 
-echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#mySlider" data-slide-to="0" class="active"></li>
-      <li data-target="#mySlider" data-slide-to="1"></li>
-      <li data-target="#mySlider" data-slide-to="2"></li>
-    </ol>
-  
-    <!-- Slides -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../images/headerNew2.png" class="d-block w-100" alt="Slide 1">
-      </div>
-       <!-- Add here more blocks to start slide show --> 
-     </div>
-  
-    <!-- Navigation Arrows -->
-    <a class="carousel-control-prev" href="#mySlider" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#mySlider" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+echo SympnpCarousel();
 
-';
-
-echo "<div id='headerDiv' class='header'>".SympnpHeader()."
-	</div>";
+echo "<div id='headerDiv' class='header'>".SympnpHeader()."</div>";
 //echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
