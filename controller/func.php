@@ -5,6 +5,7 @@ require_once "menu.php";
 require_once "helpers.php";
 require_once "mailer.php";
 require_once "../view/header.php";
+require_once "../view/yourtasks.php";
 function Contact(){
 $forms = new Forms();
   return $forms->Contact();
@@ -1439,6 +1440,28 @@ return $retVal;
 
 }
 
+/*function AttachAllotmentJS(){
+$associatedJs='<script>
+		var data={};
+		$(".allotment").click(function(e){
+		e.preventDefault();
+		data["function_name"]="Allot";
+		data["allotmentType"]=$(this).attr("id");
+		$.ajax({
+	            url: "../controller/func.php",
+        	    method: "POST",
+	            data : data,
+        	    success: function(response) {
+	            $("#result").html(response);
+        	    }
+          	});
+	});
+
+
+		</script>';
+return $associatedJs;
+
+}*/
 
 function PopulateAllotment(){
 $retVal="";
@@ -1956,7 +1979,7 @@ $guidelines.="</h5></div></div>";
 return $guidelines;
 }
 
-function YourTasks(){
+function YourTasks_orig(){
 session_start();
 if($_SESSION["logintype"]=="Admin" || $_SESSION["logintype"]=="Coordinator")
 return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$_SESSION["username"]."</h3><br/>".PopulateAllotment();

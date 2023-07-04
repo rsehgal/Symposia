@@ -19,6 +19,13 @@ The National Academy of Sciences, India, NASI-2023.
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 
+.taskbutton {
+  color: #fff;
+  background-color: #5b2c6f;
+  border-radius: 35px;
+  border: 2px solid rgba(0, 70, 147, 0.75);
+}
+
 .custom-navbar,.footer,.header{
 background: #5b2c6f ;
 }

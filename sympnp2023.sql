@@ -337,7 +337,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('nwwton','A','c','Influence of Ionizing Radiation on Bio-synthesis of Colloidal SF-AgNPs: Their Characterization ','nwwton_paper_A_c_1.pdf','submitted','R. Madhukumar,Mohan N.R,Yesappa L','nwwton@gmail.com,nrmohana@gmail.com,yesugs@gmail.com','AYH','');
+INSERT INTO `contributions` VALUES ('nwwton','A','c','Influence of Ionizing Radiation on Bio-synthesis of Colloidal SF-AgNPs: Their Characterization ','nwwton_paper_A_c_1.pdf','submitted','R. Madhukumar,Mohan N.R,Yesappa L','nwwton@gmail.com,nrmohana@gmail.com,yesugs@gmail.com','RSE','');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +411,7 @@ CREATE TABLE `refereeAllotment` (
 
 LOCK TABLES `refereeAllotment` WRITE;
 /*!40000 ALTER TABLE `refereeAllotment` DISABLE KEYS */;
-INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','RSE','ref1',0,NULL);
+INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','RSE','ref1',9,'Good Job, ORAL'),('','','',0,NULL);
 /*!40000 ALTER TABLE `refereeAllotment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,6 +616,31 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'rsehgal','Hsuya^123');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `yourtasks`
+--
+
+DROP TABLE IF EXISTS `yourtasks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `yourtasks` (
+  `taskname` varchar(150) DEFAULT NULL,
+  `logintype` varchar(100) DEFAULT NULL,
+  `function_name` varchar(150) DEFAULT NULL,
+  `tasktype` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yourtasks`
+--
+
+LOCK TABLES `yourtasks` WRITE;
+/*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
+INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers');
+/*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -626,4 +651,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-03 18:21:13
+-- Dump completed on 2023-07-04  9:39:18
