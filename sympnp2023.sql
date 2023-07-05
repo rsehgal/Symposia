@@ -337,7 +337,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('nwwton','A','c','Influence of Ionizing Radiation on Bio-synthesis of Colloidal SF-AgNPs: Their Characterization ','nwwton_paper_A_c_1.pdf','submitted','R. Madhukumar,Mohan N.R,Yesappa L','nwwton@gmail.com,nrmohana@gmail.com,yesugs@gmail.com','RSE','');
+INSERT INTO `contributions` VALUES ('nwwton','A','c','Influence of Ionizing Radiation on Bio-synthesis of Colloidal SF-AgNPs: Their Characterization ','nwwton_paper_A_c_1.pdf','submitted','R. Madhukumar,Mohan N.R,Yesappa L','nwwton@gmail.com,nrmohana@gmail.com,yesugs@gmail.com','AYH','');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,7 +385,7 @@ CREATE TABLE `menuitems` (
 
 LOCK TABLES `menuitems` WRITE;
 /*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
-INSERT INTO `menuitems` VALUES ('Home',1),('About',1),('Committees',1),('Signup',1),('Login',1),('Submissions',0),('Accommodation',1),('Contact',1),('Upload_Contribution',0),('Resubmit_Contribution',0),('View_Contribution',1),('DAECC',1),('Tunga',1),('JewelOfChembur',1),('PGHostel',1),('AuthorLogin',1),('RefereeLogin',1),('Topic',0),('Venue',1),('Poster',1),('ImportantDates',0),('CoordinatorLogin',1),('AdminLogin',1),('Submission_Guidelines',0),('Templates',0),('Register',1);
+INSERT INTO `menuitems` VALUES ('Home',1),('About',1),('Committees',1),('Signup',1),('Login',1),('Submissions',0),('Accommodation',1),('Contact',1),('Upload_Contribution',1),('Resubmit_Contribution',0),('View_Contribution',1),('DAECC',1),('Tunga',1),('JewelOfChembur',1),('PGHostel',1),('AuthorLogin',1),('RefereeLogin',1),('Topic',0),('Venue',1),('Poster',1),('ImportantDates',0),('CoordinatorLogin',1),('AdminLogin',1),('Submission_Guidelines',0),('Templates',0),('Register',1),('Finsup_Application',0);
 /*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +411,7 @@ CREATE TABLE `refereeAllotment` (
 
 LOCK TABLES `refereeAllotment` WRITE;
 /*!40000 ALTER TABLE `refereeAllotment` DISABLE KEYS */;
-INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','RSE','ref1',9,'Good Job, ORAL'),('','','',0,NULL);
+INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','ASE','ref1',6,'Good Work, POSTER'),('','','',0,NULL),('nwwton_paper_A_c_1.pdf','SSE','ref2',8,'Excellent results, ORAL'),('nwwton_paper_A_c_1.pdf','ABE','ref3',0,NULL);
 /*!40000 ALTER TABLE `refereeAllotment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -500,7 +500,10 @@ CREATE TABLE `symposium` (
   `state` varchar(150) DEFAULT NULL,
   `country` varchar(100) DEFAULT NULL,
   `about` longtext,
-  `UploadLocation` varchar(254) DEFAULT NULL
+  `UploadLocation` varchar(254) DEFAULT NULL,
+  `contrib_acc_date` date DEFAULT NULL,
+  `certificate_issue_date` date DEFAULT NULL,
+  `receipt_issue_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -510,7 +513,7 @@ CREATE TABLE `symposium` (
 
 LOCK TABLES `symposium` WRITE;
 /*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
-INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-08','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/');
+INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-08','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-12-14','2023-12-14');
 /*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -638,7 +641,7 @@ CREATE TABLE `yourtasks` (
 
 LOCK TABLES `yourtasks` WRITE;
 /*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
-INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers');
+INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers'),('Download Acceptance Certificate','Author','DownloadAcceptanceCertificate','DownloadAcceptanceCertificate'),('Download Participation Certificate','Author','DownloadParticipationCertificate','DownloadParticipationCertificate'),('Download Registration Receipt','Author','DownloadRegistrationReceipt','DownloadRegistrationReceipt'),('Download Accommodation Receipt','Author','DownloadAccommodationReceipt','DownloadAccommodationReceipt');
 /*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -651,4 +654,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-04  9:39:18
+-- Dump completed on 2023-07-05 10:03:09

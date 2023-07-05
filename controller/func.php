@@ -6,6 +6,7 @@ require_once "helpers.php";
 require_once "mailer.php";
 require_once "../view/header.php";
 require_once "../view/yourtasks.php";
+require_once "usercorner.php";
 function Contact(){
 $forms = new Forms();
   return $forms->Contact();
@@ -2001,6 +2002,11 @@ $templates.="<tr><td>PdfLatex templates for abstracts</td><td><a href='../docs/p
 
 $templates.="</table></h3></div></div>";
 return $templates;
+}
+
+function Finsup_Application(){
+if(!EnableMenuItem("Finsup_Application"))
+return Message("Will be available soon.","alert-warning");
 }
 
 if (isset($_POST['function_name'])) {
