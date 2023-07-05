@@ -408,7 +408,8 @@ public function Register($fieldNames){
 				$formContent.='<input type="text" id="topicText" class="form-control" required/>';
 			}
 			elseif($fieldNames[$i]=="Category"){
-				$formContent.='<div id="Category"></div>';
+				//$formContent.='<div id="Category"></div>';
+				$formContent.=GetDropDown("categories","category");
 				$formContent.='<input type="text" id="categoryText" class="form-control" required/>';
 			}
 			elseif($fieldNames[$i]=="Filename"){
@@ -565,8 +566,18 @@ public function Register($fieldNames){
 			});
 
 		});
+
+		$(".Topic").on("click",function(event){
+			$("#topicText").val($(this).attr("id"));
+			dataUp.append("topicid",$(this).attr("catid"));
+		});
+		$(".category").on("click",function(event){
+			$("#categoryText").val($(this).attr("id"));
+			dataUp.append("categoryid",$(this).attr("catid"));
+		});
+
 	
-		$(".topic").on("click",function(event){
+		/*$(".topic").on("click",function(event){
 		//alert("Topic clicked.......");
 		$("#topicText").val($(this).attr("id"));
 		dataUp.append("topicid",$(this).attr("catid"));
@@ -588,7 +599,7 @@ public function Register($fieldNames){
 		  });
 
 		
-});
+		});*/
 
 });		
 		</script>

@@ -104,7 +104,7 @@ Your have successfully submitted your paper $renamedFileName
 You can view your paper in View_Contribution link.";
 
 
-                SendMail("submission",$_SESSION["email"],"NASI 2023 : Contribution submitted",$body);
+                //SendMail("submission",$_SESSION["email"],"NASI 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -919,7 +919,9 @@ function GetTopic($topic){
 }
 
 function GetCategory($topic,$category){
-	$query='select category from '.$topic.' where code="'.$category.'"';
+	//$query='select category from '.$topic.' where code="'.$category.'"';
+        //Modified the above query as per the new category table
+	$query='select category from categories where code="'.$category.'"';
 	//return $query;
 	
 	$obj = new DB();

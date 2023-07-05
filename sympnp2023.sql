@@ -257,6 +257,30 @@ LOCK TABLES `assoc_array` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
+  `uname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES ('admin','Nuclear structure','A'),('admin','Nuclear reactions','B'),('admin','Nuclear astrophysics','C'),('admin','Hadron physics','D'),('admin','Relativistic nuclear collisions and QGP','E'),('admin','Electroweak interaction in nuclei','F'),('admin','Nuclear instrumentation, techniques and applications','G');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `committees`
 --
 
@@ -337,7 +361,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('nwwton','A','c','Influence of Ionizing Radiation on Bio-synthesis of Colloidal SF-AgNPs: Their Characterization ','nwwton_paper_A_c_1.pdf','submitted','R. Madhukumar,Mohan N.R,Yesappa L','nwwton@gmail.com,nrmohana@gmail.com,yesugs@gmail.com','AYH','');
+INSERT INTO `contributions` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rsehgal','C','G','Test paper on category G','rsehgal_paper_C_G_1.pdf','submitted','Raman sehgal','ramansehga@abc.com','',''),('rsehgal','C','E','Test paper on category E','rsehgal_paper_C_E_1.pdf','submitted','Raman Sehga','ramsn.sehgalff@fgs.com','',''),('rsehgal','C','E','Another paper on cat E','rsehgal_paper_C_E_2.pdf','submitted','Ayush Sehgal','ayush.sehgal@abc.com','','');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -562,8 +586,32 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES ('admin','Physics','A'),('admin','Chemistry','B'),('admin','Mathematics','C'),('admin','Biology','D');
+INSERT INTO `topics` VALUES ('admin','Contributory Papers','C'),('admin','Invited Talk','I'),('admin','Thesis Presentation','T');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `topics_backup`
+--
+
+DROP TABLE IF EXISTS `topics_backup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topics_backup` (
+  `uname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Topic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics_backup`
+--
+
+LOCK TABLES `topics_backup` WRITE;
+/*!40000 ALTER TABLE `topics_backup` DISABLE KEYS */;
+INSERT INTO `topics_backup` VALUES ('admin','Physics','A'),('admin','Chemistry','B'),('admin','Mathematics','C'),('admin','Biology','D');
+/*!40000 ALTER TABLE `topics_backup` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -654,4 +702,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-05 10:03:09
+-- Dump completed on 2023-07-05 12:16:48

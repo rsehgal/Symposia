@@ -10,7 +10,7 @@
         $subMenu='<div class="dropdown-menu">';
         for($i= 0 ; $i < count($subEntries) ; $i++){
            
-           $subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
+           $subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$catEntries[$i]." : ".$subEntries[$i].'</a>';
 }
         
         $subMenu.='</div>';
