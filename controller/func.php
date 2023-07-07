@@ -7,6 +7,7 @@ require_once "mailer.php";
 require_once "../view/header.php";
 require_once "../view/yourtasks.php";
 require_once "usercorner.php";
+require_once "receiptsAndCertificates.php";
 function Contact(){
 $forms = new Forms();
   return $forms->Contact();
@@ -2053,6 +2054,36 @@ function UpdatePayment(){
 		echo "Query Execution fails to update the payment status";
 	}*/
 	//$result->free();
+}
+
+function DownloadReceipt(){
+$receipt_type=$_POST["allotmentType"];
+$tablename = $receipt_type."_payment_detail";
+$obj = new DB();
+$counter = $obj->GetCounter($tablename);
+if($counter===0){
+return Message("It seems you had not filled the $receipt_type payment details. Kindly contact secretary.","alert-danger");
+}else{
+$query = "select * from $tablename where uname='".$_SESSION["username"]."'";
+$result = $obj->GetQueryResult($query);
+$row=$result->fetch_assoc();
+if($row["status"]=="Submitted"){
+
+return Message("Your $receipt_type payment details found, but not yet approved by Secretary.","alert-info");
+}else{
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+GeneratePDF($_SESSION["username"],$receipt_type);
+//return Message("Your $receipt_type payment receipt will be available soon.", "alert-success");
+}
+
+
+
+}
+
+//return "Download $receipt_type receipt...";
 }
 
 if (isset($_POST['function_name'])) {

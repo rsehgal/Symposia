@@ -1,0 +1,115 @@
+<?php
+require_once "../model/Symposia.php";
+require_once "tcpdf_include.php";
+function GetReceiptNumber($tablename){
+$obj = new DB();
+return $obj->Counter($tablename);
+}
+
+function GeneratePDF($uName,$recType){
+//$sympDir="snp2022";//gettDate(22);
+
+$obj = new DB();
+$tablename=$recType."_payment_detail";
+$query = "select * from $tablename";
+$result = $obj->GetQueryResult($query);
+$row=$result->fetch_assoc();
+
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+$pdf->AddPage();
+$pdf->SetFooterMargin() ;
+$pdf->SetFont('times', 'B', 18);
+$txt="66<sup>th</sup> DAE Symposium on Nuclear Physics <br/>";
+
+$pdf->Image('barc_logo_new.png', 10, 30, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+//$pdf->Image('cottonUniv.png', 170, 30, 27, 25, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+$pdf->Image('snp_logo.png', 170, 30, 27, 25, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+$pdf->writeHTMLCell( 150, 20, 30, 30, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->SetFont('times', 'B', 14);
+$txt="December 1 - 5, 2022, Department of Physics, <br/>Cotton University, Guwahati, Assam 781001<br/>";
+$pdf->writeHTMLCell( 150, 40, 30, 39, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+
+//$pdf->Image('logo_lko.png', 170, 30, 27, 25, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+$pdf->SetFont('times', 'BI', 14);
+$transId="";
+$date="";
+$amount="";
+$fromDate="";
+$toDate="";
+
+$transId = $row["refnum"];
+$amount  = $row["amount"];
+$Name=$row["name"];
+
+
+$f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+
+$recNum=GetReceiptNumber($tablename);// GetReceiptNumber($uName,$transId,$date,$amount,$recType);
+$words=$f->format($amount);
+$receiptNum=str_pad($recNum, 4, '0', STR_PAD_LEFT);//GetReceiptNumber($uName);
+$pdf->writeHTMLCell( 50, 10, 140, 60, $html = "Receipt No. : ".$receiptNum, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+
+//$Name = GetNameAndDates($uName,$fromDate,$toDate);
+
+$msg="";
+
+/*if($recType == "Accomm")
+{
+    
+    if($transId=="Cash"){
+        $msg='Dear '.$Name.', <br/><br/> We hereby acknowledge the receipt of <u><i> Rupees '.ucwords($words).' only (Rs. '.$amount.'/-)</i></u>  through <u>'.$transId.'</u>,  Dated  <u>'.$date.'</u>  against the  Accommodation fees 
+for the duration '.$fromDate.' to '.$toDate.', for SNP 2022.';        
+    }else{
+$msg='Dear '.$Name.', <br/><br/> We hereby acknowledge the receipt of <u><i> Rupees '.ucwords($words).' only (Rs. '.$amount.'/-)</i></u>  through online  transfer  reference number  <u>'.$transId.'</u>  Dated  <u>'.$date.'</u>  against the  Accommodation fees 
+for the duration '.$fromDate.' to '.$toDate.', for SNP 2022.';
+}
+}*/
+if($recType == "registration"){
+    if($transId=="Cash"){
+        $msg='Dear '.$Name.', <br/><br/> We hereby acknowledge the receipt of  <u><i> Rupees '.ucwords($words).' only (Rs. '.$amount.'/-)</i></u> through <u> '.$transId.'</u>,  Dated  <u>'.$date.'</u>  against the  Registration fees 
+for SNP 2022. ';
+    }else{
+        if($amount=="250"){
+        $msg='Dear '.$Name.', <br/><br/> We hereby acknowledge the receipt of <u><i> USD '.ucwords($words).' only (USD '.$amount.'/-)</i></u>  through online  transfer  reference number  <u>'.$transId.'</u>  Dated  <u>'.$date.'</u>
+        against the  Registration fees for SNP 2022. ';
+        
+}else{
+        
+$msg='Dear '.$Name.', <br/><br/> We hereby acknowledge the receipt of  <u><i> Rupees '.ucwords($words).' only (Rs. '.$amount.'/-)</i></u>  through online  transfer reference number  <u>'.$transId.'</u>  Dated  <u>'.$date.'</u>  against the  Registration fees 
+for SNP 2022. ';
+}
+}
+}
+
+$pdf->setCellPadding(0);
+$pdf->setFontSpacing(0);
+
+$pdf->WriteHTMLCell(160,100,20,70, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'J');//, $autopadding = true );
+
+$sec1="<IMG src='sig_sec.png'><br/>Dr. P. C. Rout<br><i>Secretary</i><br/>SNP-2019"; 
+$sec2="Dr. Y. K. Gupta<br><i>Secretary</i><br/>SNP-2019"; 
+$sec="Dr. S. K. Pandit<br><i>Secretary</i><br/>SNP-2022";
+$conv="Dr. S. Santra<br><i>Convener</i><br/>SNP-2022";
+
+//$imgFile="/home/sympnp/public_html/$sympDir/sig_conv.png";
+/*$imgFile="sig_conv.png";
+$imgFileSec="sig_sec1.png";
+$pdf->Image($imgFileSec, 20, 125, 40, 15, 'PNG', '', '', true, 150, '', false, false, 1, false, false, false);
+$pdf->Image($imgFile, 135, 125, 40, 15, 'PNG','','',false,150,'',false,false,0,false,false,false);*/
+
+$pdf->WriteHTMLCell(50,40,20,140, $html = $sec, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->WriteHTMLCell(50,40,130,140, $html = $conv, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->WriteHTMLCell(190,10,10,170, $html = "<hr/>", $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+
+
+$pdf->SetFont('times', 'I', 10);
+$disc="**[As per the eco friendly environment policy of the Government of India, to reduce the burden on paper consumption and carbon footprint, system generated receipts towards registration and 
+accommodation fees are to be downloaded, in place of manual receipts ] <br/> <br/><br/> (Date format Used : MM/DD/YYYY)";
+$pdf->WriteHTMLCell(160,100,20,190, $html = $disc, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');
+
+$pdfFileName="receipt_".$uName.".pdf";
+$pdf->Output($pdfFileName, 'I');
+
+}
+?>
