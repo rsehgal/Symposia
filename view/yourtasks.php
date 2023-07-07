@@ -340,17 +340,20 @@ readfile($zipFile);
 
 function PaymentForm(){
                 session_start();
+		$payment_type=$_POST["allotmentType"];
 		$obj = new DB();
                 if(isset($_SESSION["loggedin"])){
-                        $counter=$obj->GetCounter("sympnp_payment_detail");
+			$tablename = $payment_type."_payment_detail";
+                        $counter=$obj->GetCounter($tablename);
                         if($counter===0){       
                         $forms = new Forms();
-                        return $forms->PaymentForm();
+                        return $forms->PaymentForm($payment_type);
                         }else{ 
                                 $filledMsg = Message("It seems you had already filled the below mentioned payment details, Kindly contact Secretary","alert-info");
                                 $filledMsg.="<table class='table'>";
                                 $obj = new DB();
-                                $query = "select * from sympnp_payment_detail where uname='".$_SESSION["username"]."'";
+                                //$query = "select * from sympnp_payment_detail where uname='".$_SESSION["username"]."'";
+                                $query = "select * from $tablename where uname='".$_SESSION["username"]."'";
                                 $result = $obj->GetQueryResult($query);
                                 $row = $result->fetch_assoc();
 				
@@ -370,12 +373,17 @@ function PaymentForm(){
                 }
         }
 
-function ConfirmRegistrationPayment(){
+//function ConfirmRegistrationPayment(){
+function ConfirmPayment(){
+$payment_type = $_POST["allotmentType"];
+//return "Confirm Payment for $payment_type";
+$tablename=$payment_type."_payment_detail";
 $obj = new DB();
-$query = 'select * from sympnp_payment_detail';
+//$query = 'select * from sympnp_payment_detail';
+$query = 'select * from '.$tablename;
 $result = $obj->GetQueryResult($query);
 
-$regisPaymentMsg = '<table class="table">
+$regisPaymentMsg = '<table class="table" id="'.$payment_type.'">
 		    <tr>
 		    <th>Username</th>
 		    <th>Name</th>
@@ -427,6 +435,7 @@ $associatedJs ='<script>
 				data["function_name"]=$(this).attr("function_name");
 				data["uname"]=$(this).attr("id");
 				data["status"]=$(this).val();
+				data["payment_type"]=$("table").attr("id");
 				//alert($(this).val());
 
 

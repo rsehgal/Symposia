@@ -636,11 +636,11 @@ public function Register($fieldNames){
 		return "<div>ServeLogin function called..........</div>";
 	}
        
-public function PaymentForm(){
+public function PaymentForm($payment_type){
         session_start();
         return '<br/><div class="container">
                 <h2>Payment Detail Form</h2>
-                <form method="POST" id="login" server="ServePayment" class="symposiaForms">
+                <form method="POST" id="login" server="ServePayment" class="symposiaForms" payment_type="'.$payment_type.'">
                         <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control paymentForm" id="username" name="username" value="'.$_SESSION["username"].'" readonly>
@@ -682,6 +682,7 @@ console.log($(this).val());
 
                 var funcName=$(this).attr("server");
                 data["function_name"]=funcName;
+		data["payment_type"]=$(this).attr("payment_type");
                 console.log(data);
                 
                 $.ajax({

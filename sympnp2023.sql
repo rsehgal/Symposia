@@ -209,6 +209,34 @@ INSERT INTO `accommodation` VALUES ('admin','DAECC Guest House','DAECC'),('admin
 UNLOCK TABLES;
 
 --
+-- Table structure for table `accommodation_payment_detail`
+--
+
+DROP TABLE IF EXISTS `accommodation_payment_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `accommodation_payment_detail` (
+  `uname` varchar(100) DEFAULT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `bankname` varchar(300) DEFAULT NULL,
+  `dateoftrans` varchar(50) DEFAULT NULL,
+  `refnum` varchar(100) DEFAULT NULL,
+  `amount` int DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accommodation_payment_detail`
+--
+
+LOCK TABLES `accommodation_payment_detail` WRITE;
+/*!40000 ALTER TABLE `accommodation_payment_detail` DISABLE KEYS */;
+INSERT INTO `accommodation_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Test bank of Ayush','2023-08-31','AUGUST897TYR',9874,'Received');
+/*!40000 ALTER TABLE `accommodation_payment_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `admin_credentials`
 --
 
@@ -501,6 +529,34 @@ INSERT INTO `registration` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NU
 UNLOCK TABLES;
 
 --
+-- Table structure for table `registration_payment_detail`
+--
+
+DROP TABLE IF EXISTS `registration_payment_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `registration_payment_detail` (
+  `uname` varchar(100) DEFAULT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `bankname` varchar(300) DEFAULT NULL,
+  `dateoftrans` varchar(50) DEFAULT NULL,
+  `refnum` varchar(100) DEFAULT NULL,
+  `amount` int DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `registration_payment_detail`
+--
+
+LOCK TABLES `registration_payment_detail` WRITE;
+/*!40000 ALTER TABLE `registration_payment_detail` DISABLE KEYS */;
+INSERT INTO `registration_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-29','YTHU78RT4',4567,'Submitted');
+/*!40000 ALTER TABLE `registration_payment_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sympnp_payment_detail`
 --
 
@@ -717,7 +773,7 @@ CREATE TABLE `yourtasks` (
 
 LOCK TABLES `yourtasks` WRITE;
 /*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
-INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Fill Payment Details','Author','PaymentForm','PaymentForm'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers'),('Download Acceptance Certificate','Author','DownloadAcceptanceCertificate','DownloadAcceptanceCertificate'),('Download Participation Certificate','Author','DownloadParticipationCertificate','DownloadParticipationCertificate'),('Download Registration Receipt','Author','DownloadRegistrationReceipt','DownloadRegistrationReceipt'),('Download Accommodation Receipt','Author','DownloadAccommodationReceipt','DownloadAccommodationReceipt'),('Confirm Registration Payment','Admin','ConfirmRegistrationPayment','ConfirmRegistrationPayment'),('Confirm Accommodation Payment','Admin','ConfirmAccommodationPayment','ConfirmAccommodationPayment');
+INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers'),('Download Acceptance Certificate','Author','DownloadAcceptanceCertificate','DownloadAcceptanceCertificate'),('Download Participation Certificate','Author','DownloadParticipationCertificate','DownloadParticipationCertificate'),('Download Registration Receipt','Author','DownloadRegistrationReceipt','DownloadRegistrationReceipt'),('Download Accommodation Receipt','Author','DownloadAccommodationReceipt','DownloadAccommodationReceipt'),('Confirm Registration Payment','Admin','ConfirmPayment','registration'),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation'),('Fill Registration Payment Details','Author','PaymentForm','registration'),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation');
 /*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -730,4 +786,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-07 12:02:32
+-- Dump completed on 2023-07-07 14:31:19

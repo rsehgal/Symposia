@@ -2014,17 +2014,21 @@ return Message("Will be available soon.","alert-warning");
  function ServePayment(){
 		session_start();
                 $obj = new DB();
-
-                $counter=$obj->GetCounter("sympnp_payment_detail");
+		$payment_type=$_POST["payment_type"];
+		$tablename=$payment_type."_payment_detail";
+                $counter=$obj->GetCounter($tablename);
                 if($counter==0){
-                $query = "insert into sympnp_payment_detail values
+                //$query = "insert into sympnp_payment_detail values
+                $query = "insert into ".$tablename." values
                                 ('$_POST[username]',
                                  '$_POST[name]', 
                                  '$_POST[bankname]', 
                                  '$_POST[dateoftrans]', 
                                  '$_POST[refnum]', 
-                                 $_POST[amount] 
+                                 $_POST[amount],
+				 'Submitted' 
                                 )";
+		//return $query;
                 $result = $obj->GetQueryResult($query);
                 if($result)
                 return Message("Payment details registered successfully","alert-success");
@@ -2039,7 +2043,10 @@ return Message("Will be available soon.","alert-warning");
 function UpdatePayment(){
 	$uname = $_POST["uname"];
 	$status = $_POST["status"];
-	$query = "update sympnp_payment_detail set status='$status' where uname='$uname'";
+	$payment_type=$_POST["payment_type"];
+	$tablename=$payment_type."_payment_detail";
+	//$query = "update sympnp_payment_detail set status='$status' where uname='$uname'";
+	$query = "update $tablename set status='$status' where uname='$uname'";
 	$obj = new DB();
 	$result=$obj->GetQueryResult($query);
 	/*if(!$result){
