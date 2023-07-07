@@ -353,11 +353,12 @@ function PaymentForm(){
                                 $query = "select * from sympnp_payment_detail where uname='".$_SESSION["username"]."'";
                                 $result = $obj->GetQueryResult($query);
                                 $row = $result->fetch_assoc();
+				
                                 $filledMsg.="<tr bgcolor='d5f9f9'><th>uname</th><th>Name</th><th>BankName</th>
                                           <th>Date of Transation</th><th>Ref. Number</th><th>
-                                          Amount</th> </tr>";
+                                          Amount</th> <th> Status </th></tr>";
                                 $filledMsg.="<tr><td>".$row["uname"]."</td><td>".$row["name"]."</td><td>".$row["bankname"]."</td>
-                                          <td>".$row["dateoftrans"]."</td><td>".$row["refnum"]."</td><td>".$row["amount"]."</td> </tr>";
+                                          <td>".$row["dateoftrans"]."</td><td>".$row["refnum"]."</td><td>".$row["amount"]."</td><td class='font-weight-bold text-".$row["status"]."'> ".$row["status"]."</td></tr>";
 
                                 $filledMsg.="</table>";
 
@@ -368,5 +369,84 @@ function PaymentForm(){
                     return Message("Please login to fill the payment details.");
                 }
         }
+
+function ConfirmRegistrationPayment(){
+$obj = new DB();
+$query = 'select * from sympnp_payment_detail';
+$result = $obj->GetQueryResult($query);
+
+$regisPaymentMsg = '<table class="table">
+		    <tr>
+		    <th>Username</th>
+		    <th>Name</th>
+		    <th>Bank Name</th>
+		    <th>Date of Trans.</th>
+		    <th>Trans. Ref. Num.</th>
+		    <th>Amount</th>
+		    <th>Status</th>
+		    </tr>';
+while($row = $result->fetch_assoc()){
+	if($row["uname"]=="admin"){
+	}else{
+
+	$submittedSelected="";	
+	$receivedSelected="";	
+
+	if($row["status"]=="Submitted"){
+		$submittedSelected='selected';
+	}
+
+	if($row["status"]=="Received"){
+		$receivedSelected='selected';
+	}
+
+	$regisPaymentMsg.='<tr class="tr-'.$row["status"].'"
+				id="tr-'.$row["uname"].'">
+				<td>'.$row["uname"].'</td>
+				<td>'.$row["name"].'</td>
+				<td>'.$row["bankname"].'</td>
+				<td>'.$row["dateoftrans"].'</td>
+				<td>'.$row["refnum"].'</td>
+				<td>'.$row["amount"].'</td>
+				<td>
+					<select id="'.$row["uname"].'" function_name="UpdatePayment" class="custom-select payment-status">
+					<option myid="Submitted" value="Submitted" '.$submittedSelected.'>Submitted</option>
+					<option myid="Received" value="Received"  '.$receivedSelected.'>Received</option>
+					</select>
+				</td>
+			   </tr>';
+	}
+}
+
+$regisPaymentMsg.='</table>';
+
+$associatedJs ='<script>
+		$(function(){
+			var data={};
+			$(".payment-status").on("change",function(e){
+				data["function_name"]=$(this).attr("function_name");
+				data["uname"]=$(this).attr("id");
+				data["status"]=$(this).val();
+				//alert($(this).val());
+
+
+				$.ajax({
+				    url: "../controller/func.php",
+				    method: "POST",
+				    data : data,
+				    success: function(response) {
+				    //$("#result").html(response);
+					$("#tr-"+data["uname"]).removeClass();
+					$("#tr-"+data["uname"]).addClass("tr-"+data["status"]);
+					
+				    }
+				  });
+			});
+		});
+		
+		</script>';
+return $regisPaymentMsg.$associatedJs;
+
+}
 
 ?>

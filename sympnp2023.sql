@@ -361,7 +361,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rsehgal','C','G','Test paper on category G','rsehgal_paper_C_G_1.pdf','submitted','Raman sehgal','ramansehga@abc.com','',''),('rsehgal','C','E','Test paper on category E','rsehgal_paper_C_E_1.pdf','submitted','Raman Sehga','ramsn.sehgalff@fgs.com','',''),('rsehgal','C','E','Another paper on cat E','rsehgal_paper_C_E_2.pdf','submitted','Ayush Sehgal','ayush.sehgal@abc.com','','');
+INSERT INTO `contributions` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rsehgal','C','G','Test paper on category G','rsehgal_paper_C_G_1.pdf','Deleted','Raman sehgal','ramansehga@abc.com','AYH',''),('rsehgal','C','E','Modified title with updated file : Test paper on category E','rsehgal_paper_C_E_1.pdf','submitted','Raman Sehgal,Ayush Sehgal','sc.ramansehgal@gmail.com,ayush.sehgal@gmail.com','',''),('rsehgal','C','E','Another paper on cat E','rsehgal_paper_C_E_2.pdf','submitted','Ayush Sehgal','ayush.sehgal@abc.com','','');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,7 +435,7 @@ CREATE TABLE `refereeAllotment` (
 
 LOCK TABLES `refereeAllotment` WRITE;
 /*!40000 ALTER TABLE `refereeAllotment` DISABLE KEYS */;
-INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','ASE','ref1',6,'Good Work, POSTER'),('','','',0,NULL),('nwwton_paper_A_c_1.pdf','SSE','ref2',8,'Excellent results, ORAL'),('nwwton_paper_A_c_1.pdf','ABE','ref3',0,NULL);
+INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','ASE','ref1',6,'Good Work, POSTER'),('','','',0,NULL),('nwwton_paper_A_c_1.pdf','SSE','ref2',8,'Excellent results, ORAL'),('nwwton_paper_A_c_1.pdf','ABE','ref3',0,NULL),('rsehgal_paper_C_G_1.pdf','ASE','ref1',8,'Good job'),('rsehgal_paper_C_G_1.pdf','SSE','ref2',0,NULL);
 /*!40000 ALTER TABLE `refereeAllotment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -498,6 +498,34 @@ LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `registration` DISABLE KEYS */;
 INSERT INTO `registration` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sympnp_payment_detail`
+--
+
+DROP TABLE IF EXISTS `sympnp_payment_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sympnp_payment_detail` (
+  `uname` varchar(100) DEFAULT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `bankname` varchar(300) DEFAULT NULL,
+  `dateoftrans` varchar(50) DEFAULT NULL,
+  `refnum` varchar(100) DEFAULT NULL,
+  `amount` int DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sympnp_payment_detail`
+--
+
+LOCK TABLES `sympnp_payment_detail` WRITE;
+/*!40000 ALTER TABLE `sympnp_payment_detail` DISABLE KEYS */;
+INSERT INTO `sympnp_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-29','YTHU78RT4',4567,'Submitted');
+/*!40000 ALTER TABLE `sympnp_payment_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -689,7 +717,7 @@ CREATE TABLE `yourtasks` (
 
 LOCK TABLES `yourtasks` WRITE;
 /*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
-INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers'),('Download Acceptance Certificate','Author','DownloadAcceptanceCertificate','DownloadAcceptanceCertificate'),('Download Participation Certificate','Author','DownloadParticipationCertificate','DownloadParticipationCertificate'),('Download Registration Receipt','Author','DownloadRegistrationReceipt','DownloadRegistrationReceipt'),('Download Accommodation Receipt','Author','DownloadAccommodationReceipt','DownloadAccommodationReceipt');
+INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Fill Payment Details','Author','PaymentForm','PaymentForm'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers'),('Download Acceptance Certificate','Author','DownloadAcceptanceCertificate','DownloadAcceptanceCertificate'),('Download Participation Certificate','Author','DownloadParticipationCertificate','DownloadParticipationCertificate'),('Download Registration Receipt','Author','DownloadRegistrationReceipt','DownloadRegistrationReceipt'),('Download Accommodation Receipt','Author','DownloadAccommodationReceipt','DownloadAccommodationReceipt'),('Confirm Registration Payment','Admin','ConfirmRegistrationPayment','ConfirmRegistrationPayment'),('Confirm Accommodation Payment','Admin','ConfirmAccommodationPayment','ConfirmAccommodationPayment');
 /*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -702,4 +730,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-05 12:16:48
+-- Dump completed on 2023-07-07 12:02:32

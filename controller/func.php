@@ -2036,6 +2036,18 @@ return Message("Will be available soon.","alert-warning");
         }
 
 
+function UpdatePayment(){
+	$uname = $_POST["uname"];
+	$status = $_POST["status"];
+	$query = "update sympnp_payment_detail set status='$status' where uname='$uname'";
+	$obj = new DB();
+	$result=$obj->GetQueryResult($query);
+	/*if(!$result){
+		echo "Query Execution fails to update the payment status";
+	}*/
+	//$result->free();
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {
