@@ -636,7 +636,74 @@ public function Register($fieldNames){
 		return "<div>ServeLogin function called..........</div>";
 	}
        
+public function PaymentForm(){
+        session_start();
+        return '<br/><div class="container">
+                <h2>Payment Detail Form</h2>
+                <form method="POST" id="login" server="ServePayment" class="symposiaForms">
+                        <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" class="form-control paymentForm" id="username" name="username" value="'.$_SESSION["username"].'" readonly>
+                        </div>
+                        <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control paymentForm" id="name" name="name" value="'.$_SESSION["FirstName"].' '.$_SESSION["LastName"].'"readonly>
+                        </div>
+                        <div class="form-group">
+                                <label for="bankname">Bank Name:</label>
+                                <input type="text" class="form-control paymentForm" id="bankname" name="bankname" required>
+                        </div>
+                        <div class="form-group">
+                                <label for="dateoftrans">Date of Transaction:</label>
+                                <input type="date" class="form-control paymentForm" id="dateoftrans" name="dateoftrans" required>
+                        </div>
+                        <div class="form-group">
+                                <label for="refnum">Transaction Reference Number:</label>
+                                <input type="text" class="form-control paymentForm" id="refnum" name="refnum" required>
+                        </div><div class="form-group">
+                                <label for="amount">Amount:</label>
+                                <input type="text" class="form-control paymentForm" id="amount" name="amount" required>
+                        </div>
 
+                        <button type="submit" class="btn btn-primary paymentFormSubmit">Submit</button>
+                </form>
+                <script>
+                $(".symposiaForms").on("submit",function(event){
+                //$("loadingGif").show();
+                //alert("Finally called......");
+                event.preventDefault();
+                var data={};
+        
+                $(".paymentForm").each(function() {
+                //alert($(this).val())
+console.log($(this).val());
+                data[$(this).attr("id")]=$(this).val();
+                });
+
+                var funcName=$(this).attr("server");
+                data["function_name"]=funcName;
+                console.log(data);
+                
+                $.ajax({
+                        url: "../controller/func.php",
+                        method: "POST",
+                        data : data,
+                        success: function(response) {
+                          console.log(response);
+                          /*$("#loginstatus").html("Logged in as : "+data["username"]);
+                          $("#result").html(response);*/
+                          //$("#loadingGif").show();
+                          //$("#loginstatus").html(response);
+                          $("#result").html(response);
+                          //$("#loadingGif").delay(1000).fadeOut();
+                        }
+                    });
+                });
+
+                </script>
+        </div>';
+
+        }
 
 }
 ?>

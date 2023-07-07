@@ -26,6 +26,12 @@ The National Academy of Sciences, India, NASI-2023.
   border: 2px solid rgba(0, 70, 147, 0.75);
 }
 
+.taskbutton:hover {
+  color:  #17202a;
+  background: rgb(39,174,96, 0.75);
+  border: 2px solid rgba(39,174,96, 0.75);
+}
+
 .custom-navbar,.footer,.header{
 background: #5b2c6f ;
 }

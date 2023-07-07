@@ -2011,6 +2011,31 @@ if(!EnableMenuItem("Finsup_Application"))
 return Message("Will be available soon.","alert-warning");
 }
 
+ function ServePayment(){
+		session_start();
+                $obj = new DB();
+
+                $counter=$obj->GetCounter("sympnp_payment_detail");
+                if($counter==0){
+                $query = "insert into sympnp_payment_detail values
+                                ('$_POST[username]',
+                                 '$_POST[name]', 
+                                 '$_POST[bankname]', 
+                                 '$_POST[dateoftrans]', 
+                                 '$_POST[refnum]', 
+                                 $_POST[amount] 
+                                )";
+                $result = $obj->GetQueryResult($query);
+                if($result)
+                return Message("Payment details registered successfully","alert-success");
+                else
+                return Message("Failed to register your payment details","alert-danger");
+                }else{
+                return Message("It seems you had already filled the payment details, Kindly contact Secretary","alert-info");
+                }
+        }
+
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {

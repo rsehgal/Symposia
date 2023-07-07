@@ -1,5 +1,6 @@
 <?php
 require_once "../model/Symposia.php";
+require_once "Forms.php";
 
 function AuthorTasks(){
     $yourTasksMsg='<div class="about wow fadeInUp" data-wow-delay="0.1s" style="margin-top:20px;">
@@ -144,7 +145,7 @@ function AuthorTasks(){
     session_start();
     if(isset($_SESSION["loggedin"])){
     $obj = new DB();
-    $queryReg = "select * from iccm_user_credentials";
+    $queryReg = "select * from user_credentials";
     $resultReg = $obj->GetQueryResult($queryReg);
     $tabMsg= "<table class='table table-bordered'>";
     $tabMsg.="<tr class='text-center'> 
@@ -173,10 +174,10 @@ function AuthorTasks(){
     $tabMsg.= "<td> ".$row["institute"]." </td>";
     */
     
-    $queryPayment = "select * from iccm_payment_detail where uname='".$row["uname"]."'";
+    $queryPayment = "select * from sympnp_payment_detail where uname='".$row["uname"]."'";
     $resultPayment=$obj->GetQueryResult($queryPayment);   
      
-    $paymentCounter = $obj->GetCounter("iccm_payment_detail",$row["uname"]); 
+    $paymentCounter = $obj->GetCounter("sympnp_payment_detail",$row["uname"]); 
 
     //if($resultPayment->num_rows === 0){
     if($paymentCounter === 0){
@@ -260,7 +261,7 @@ function AuthorTasks(){
    
 function GetAbstractTable($uname){
     $obj = new DB();
-    $queryAbs = "select Filename,AbstractType,Preference from iccm_contributions where uname='".$uname."'";
+    $queryAbs = "select Filename,AbstractType,Preference from contributions where uname='".$uname."'";
     $resAbs = $obj->GetQueryResult($queryAbs);
 	
     $absTable="<table>
@@ -279,15 +280,15 @@ function GetAbstractTable($uname){
 }
 
 function DownloadAll(){
-shell_exec("rm -rf iccm_abstracts.zip");
+shell_exec("rm -rf sympnp_abstracts.zip");
 $paperDir = "Uploads";
-$destinationFile = "iccm_abstracts.zip";
+$destinationFile = "sympnp_abstracts.zip";
 exec("zip -r $destinationFile $paperDir");
 /*echo '<script type="text/javascript">
         alert("Zipping done.");
       </script>';*/
 
-$filename='iccm_abstracts.zip';
+$filename='sympnp_abstracts.zip';
 @header("Content-type: application/zip");
 @header("Content-Disposition: attachment; filename=$filename");
 }
@@ -301,7 +302,7 @@ error_reporting(E_ALL);
 $folderPath = 'Uploads';
 
 // Create a temporary zip file
-$zipFile = tempnam(sys_get_temp_dir(), 'iccm_abstracts');
+$zipFile = tempnam(sys_get_temp_dir(), 'sympnp_abstracts');
 $zip = new ZipArchive();
 $zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
@@ -326,7 +327,7 @@ $zip->close();
 
 // Set the appropriate headers for the download
 header('Content-Type: application/zip');
-header('Content-Disposition: attachment; filename="iccm_abstracts.zip"');
+header('Content-Disposition: attachment; filename="sympnp_abstracts.zip"');
 header('Content-Length: ' . filesize($zipFile));
 
 // Read the zip file and output it to the browser
@@ -336,4 +337,36 @@ readfile($zipFile);
 //unlink($zipFile);
 //return Message("File downloaded","alert-info");
 } 
+
+function PaymentForm(){
+                session_start();
+		$obj = new DB();
+                if(isset($_SESSION["loggedin"])){
+                        $counter=$obj->GetCounter("sympnp_payment_detail");
+                        if($counter===0){       
+                        $forms = new Forms();
+                        return $forms->PaymentForm();
+                        }else{ 
+                                $filledMsg = Message("It seems you had already filled the below mentioned payment details, Kindly contact Secretary","alert-info");
+                                $filledMsg.="<table class='table'>";
+                                $obj = new DB();
+                                $query = "select * from sympnp_payment_detail where uname='".$_SESSION["username"]."'";
+                                $result = $obj->GetQueryResult($query);
+                                $row = $result->fetch_assoc();
+                                $filledMsg.="<tr bgcolor='d5f9f9'><th>uname</th><th>Name</th><th>BankName</th>
+                                          <th>Date of Transation</th><th>Ref. Number</th><th>
+                                          Amount</th> </tr>";
+                                $filledMsg.="<tr><td>".$row["uname"]."</td><td>".$row["name"]."</td><td>".$row["bankname"]."</td>
+                                          <td>".$row["dateoftrans"]."</td><td>".$row["refnum"]."</td><td>".$row["amount"]."</td> </tr>";
+
+                                $filledMsg.="</table>";
+
+                                return $filledMsg;
+                        }
+                }
+                else{
+                    return Message("Please login to fill the payment details.");
+                }
+        }
+
 ?>

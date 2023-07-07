@@ -420,5 +420,17 @@ if ($conn->connect_error) {
 echo "Connection Established...";
 }
  */
+
+public function GetCounter($tablename,$uname=""){
+        session_start();
+        $query="";
+        if($uname === "")
+        $query = "select * from ".$tablename." where uname='".$_SESSION["username"]."'";
+        else
+        $query = "select * from ".$tablename." where uname='".$uname."'";
+        $result = $this->GetQueryResult($query);
+        return mysqli_num_rows($result);
+        //return $result->num_rows;
+}
 }
 ?>
