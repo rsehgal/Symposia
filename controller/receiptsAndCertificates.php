@@ -80,6 +80,7 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
+//return $pdf;
 $pdf->Output('example_001.pdf', 'I');
 
 }

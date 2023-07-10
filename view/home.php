@@ -107,6 +107,8 @@ $(document).ready(function(){
 	//-----------------------------------------------------
 
 	$("#YourTasks").hide();
+	$("#pdfContainer").hide();
+	$("#pdfIframe").hide();
 
 	setTimeout(function(){
 	$("refereeUpdateStatus").alert("close");
@@ -377,6 +379,12 @@ echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></
 
 echo "<div id='result' class='' ></div>";
 echo "<div id='loginstatus' ></div>";
+echo '<div id="pdfContainer">
+  <object id="pdfObject" data="" type="application/pdf" width="100%" height="500px">
+    <p>Unable to Generated PDF.</p>
+  </object>
+</div>';
+echo '<iframe id="pdfIframe" width="100%" height="500px"></iframe>';
 echo '<img id="loadingGif" src="../images/loadingTransparent.gif" alt="Loading...">';
 
 echo "</div>";

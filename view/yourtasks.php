@@ -101,23 +101,52 @@ function AuthorTasks(){
 				var data={};
 				$('.yourtask').click(function(e){
 					e.preventDefault();
+					$('#pdfIframe').hide();
+					$('#pdfIframe').attr('src','');
 					// alert($(this).attr('id'));
 					var funcName=$(this).attr('id');
-					alert(funcName);
 					data['function_name']=funcName;
 					data['allotmentType']=$(this).attr('tasktype');
 					console.log(data);
+					alert(data['function_name']);
+					if(data['function_name'] == 'DownloadReceipt'){
 					$.ajax({
 						url: '../controller/func.php',
 						method: 'POST',
 						data : data,
+						xhrFields: {responseType: 'blob'},
 						success: function(response) {
-						$('#result').hide();
-						//$('#result').delay(1000).fadeIn();
-						$('#result').html(response);
-						$('#result').fadeIn(1000);
+						if(data['function_name'] == 'DownloadReceipt'){
+							$('#pdfIframe').show();
+							var reader = new FileReader();
+							reader.onloadend = function() {
+							$('#pdfIframe').attr('src', reader.result);
+							};
+							reader.readAsDataURL(response);
+							
+							}else{
+							$('#result').hide();
+							//$('#result').delay(1000).fadeIn();
+							$('#result').html(response);
+							$('#result').fadeIn(1000);
+							}
 						}
 				      });
+
+					}else{
+					$.ajax({
+                                                url: '../controller/func.php',
+                                                method: 'POST',
+                                                data : data,
+                                                success: function(response) {
+                                                        $('#result').hide();
+                                                        //$('#result').delay(1000).fadeIn();
+                                                        $('#result').html(response);
+                                                        $('#result').fadeIn(1000);
+                                                        }
+                                      });
+
+					}
                      		});
                      	});
                      </script>";
