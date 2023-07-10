@@ -160,4 +160,21 @@ $h = 30;
 $pdfFileName="receipt_".$uName.".pdf";
 $pdf->Output($pdfFileName, 'I');
 }
+
+
+
+
+/*function DownloadParticipationCertificate($uName,$fileName){
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$obj = new DB();
+$query = "select * from contributions where uname='".$uName."' and Filename='".$fileName."'";
+$result = $obj->GetQueryResult($query);
+$row = $result->fetch_assoc();
+
+return "Current STatus : ".$row["status"]."<br/>";
+}*/
 ?>

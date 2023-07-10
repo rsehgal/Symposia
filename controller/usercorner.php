@@ -14,6 +14,52 @@ $result->free();
 return $row["colname"];
 }
 
+function GenerateCertifcate($uName,$fileName){
+}
+
+function DownloadParticipationCertificate(){
+
+	session_start();
+	//return "hello...";
+	$now = time();
+	$startDate = GetUserDates("certificate_issue_date");
+	$acc_time = GetStartTime($startDate);
+	if($now < $acc_time){
+		return Message("Participation certificates will be released on ".date("d-M-Y",strtotime($startDate)),"alert-info");
+}
+	else{
+	//TODO : LOGIC to generate acceptance certificate.
+	$counter=0;
+	$obj = new DB();
+		$query = "select * from contributions where uname='".$_SESSION["username"]."'";
+		$result = $obj->GetQueryResult($query);
+		$paperTab='<table class="table table-stripped">';
+		$paperTab.='<tr>
+				<th>S. No.</th>
+				<th>Title</th>
+				<th>Status</th>
+				<th>Download Certificate</th>
+			    </tr>';
+		while($row = $result->fetch_assoc()){
+			$counter++;
+			if($row["status"]==="Deleted" || $row["status"]==="Rejected")
+				$paperTab.='<tr class="tr-peach" >';
+			else
+				$paperTab.='<tr class="tr-lightgreen">';
+			
+			$paperTab.='	<td>'.$counter.'</td>
+					<td>'.$row["Title"].'</td>
+					<td>'.$row["status"].'</td>
+					<td>'.'Download'.'</td>
+				    </tr>';
+		}
+		$paperTab.='</table>';
+		return $paperTab;
+
+		//return "Current STatus : ".$row["status"]."<br/>";
+	}
+}
+
 function DownloadAcceptanceCertificate(){
 
 	//return "hello...";
@@ -22,20 +68,6 @@ function DownloadAcceptanceCertificate(){
 	$acc_time = GetStartTime($startDate);
 	if($now < $acc_time){
 		return Message("Acceptance certificates will be released on ".date("d-M-Y",strtotime($startDate)),"alert-info");
-}
-	else{
-	//TODO : LOGIC to generate acceptance certificate.
-	}
-}
-
-function DownloadParticipationCertificate(){
-
-	//return "hello...";
-	$now = time();
-	$startDate = GetUserDates("contrib_acc_date");
-	$acc_time = GetStartTime($startDate);
-	if($now < $acc_time){
-		return Message("Participation certificates will be released on ".date("d-M-Y",strtotime($startDate)),"alert-info");
 }
 	else{
 	//TODO : LOGIC to generate participation certificate.

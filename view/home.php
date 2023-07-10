@@ -32,6 +32,12 @@ The National Academy of Sciences, India, NASI-2023.
   background-color: #f5b7b1;
 
 }
+.tr-peach{
+  background-color :   #ec7063 ;
+}
+.tr-lightgreen{
+  background-color :   #abebc6 ;
+}
 
 .text-brown{
   color :  #641e16;
@@ -343,9 +349,9 @@ var dataUp=new FormData();
 //session_write_close();
 //$_SESSION['logged']=TRUE;
 
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require "../globals.php";
 require "../model/Symposia.php";
 require "Forms.php";
