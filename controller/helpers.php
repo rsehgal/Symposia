@@ -203,4 +203,5 @@ function GetStartDate($type="reg"){
 	return date("d-M-Y",strtotime($start_date));
 }
 
+
 ?>
