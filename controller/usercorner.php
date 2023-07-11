@@ -14,7 +14,8 @@ $result->free();
 return $row["colname"];
 }
 
-function GenerateCertifcate($uName,$fileName){
+function GenerateCertificate(){
+return "GenerateCertificate called...";
 }
 
 function DownloadParticipationCertificate(){
@@ -50,11 +51,46 @@ function DownloadParticipationCertificate(){
 			$paperTab.='	<td>'.$counter.'</td>
 					<td>'.$row["Title"].'</td>
 					<td>'.$row["status"].'</td>
-					<td>'.'Download'.'</td>
+					<td>'.'<input type="button" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="GenerateCertificate" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
 				    </tr>';
 		}
 		$paperTab.='</table>';
-		return $paperTab;
+
+		$associatedJS = '<script>
+					$(function(){
+						var data={};
+						$(".DownloadCertificate").click(function(){
+							$("pdfIframe").hide();
+							var funcName = $(this).attr("function_name");
+							data["function_name"]=funcName;
+							data["uname"]=$(this).attr("uname");
+							data["filename"]=$(this).attr("filename");
+							data["title"]=$(this).attr("title");
+							
+							
+							alert(funcName);
+							console.log(data);
+							$.ajax({
+							    //url: "../controller/policy.pdf",
+							    url: "../controller/func.php",
+							    method: "POST",
+							    data : data,
+							    xhrFields: {responseType: "blob"},
+							    success: function(response) {
+								//alert("HELLO...");
+							    	//$("#result").html(response);
+								$("#pdfIframe").show();
+									var reader = new FileReader();
+									reader.onloadend = function() {
+									$("#pdfIframe").attr("src", reader.result);
+									};
+									reader.readAsDataURL(response);
+								}
+							});
+						});
+					});
+				 </script>';
+		return $paperTab.$associatedJS;
 
 		//return "Current STatus : ".$row["status"]."<br/>";
 	}
