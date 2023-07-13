@@ -204,4 +204,14 @@ function GetStartDate($type="reg"){
 }
 
 
+function RegisteredUser(){
+        session_start();
+        $obj = new DB();
+        $query = "select * from registration where uname='".$_SESSION["username"]."'";
+        $counter = $obj->GetCounterFromQuery($query);
+        return $counter;
+
+}
+
+
 ?>

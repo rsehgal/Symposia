@@ -1,7 +1,7 @@
 <?php
 require_once "../model/Symposia.php";
 require_once "Forms.php";
-
+require_once "../controller/helpers.php";
 function AuthorTasks(){
     $yourTasksMsg='<div class="about wow fadeInUp" data-wow-delay="0.1s" style="margin-top:20px;">
                 <div class="container">
@@ -73,13 +73,24 @@ function AuthorTasks(){
     $logintype=$_SESSION['logintype'];
 
     $obj = new DB();
-    $query = "select taskname,function_name,logintype,tasktype from yourtasks where logintype='".$logintype."'";
+    $query = "select taskname,function_name,logintype,tasktype,registration_required from yourtasks where logintype='".$logintype."'";
     $result = $obj->GetQueryResult($query);
+
+    $additionalClasses=" yourtask";
+	
+	
+
     while($row = $result->fetch_assoc()){
+    $additionalClasses=" yourtask";
+    if($row["registration_required"]==1){
+    if(RegisteredUser()===0)
+	$additionalClasses=" kindlyregister";
+    }
+
     $yourTasksMsg.='<div class="col-lg-4 col-md-12" style="text-align: center;">
                     <div class="about-text">
                     <div class="about-text" align="center">
-                	<p align="center"><a href="#" target="_blank" class="btn taskbutton yourtask" id="'.$row["function_name"].'" tasktype="'.$row["tasktype"].'" style="width:100%;">'.$row["taskname"].'</a>   </p>
+                	<p align="center"><a href="#" target="_blank" class="btn taskbutton'.$additionalClasses.'" id="'.$row["function_name"].'" tasktype="'.$row["tasktype"].'" style="width:100%;" readonly="'.$readonly.'">'.$row["taskname"].'</a>   </p>
                 
                 </div>
                 </div>
@@ -99,6 +110,12 @@ function AuthorTasks(){
     $associatedJs = "<script>
                      $(function(){
 				var data={};
+
+				$('.kindlyregister').click(function(e){
+					e.preventDefault();
+					alert('Kindly register to the sympsium to use this feature.');
+					return;
+				});
 				$('.yourtask').click(function(e){
 					e.preventDefault();
 					$('#pdfIframe').hide();

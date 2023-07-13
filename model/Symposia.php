@@ -432,5 +432,11 @@ public function GetCounter($tablename,$uname=""){
         return mysqli_num_rows($result);
         //return $result->num_rows;
 }
+
+public function GetCounterFromQuery($query){
+        $result = $this->GetQueryResult($query);
+        return mysqli_num_rows($result);
+}
+
 }
 ?>
