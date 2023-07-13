@@ -524,7 +524,7 @@ CREATE TABLE `registration` (
 
 LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `registration` DISABLE KEYS */;
-INSERT INTO `registration` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `registration` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rasehgal','Dr.','Raman','Sehgal','Male','rsehgal@barc.gov.in','BARC','SO/F','Indian','9870091358','No','','','2023-07-28 00:00:00','2023-07-31 00:00:00'),('rsehgal','Dr.','Raman','Sehgal','Male','sc.ramansehgal@gmail.com','BARC','SOF','Indian','9969476966','Yes','DAECC Guest House','Single Occupancy','2023-07-22 00:00:00','2023-07-31 00:00:00');
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,7 +552,7 @@ CREATE TABLE `registration_payment_detail` (
 
 LOCK TABLES `registration_payment_detail` WRITE;
 /*!40000 ALTER TABLE `registration_payment_detail` DISABLE KEYS */;
-INSERT INTO `registration_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-29','YTHU78RT4',4567,'Submitted');
+INSERT INTO `registration_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-28','AUGUST897TYR',5487,'Received');
 /*!40000 ALTER TABLE `registration_payment_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -621,7 +621,7 @@ CREATE TABLE `symposium` (
 
 LOCK TABLES `symposium` WRITE;
 /*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
-INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-08','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-12-14','2023-12-14');
+INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-08','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14');
 /*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -722,7 +722,7 @@ CREATE TABLE `user_credentials` (
 
 LOCK TABLES `user_credentials` WRITE;
 /*!40000 ALTER TABLE `user_credentials` DISABLE KEYS */;
-INSERT INTO `user_credentials` VALUES ('ajayaksingh_au@yahoo','Singh@123456789','Ajaya Kumar','Singh','ajayaksingh_au@yahoo.co.in',NULL),('anandp5','science123','Anand ','Pathak','anandp5@yahoo.com',NULL),('Aravindan_Kavitha','aaron3407','Aravindan','V','aronearvind1994@gmail.com',NULL),('arijitsahahri','prathomalo1S$','ARIJIT','SAHA','arijit@iopb.res.in',NULL),('ashishrtanna','ART@80art','Ashish','Tanna','ashish.tanna@rku.ac.in','2023-06-19 11:57:09'),('ashiskrmanna','ashis1111','Ashis Kumar','Manna','ashiskrmanna@gmail.com','2023-06-20 10:43:04'),('athira7rythm@gmail.c','Athi7598','ATHIRA','A','athira7rythm@gmail.com',NULL),('gobinda','Jat735216!','Gobinda','Majumder','gobinda@tifr.res.in','2023-06-21 16:44:49'),('jmondal','jay2tanu377','JAYANTA','MONDAL','jmondal@barc.gov.in','2023-06-19 10:43:37'),('kumartvl88','Selva!1988','Selvakumar','S','kumartvl88@gmail.com','2023-06-16 22:21:35'),('Manju','Manju@1991','Manjunatha ','Mushtagatte','manjuna999@gmail.com',NULL),('mmdnaseer','flower99a','Mohamed Naseer Ali','Mohamed','mmdnaseer@gmail.com',NULL),('nifeeya','Nif123@@@','Nifeeya ','Singh','n_singh@ph.iitr.ac.in','2023-06-25 16:10:53'),('nwwton','maphy@2020','Madhukumar','R','nwwton@gmail.com',NULL),('pandeeswariprabhakar','Rpandeeswari@12345','Dr. Pandeeswari ','R','pandeeswari.r@srec.ac.in',NULL),('PCRout','PCRout~12345','Prakash Chandra ','Rout','pcrout2002@gmail.com',NULL),('Poonkodi ','Mscchemistry*1','Dr K','Poonkodi','poonks.che@gmail.com',NULL),('Rajib','sairambaba2','Rajib','Deb','drrajibdeb@gmail.com','2023-06-20 22:49:46'),('rasehgal','#Gudia123','Raman','Sehgal','rsehgal@barc.gov.in','2023-06-16 09:48:55'),('resanvs','Barc@2023','VELUSAMY','SUNDARESAN','vsundaresan@cimap.res.in','2023-06-19 13:15:59'),('rsehgal','ijklmnop','Raman','Sehgal','sc.ramansehgal@gmail.com','2023-06-15 17:32:38'),('santoshg@barc.gov.in','Sun2*ruma','Santosh K.','Gupta','santoshg@barc.gov.in',NULL),('sawaghuley','[Anandrao123','Sandeep','Waghuley','sandeepwaghuley@sgbau.ac.in','2023-06-18 08:05:30'),('snbramha','orissa','SATYANARAYAN','BRAMHA','snbramha@gmail.com',NULL),('tcsshetty@gmail.com','mymother','CHANDRA SHEKHARA','SHETTY T','tcsshetty@gmail.com',NULL);
+INSERT INTO `user_credentials` VALUES ('ajayaksingh_au@yahoo','Singh@123456789','Ajaya Kumar','Singh','ajayaksingh_au@yahoo.co.in',NULL),('anandp5','science123','Anand ','Pathak','anandp5@yahoo.com',NULL),('Aravindan_Kavitha','aaron3407','Aravindan','V','aronearvind1994@gmail.com',NULL),('arijitsahahri','prathomalo1S$','ARIJIT','SAHA','arijit@iopb.res.in',NULL),('ashishrtanna','ART@80art','Ashish','Tanna','ashish.tanna@rku.ac.in','2023-06-19 11:57:09'),('ashiskrmanna','ashis1111','Ashis Kumar','Manna','ashiskrmanna@gmail.com','2023-06-20 10:43:04'),('athira7rythm@gmail.c','Athi7598','ATHIRA','A','athira7rythm@gmail.com',NULL),('ayush','ayushsehgal','Ayush','Sehgal','ayush.sehgal@gmail.com','2023-07-13 10:34:14'),('gobinda','Jat735216!','Gobinda','Majumder','gobinda@tifr.res.in','2023-06-21 16:44:49'),('jmondal','jay2tanu377','JAYANTA','MONDAL','jmondal@barc.gov.in','2023-06-19 10:43:37'),('kumartvl88','Selva!1988','Selvakumar','S','kumartvl88@gmail.com','2023-06-16 22:21:35'),('Manju','Manju@1991','Manjunatha ','Mushtagatte','manjuna999@gmail.com',NULL),('mmdnaseer','flower99a','Mohamed Naseer Ali','Mohamed','mmdnaseer@gmail.com',NULL),('nifeeya','Nif123@@@','Nifeeya ','Singh','n_singh@ph.iitr.ac.in','2023-06-25 16:10:53'),('nwwton','maphy@2020','Madhukumar','R','nwwton@gmail.com',NULL),('pandeeswariprabhakar','Rpandeeswari@12345','Dr. Pandeeswari ','R','pandeeswari.r@srec.ac.in',NULL),('PCRout','PCRout~12345','Prakash Chandra ','Rout','pcrout2002@gmail.com',NULL),('Poonkodi ','Mscchemistry*1','Dr K','Poonkodi','poonks.che@gmail.com',NULL),('Rajib','sairambaba2','Rajib','Deb','drrajibdeb@gmail.com','2023-06-20 22:49:46'),('rasehgal','#Gudia123','Raman','Sehgal','rsehgal@barc.gov.in','2023-06-16 09:48:55'),('resanvs','Barc@2023','VELUSAMY','SUNDARESAN','vsundaresan@cimap.res.in','2023-06-19 13:15:59'),('rsehgal','ijklmnop','Raman','Sehgal','sc.ramansehgal@gmail.com','2023-06-15 17:32:38'),('santoshg@barc.gov.in','Sun2*ruma','Santosh K.','Gupta','santoshg@barc.gov.in',NULL),('sawaghuley','[Anandrao123','Sandeep','Waghuley','sandeepwaghuley@sgbau.ac.in','2023-06-18 08:05:30'),('snbramha','orissa','SATYANARAYAN','BRAMHA','snbramha@gmail.com',NULL),('tcsshetty@gmail.com','mymother','CHANDRA SHEKHARA','SHETTY T','tcsshetty@gmail.com',NULL);
 /*!40000 ALTER TABLE `user_credentials` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -763,7 +763,8 @@ CREATE TABLE `yourtasks` (
   `taskname` varchar(150) DEFAULT NULL,
   `logintype` varchar(100) DEFAULT NULL,
   `function_name` varchar(150) DEFAULT NULL,
-  `tasktype` varchar(150) DEFAULT NULL
+  `tasktype` varchar(150) DEFAULT NULL,
+  `registration_required` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -773,7 +774,7 @@ CREATE TABLE `yourtasks` (
 
 LOCK TABLES `yourtasks` WRITE;
 /*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
-INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution'),('View Contribution','Author','View_Contribution','View_Contribution'),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application'),('Allot Coordinator','Admin','Allot','AllotCoordinator'),('Allot Referee','Coordinator','Allot','AllotReferee'),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails'),('View Papers','Admin','ViewPapers','ViewPapers'),('Download Acceptance Certificate','Author','DownloadAcceptanceCertificate','DownloadAcceptanceCertificate'),('Download Participation Certificate','Author','DownloadParticipationCertificate','DownloadParticipationCertificate'),('Download Registration Receipt','Author','DownloadRegistrationReceipt','DownloadRegistrationReceipt'),('Download Accommodation Receipt','Author','DownloadAccommodationReceipt','DownloadAccommodationReceipt'),('Confirm Registration Payment','Admin','ConfirmPayment','registration'),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation'),('Fill Registration Payment Details','Author','PaymentForm','registration'),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation');
+INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution',0),('View Contribution','Author','View_Contribution','View_Contribution',0),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application',1),('Allot Coordinator','Admin','Allot','AllotCoordinator',0),('Allot Referee','Coordinator','Allot','AllotReferee',1),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails',0),('View Papers','Admin','ViewPapers','ViewPapers',0),('Download Acceptance Certificate','Author','DownloadCertificate','DownloadAcceptanceCertificate',0),('Download Participation Certificate','Author','DownloadCertificate','DownloadParticipationCertificate',1),('Download Registration Receipt','Author','DownloadReceipt','registration',1),('Download Accommodation Receipt','Author','DownloadReceipt','accommodation',1),('Confirm Registration Payment','Admin','ConfirmPayment','registration',0),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation',0),('Fill Registration Payment Details','Author','PaymentForm','registration',1),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation',1);
 /*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -786,4 +787,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-07 14:31:19
+-- Dump completed on 2023-07-13 17:28:54
