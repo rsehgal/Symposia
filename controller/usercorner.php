@@ -245,9 +245,11 @@ function DownloadCertificate(){
 		$result = $obj->GetQueryResult($query);
 		
 		$paperTab='<table class="table table-stripped">';
-		$paperTab.='<tr>
+		$paperTab.='<tr class="text-center">
 				<th>S. No.</th>
 				<th>Title</th>
+				<th>Filename</th>
+				<th>Referees comments</th>
 				<th>Status</th>
 				<th>Download Certificate</th>
 			    </tr>';
@@ -264,14 +266,21 @@ function DownloadCertificate(){
 			}elseif($certType==="DownloadAcceptanceCertificate"){
 			$counter++;
 			if($row["status"]==="Deleted" || $row["status"]==="Rejected")
-				$paperTab.='<tr class="tr-peach" >';
+				$paperTab.='<tr class="tr-peach text-center" >';
 			else
-				$paperTab.='<tr class="tr-lightgreen">';
+				$paperTab.='<tr class="tr-lightgreen text-center">';
 			}
 			$paperTab.='	<td>'.$counter.'</td>
 					<td>'.$row["Title"].'</td>
+					<td>'.$row["Filename"].'</td>
+					<td>'.$row["remarks"].'</td>
 					<td>'.$row["status"].'</td>
-					<td>'.'<input type="button" status="'.$row["status"].'" category="'.$row["Topic"].'" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
+					';
+
+			if($row["status"]==="Deleted" || $row["status"]==="Rejected"){
+				$paperTab.='<td>NA</td></tr>';
+			}else	
+			 $paperTab.='<td>'.'<input type="button" status="'.$row["status"].'" category="'.$row["Topic"].'" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
 				    </tr>';
 		}
 		$paperTab.='</table>';
@@ -320,6 +329,15 @@ function DownloadCertificate(){
 	}
 }
 
+function GetRefereesComments(){
+//This should return a table filled with the comments from all the referees.
+//But it will require an unnecessary DB connection and query execution,
+//whose result are already there in above function. 
+
+//So this may not be very efficient.
+//$obj = new DB();
+//$query = 'select '
+}
 function DownloadAcceptanceCertificate(){
 
 	//return "hello...";
@@ -362,4 +380,29 @@ function DownloadAccommodationReceipt(){
 	}
 }
 
+
+function PublishResults(){
+
+/*This is computation intensive function.*/
+
+//return "Publish Results called...";
+$obj = new DB();
+$query = "select Filename from contributions";
+$result = $obj->GetQueryResult($query);
+$pubMsg="";
+while($row = $result->fetch_assoc()){
+$comments="";
+$query = 'select * from refereeAllotment where Filename="'.$row["Filename"].'" order by refnum';
+$result2 = $obj->GetQueryResult($query);
+	while($row2 = $result2->fetch_assoc()){
+		$comments.=$row2["refnum"]." : ".$row2["remarks"]."<br/>";	
+		//echo $comments;
+	}
+	$pubMsg.=$row["Filename"]."<br/>".$comments."<hr/><br/>";
+	//$pubMsg.=$comments."<br/>";
+	$query = 'update contributions set remarks="'.$comments.'" where Filename="'.$row["Filename"].'"';
+	$obj->GetQueryResult($query);
+}
+return $pubMsg;
+}
 ?>
