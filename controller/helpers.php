@@ -95,7 +95,7 @@ while($row = $result->fetch_assoc()){
 return $coordinatorsArray;
 }
 
-
+//For Ajax Call
 function GetScore(){
 	$fileName = $_POST["filename"];
 	$obj = new DB();
@@ -111,6 +111,35 @@ function GetScore(){
 
 	return ($total/$num);
 
+}
+
+//For Normal Call
+function GetScore_Normal($fileName){
+	//$fileName = $_POST["filename"];
+	$obj = new DB();
+	$query = 'select sum(marks) as total from refereeAllotment where Filename="'.$fileName.'"';
+	$result = $obj->GetQueryResult($query);
+	$row=$result->fetch_assoc();
+	$total = $row["total"];
+
+	$query = 'select count(marks) as num from refereeAllotment where Filename="'.$fileName.'" and marks <> 0';
+	$result = $obj->GetQueryResult($query);
+	$row=$result->fetch_assoc();
+	$num = $row["num"];
+
+	return ($total/$num);
+
+}
+
+function GetFinalDecision($fileName){
+	$totalMarks  = GetScore_Normal($fileName);
+        if($totalMarks >= 7){
+		return "Oral";
+	}elseif($totalMarks >= 4 && totalMarks < 7){
+		return "Poster";
+	}else{
+		return "Rejected";
+	}
 }
 
 function HomeNASI(){

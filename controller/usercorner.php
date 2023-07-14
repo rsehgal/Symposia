@@ -400,7 +400,8 @@ $result2 = $obj->GetQueryResult($query);
 	}
 	$pubMsg.=$row["Filename"]."<br/>".$comments."<hr/><br/>";
 	//$pubMsg.=$comments."<br/>";
-	$query = 'update contributions set remarks="'.$comments.'" where Filename="'.$row["Filename"].'"';
+	$finalDecision = GetFinalDecision($row["Filename"]);
+	$query = 'update contributions set remarks="'.$comments.'", status="'.$finalDecision.'" where Filename="'.$row["Filename"].'"';
 	$obj->GetQueryResult($query);
 }
 return $pubMsg;
