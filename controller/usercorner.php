@@ -106,7 +106,7 @@ $uName=$_POST["uname"];
 $filename=$_POST["filename"];
 $title=$_POST["title"];
 $category=$_POST["category"];
-
+$status=$_POST["status"];
 $obj = new DB();
 $query="select Initials,FirstName,LastName,Affiliation from registration where uname='$uName'";
 $result=$obj->GetQueryResult($query);
@@ -150,6 +150,52 @@ $pdf->SetTextColor(125, 60, 162);
 $pdf->writeHTMLCell( 140, 20, 80, 55, $html =$txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
 
 
+$msg='<p>This is to certify that <b>'.$name.'</b> from '.$affil.' has participated in the
+67<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at IIT Indore, Indore, Madhya Pradesh, during December 09-13, 2023. ';
+
+$presentationType="";
+if($status === "Oral")
+$presentationType = 'an '.$status;
+if($status === "Poster")
+$presentationType = 'a '.$status;
+
+$msg.='<b>'.$name.'</b> has also made '.$presentationType.' presentation for the contribution titled <br/>';
+
+//$msg.='<center>'.$title.'</center>.';
+
+$pdf->setCellPadding(0);
+$pdf->setFontSpacing(0);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('times', 'I', 20);
+
+$pdf->WriteHTMLCell(250,60,20,110, $html = '<b><u>'.$title.'<u></b>', $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
+
+$pdf->setCellPadding(0);
+$pdf->setFontSpacing(0);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('times', 'I', 20);
+
+
+$pdf->WriteHTMLCell(245,60,25,68, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'J');//, $autopadding = true );
+
+//Signatures
+
+$sec1="<IMG src='sig_sec.png'><br/>Dr. P. C. Rout<br><i>Secretary</i><br/>SNP-2019";
+$sec2="Dr. Y. K. Gupta<br><i>Secretary</i><br/> SNP-2019";
+$sec="Dr. S. K. Pandit<br><i>Secretary</i>, SNP-2023";
+$conv="Dr. A. Shrivastava<br><i>Convener</i>, SNP-2023";
+
+
+$x=30;
+$y=125;
+
+$pdf->Image('../images/signConv.jpg', $x,$y,40,30, 'JPG', '', '', false, 150, '', false, false,0 , false, false, false);
+$x=225;
+$pdf->Image('../images/signSec.jpg', $x,$y,40,30, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+
+
+$pdf->WriteHTMLCell(60,40,20,150, $html = $sec, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->WriteHTMLCell(60,40,215,150, $html = $conv, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
 
 
 $pdfFileName="cert_".$uName.".pdf";
@@ -195,6 +241,7 @@ function DownloadCertificate(){
 		$onlyCert.='<td><input type="button" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" class="btn btn-primary DownloadCertificate" value="Download"/></td></tr></table>';
 		$paperTab=$onlyCert;
 		}else{
+		$counter=0;
 		$result = $obj->GetQueryResult($query);
 		
 		$paperTab='<table class="table table-stripped">';
@@ -206,16 +253,25 @@ function DownloadCertificate(){
 			    </tr>';
 
 		while($row = $result->fetch_assoc()){
+			if($certType==="DownloadParticipationCertificate"){
+			if($row["status"]==="Oral" || $row["status"]==="Poster"){
+			$counter++;
+			$paperTab.='<tr class="tr-lightgreen">';
+			}else{
+			continue;
+			}
+
+			}elseif($certType==="DownloadAcceptanceCertificate"){
 			$counter++;
 			if($row["status"]==="Deleted" || $row["status"]==="Rejected")
 				$paperTab.='<tr class="tr-peach" >';
 			else
 				$paperTab.='<tr class="tr-lightgreen">';
-			
+			}
 			$paperTab.='	<td>'.$counter.'</td>
 					<td>'.$row["Title"].'</td>
 					<td>'.$row["status"].'</td>
-					<td>'.'<input type="button" category="'.$row["Topic"].'" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
+					<td>'.'<input type="button" status="'.$row["status"].'" category="'.$row["Topic"].'" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
 				    </tr>';
 		}
 		$paperTab.='</table>';
@@ -233,6 +289,7 @@ function DownloadCertificate(){
 							data["filename"]=$(this).attr("filename");
 							data["title"]=$(this).attr("title");
 							data["category"]=$(this).attr("category");
+							data["status"]=$(this).attr("status");
 							
 							
 							alert(funcName);
