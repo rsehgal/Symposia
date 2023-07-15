@@ -366,6 +366,9 @@ function ServeLogin(){
 
 		if($_SESSION["logintype"]=="Referee"){
 
+		$refAcceptanceStatus = RefereeAcceptanceStatus();
+		//return $refAcceptanceStatus;
+
 		$loginStatusMsg='<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
 		$localJs = '<script>
 				$(function(){
@@ -375,7 +378,20 @@ function ServeLogin(){
 				});</script>';
 				//'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
 				//$("#loginstatus").html('.$loginStatusMsg.')});
-		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus().$adCordJS;
+
+//		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg."<br/>".Referee_UpdatePaperStatus().$adCordJS;
+
+		$returnFromRefLogin=$localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>';
+
+		
+		if($refAcceptanceStatus=="allotted"){
+			return "Acceptance Form...";
+		}elseif($refAcceptanceStatus=="accepted"){
+			return $returnFromRefLogin.Referee_UpdatePaperStatus().$adCordJS;
+		}elseif($refAcceptanceStatus=="declined"){
+			return Message("It seems you had already declined our invitation. Kindly contact secretary.","alert-danger");
+		}
+
 		}
 		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator"){
 				return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment().$adCordJS;

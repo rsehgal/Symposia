@@ -242,5 +242,18 @@ function RegisteredUser(){
 
 }
 
-
+function RefereeAcceptanceStatus(){
+	session_start();
+	$obj = new DB();
+	$query = "select * from refereeConfirmation where uname='".$_SESSION["username"]."'";
+	$counter = $obj->GetCounterFromQuery($query);
+	if($counter===0){
+		return false;
+	}else{
+		$result = $obj->GetQueryResult($query);
+		$row = $result->fetch_assoc();
+		return $row["status"];
+	}
+	
+}
 ?>
