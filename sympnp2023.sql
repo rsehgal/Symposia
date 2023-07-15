@@ -468,6 +468,31 @@ INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `refereeConfirmation`
+--
+
+DROP TABLE IF EXISTS `refereeConfirmation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `refereeConfirmation` (
+  `uname` varchar(5) DEFAULT NULL,
+  `refereeEmail` varchar(150) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `screeningStatus` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `refereeConfirmation`
+--
+
+LOCK TABLES `refereeConfirmation` WRITE;
+/*!40000 ALTER TABLE `refereeConfirmation` DISABLE KEYS */;
+INSERT INTO `refereeConfirmation` VALUES ('admin','sc.ramansehgal@gmail.com','accepted',0),('admin','sc.ramansehgal@gmail.com','accepted',0),('ASE','sc.ramansehgal@gmail.com','declined',0),('RSE','sc.ramansehgal@gmail.com','accepted',0);
+/*!40000 ALTER TABLE `refereeConfirmation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `refereeList`
 --
 
@@ -787,4 +812,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-14 16:48:34
+-- Dump completed on 2023-07-15 16:09:49
