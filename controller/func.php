@@ -385,7 +385,8 @@ function ServeLogin(){
 
 		
 		if($refAcceptanceStatus=="allotted"){
-			return "Acceptance Form...";
+			$forms = new Forms();
+			return $forms->RefereeingConfirmation();//"Acceptance Form...";
 		}elseif($refAcceptanceStatus=="accepted"){
 			return $returnFromRefLogin.Referee_UpdatePaperStatus().$adCordJS;
 		}elseif($refAcceptanceStatus=="declined"){
@@ -2100,6 +2101,13 @@ GeneratePDF($_SESSION["username"],$receipt_type);
 }
 
 //return "Download $receipt_type receipt...";
+}
+
+function UpdateConsent(){
+	session_start();
+	$invresult = $_POST["invresult];
+	//$query = "update refereeConfirmation set 
+
 }
 
 if (isset($_POST['function_name'])) {

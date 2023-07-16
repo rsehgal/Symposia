@@ -386,6 +386,70 @@ public function Register($fieldNames){
 		return Message("Please login before proceeding for regisration.","alert-danger"); 
 	}
 }
+
+public function RefereeingConfirmation(){
+	//return
+		$obj=new DB();
+		$query="select UploadLocation from symposium";
+		$result = $obj->GetQueryResult($query); 
+		$row = $result->fetch_assoc();
+		$loc = $row["UploadLocation"];
+
+		$formContent='<br/><div class="container">
+                <h3>Dear Referee, thanks for sparing your time to consider our review request for SNP-2023.</h3>
+		<form method="POST" id="consentForm" enctype="multipart/form-data" server="UpdateConsent" class="">';
+
+		$formContent.='<p class="form-group"> Kindly select the appropriate option to accept or decline the review request </p>';
+		$formContent.='<div class="custom-control custom-radio form-group">
+			      <input type="radio" class="custom-control-input acceptreject" id="accepted" name="reviewrequest" required>
+			      <label class="custom-control-label" for="accepted">Accepted</label>
+			      </div>';
+		$formContent.='<div class="custom-control custom-radio form-group">
+			      <input type="radio" class="custom-control-input acceptreject" id="declined" name="reviewrequest">
+			      <label class="custom-control-label" for="declined">Declined</label>
+			      </div>';
+		$formContent.='<input type="submit" class="btn btn-primary" value="Submit" function_name="UpdateConsent" id="submitConsent" />';
+
+		$associatedJS = '<script>
+				var data={};
+				$(function(){
+				$(".acceptreject").change(function() {
+						data["invresult"]=$(this).attr("id");
+				});
+	
+				//$("#submitConsent").click(function(e){
+				$("#consentForm").on("submit",function(e){
+
+					data["function_name"]=$(this).attr("server");
+					alert(data["function_name"]);
+					console.log(data);
+				
+					$.ajax({
+						url: "../controller/func.php",
+						method: "POST",
+						data : data,
+						success: function(response) {
+							
+							$("#loadingGif").hide();
+							//$("#newsubmission input").prop("disabled", false); 
+							//$("#uploadAndSubmit").prop("disabled",false);
+							$("#result").html(response);
+						}
+					});
+
+				});
+
+				});
+
+				</script>';
+
+
+
+		return $formContent.$associatedJS;
+
+}
+
+
 	public function NewSubmission($fieldNames){
 	//return
 		$obj=new DB();
