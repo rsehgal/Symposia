@@ -39,6 +39,10 @@ DAE-BRNS Nuclear Physics Symposium
   background-color :   #abebc6 ;
 }
 
+.tr-purple{
+background-color: #5b2c6f ;
+}
+
 .text-brown{
   color :  #641e16;
 }
@@ -52,7 +56,9 @@ DAE-BRNS Nuclear Physics Symposium
   color :   #ec7063 ;
 }
 
-
+.btn-gray{
+  background-color: #abb2b9 ;
+}
 
 .taskbutton {
   color: #fff;

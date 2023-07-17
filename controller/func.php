@@ -805,13 +805,26 @@ function Referee_UpdatePaperStatus(){
 
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
+
+	$obj = new DB();
+	$query = 'select * from refereeConfirmation where uname="'.$_SESSION["username"].'"';
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$readonly="";
+	$buttonStatus="btn btn-primary";
+	if((int)$row["screeningStatus"]===1){
+		$readonly="disabled";
+		$buttonStatus="btn btn-gray";
+	}
+	
+	
 	if(isset($_SESSION["loggedin"])){
 	//$submitterName = GetSubmitterName();
 	//$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
 	//$query = 'select * from contributions where Filename in ( select Filename from refereeAllotment where refereeName="'.$_SESSION["username"].'")';
 	$query = 'select contributions.uname, contributions.Title, contributions.Topic, contributions.Category,contributions.Filename, refereeAllotment.marks, refereeAllotment.remarks from contributions INNER JOIN refereeAllotment ON contributions.Filename=refereeAllotment.Filename where refereeAllotment.refereeName="'.$_SESSION["username"].'"';  	
 //return $query;	
-	$obj = new DB();
+	//$obj = new DB();
 	$result = $obj->GetQueryResult($query);
 	if($result===false)
                                 return Message("Query execution fails","alert-danger");
@@ -859,13 +872,18 @@ function Referee_UpdatePaperStatus(){
 		$retTable.='<td>'.$selectedTopic.'</td>';
 		$retTable.='<td>'.$selectedCategory.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
-		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
-		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control" placeholder="Out of 10"/></td>';
-		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
+		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'" '.$readonly.'>'.$remarks.'</textarea></td>';
+		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control" placeholder="Out of 10" '.$readonly.'/></td>';
+		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="'.$buttonStatus.'" updateDecision" value="Update" functionName="UpdateStatus" '.$readonly.'/></td>';
 		$retTable.='</tr>';
 		//$retTable.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 
 	}
+	$retTable.='</table>';
+
+	$retTable.='<div class="text-center">
+			<input type="button" id="freezeButton" class="btn btn-warning" function_name="FreezeDecision" value="Freeze" />
+		    </div>';
 
 	$result->free();
 	$associatedJs='<script> 
@@ -911,6 +929,26 @@ function Referee_UpdatePaperStatus(){
 				$(textBoxId).val($(this).attr("value"));
 				$(textBoxId).attr("value",$(this).attr("value"));
 				
+			});
+
+			$("#freezeButton").click(function(e){
+
+				
+				$("#loadingGif").show();
+				e.preventDefault();
+				functionName=$(this).attr("function_name");
+				data["function_name"]=functionName;
+
+				    $.ajax({
+				    url: "../controller/func.php",
+				    method: "POST",
+				    data : data,
+				    success: function(response) {
+					$("#loadingGif").hide();
+				    	$("#result").html(response);
+				    }
+				    });
+
 			});
 
 			
@@ -965,11 +1003,37 @@ return Message("Will be available soon.","alert-warning");
     echo '<iframe src="../docs/poster.pdf"></iframe>';
 }
 
-function Topic(){
+/*function Topic(){
 if(!EnableMenuItem("Topic"))
 return Message("Will be available soon.","alert-warning");
 
 return Message("Will be Available soon.","alert-warning");
+}*/
+function Topic(){
+if(!EnableMenuItem("Topic"))
+return Message("Will be available soon.","alert-warning");
+$topicMsg='<div class="row">';
+$topicMsg.='<div class="col"></div>';
+$topicMsg.='<div class="col">';
+$topicMsg.='<table class="table table-striped table-bordered">';
+$topicMsg.='<tr class="text-center bg-primary text-light">
+	   <th>Category</th>
+	   <th>Title</th>
+	   </tr>';
+$obj = new DB();
+$query = "select * from categories";
+$result = $obj->GetQueryResult($query);
+while($row=$result->fetch_assoc()){
+$topicMsg.='<tr class="text-center"><td>'.$row["code"].'</td><td>'.$row["category"].'</td></tr>';
+}
+
+$topicMsg.='</table>';
+$topicMsg.='</div>';
+$topicMsg.='<div class="col"></div>';
+$topicMsg.='</div>';
+return $topicMsg;
+
+//return Message("Will be Available soon.","alert-warning");
 }
 
 function Venue(){
@@ -2113,6 +2177,19 @@ function UpdateConsent(){
 	$result= $obj->GetQueryResult($query); 
 
 }
+
+/*Function to call when the reviewer want to lock their decision*/
+function FreezeDecision(){
+	//return "REturned from Update Consent...";
+	session_start();
+	//$invresult = $_POST["invresult"];
+	$query = "update refereeConfirmation set screeningStatus=1 where uname='".$_SESSION["username"]."'";
+	//return $query;
+	$obj = new DB();
+	$result= $obj->GetQueryResult($query); 
+	return Message("Thanks for reviewing the contributions for SNP-2023. You Decisions are now locked.","alert-info");
+}
+
 
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
