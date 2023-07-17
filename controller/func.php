@@ -2104,9 +2104,13 @@ GeneratePDF($_SESSION["username"],$receipt_type);
 }
 
 function UpdateConsent(){
+	//return "REturned from Update Consent...";
 	session_start();
-	$invresult = $_POST["invresult];
-	//$query = "update refereeConfirmation set 
+	$invresult = $_POST["invresult"];
+	$query = "update refereeConfirmation set status='".$invresult."' where uname='".$_SESSION["username"]."'";
+	//return $query;
+	$obj = new DB();
+	$result= $obj->GetQueryResult($query); 
 
 }
 

@@ -415,11 +415,13 @@ public function RefereeingConfirmation(){
 				$(function(){
 				$(".acceptreject").change(function() {
 						data["invresult"]=$(this).attr("id");
+						alert(data["invresult"]);
 				});
 	
 				//$("#submitConsent").click(function(e){
 				$("#consentForm").on("submit",function(e){
-
+					e.preventDefault();
+					//data["function_name"]=$(this).attr("function_name");
 					data["function_name"]=$(this).attr("server");
 					alert(data["function_name"]);
 					console.log(data);
