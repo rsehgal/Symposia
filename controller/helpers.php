@@ -145,9 +145,9 @@ function GetFinalDecision($fileName){
 function HomeNASI(){
 $homeMsg="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
-<h4>";
-$homeMsg.= "DAE Symposia on Nuclear Physics covering a wide range of topics are conducted annually. The aim of this series of symposia has been to provide a scientific forum to the nuclear physics community to present their research work and to interact with the researchers in this area. This year the symposium will be held at IIT Indore, Indore, Madhya Pradesh during ".GetSympDuration()." The scientific deliberations at the symposium will be in the form of plenary talks, invited talks , evening talks, seminars, and contributory papers. In addition, there will be talks by selected Young Achiever Award (YAA) nominees, and presentations of Ph.D. theses. Accepted contributory papers will be presented as posters, and a few will be selected for oral presentations. A one-day pre-symposium Orientation Programme will be held on December 8, 2023.";
-$homeMsg.="</h4></div></div>";
+<h3>";
+$homeMsg.= "<raman class='text-primary font-weight-bold'>DAE Symposia on Nuclear Physics</raman> covering a wide range of topics are conducted annually. The aim of this series of symposia has been to provide a scientific forum to the nuclear physics community to present their research work and to interact with the researchers in this area. This year the symposium will be held at <raman class='font-weight-bold'> IIT Indore, Indore, Madhya Pradesh </raman> during <raman class='text-primary font-weight-bold'> ".GetSympDuration()."</raman> The scientific deliberations at the symposium will be in the form of plenary talks, invited talks , evening talks, seminars, and contributory papers. In addition, there will be talks by selected Young Achiever Award (YAA) nominees, and presentations of Ph.D. theses. Accepted contributory papers will be presented as posters, and a few will be selected for oral presentations. <raman class='font-weight-bold'>A one-day pre-symposium Orientation Programme</raman> will be held on <raman class='text-primary font-weight-bold'>December 8, 2023.</raman>";
+$homeMsg.="</h3></div></div>";
 
 return $homeMsg;
 /*return "<hr/><br/><div class='align-items-center justify-content-center'>
