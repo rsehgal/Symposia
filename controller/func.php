@@ -1505,7 +1505,7 @@ if(!EnableMenuItem("Important_Dates"))
 return Message("Will be available soon.","alert-warning");
 
 //return Message("Dates available","alert-danger");
-$query='select reg_end_date,contrib_end_date from symposium';
+$query='select reg_end_date,contrib_end_date,acceptance_end_date from symposium';
 $obj = new DB();
 $result = $obj->GetQueryResult($query);
 if($result===false)
@@ -1522,7 +1522,11 @@ $row=$result->fetch_assoc();
 $regDate = date("d F Y", strtotime($row["reg_end_date"]));
 $retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
 $contribDate = date("d F Y", strtotime($row["contrib_end_date"]));
+$acceptanceDate = date("d F Y", strtotime($row["acceptance_end_date"]));
+
 $retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td></tr>';
+$retVal.='<tr><td>Date of release of paper acceptance</td><td>'.$acceptanceDate.'</td></tr>';
+
 $retVal.='</table>';
 
 $retVal.='</div>

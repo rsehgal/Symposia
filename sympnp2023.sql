@@ -204,7 +204,6 @@ CREATE TABLE `accommodation` (
 
 LOCK TABLES `accommodation` WRITE;
 /*!40000 ALTER TABLE `accommodation` DISABLE KEYS */;
-INSERT INTO `accommodation` VALUES ('admin','DAECC Guest House','DAECC'),('admin','Postgraduate Hostel','PGHostel'),('admin','Hotel : The Regenza by Tunga','Tunga'),('admin','Hotel : The Jewel of Chembur','JewelOfChembur');
 /*!40000 ALTER TABLE `accommodation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,6 +284,33 @@ LOCK TABLES `assoc_array` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `bankdetails`
+--
+
+DROP TABLE IF EXISTS `bankdetails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bankdetails` (
+  `bankname` varchar(150) DEFAULT NULL,
+  `branch` varchar(150) DEFAULT NULL,
+  `accountname` varchar(150) DEFAULT NULL,
+  `accountnum` varchar(50) DEFAULT NULL,
+  `ifsc` varchar(20) DEFAULT NULL,
+  `swiftcode` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bankdetails`
+--
+
+LOCK TABLES `bankdetails` WRITE;
+/*!40000 ALTER TABLE `bankdetails` DISABLE KEYS */;
+INSERT INTO `bankdetails` VALUES ('STATE BANK OF INDIA','BARC BRANCH','SNP-2023','1234567890','SBIN0001268','SBININBB508');
+/*!40000 ALTER TABLE `bankdetails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `categories`
 --
 
@@ -358,7 +384,7 @@ CREATE TABLE `contactus` (
 
 LOCK TABLES `contactus` WRITE;
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
-INSERT INTO `contactus` VALUES ('admin','Convener','S. M. Yusuf','smyusuf@barc.gov.in',''),('admin','Member','L. M. Pant','lmpant@barc.gov.in',''),('admin','Member','D. V. Udupa','dudupa@barc.gov.in',''),('admin','Member','A. K. Gupta','anit@barc.gov.in',''),('admin','Member','K. K. Yadav','kkyadav@barc.gov.in',''),('admin','Member','T Sakuntala','sakuntl@barc.gov.in','');
+INSERT INTO `contactus` VALUES ('admin','Convener','Dr. Aradhana Shrivastava','convener@sympnp.org','+91-22-2559-3588'),('admin','Secretary','Dr. Sanat Pandit','secretary@sympnp.org','+91-22-2559-5193');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -437,7 +463,7 @@ CREATE TABLE `menuitems` (
 
 LOCK TABLES `menuitems` WRITE;
 /*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
-INSERT INTO `menuitems` VALUES ('Home',1),('About',1),('Committees',1),('Signup',1),('Login',1),('Submissions',0),('Accommodation',1),('Contact',1),('Upload_Contribution',1),('Resubmit_Contribution',0),('View_Contribution',1),('DAECC',1),('Tunga',1),('JewelOfChembur',1),('PGHostel',1),('AuthorLogin',1),('RefereeLogin',1),('Topic',0),('Venue',1),('Poster',1),('ImportantDates',0),('CoordinatorLogin',1),('AdminLogin',1),('Submission_Guidelines',0),('Templates',0),('Register',1),('Finsup_Application',0);
+INSERT INTO `menuitems` VALUES ('Home',1),('About',1),('Committees',1),('Signup',1),('Login',1),('Submissions',0),('Accommodation',0),('Contact',1),('Upload_Contribution',1),('Resubmit_Contribution',0),('View_Contribution',1),('DAECC',1),('Tunga',1),('JewelOfChembur',1),('PGHostel',1),('AuthorLogin',1),('RefereeLogin',1),('Topic',1),('Venue',1),('Poster',0),('ImportantDates',0),('CoordinatorLogin',1),('AdminLogin',1),('Submission_Guidelines',1),('Templates',1),('Register',1),('Finsup_Application',0),('Important_Dates',1);
 /*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -463,7 +489,7 @@ CREATE TABLE `refereeAllotment` (
 
 LOCK TABLES `refereeAllotment` WRITE;
 /*!40000 ALTER TABLE `refereeAllotment` DISABLE KEYS */;
-INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','ASE','ref1',6,'Good Work, POSTER'),('','','',0,NULL),('nwwton_paper_A_c_1.pdf','SSE','ref2',8,'Excellent results, ORAL'),('nwwton_paper_A_c_1.pdf','ABE','ref3',0,NULL),('rsehgal_paper_C_G_1.pdf','ASE','ref1',8,'Good job, Keep on doing good work like this. ALL THE BEST'),('rsehgal_paper_C_G_1.pdf','SSE','ref2',0,NULL),('rsehgal_paper_C_E_1.pdf','ASE','ref1',4,'Good work, but some work is desirous'),('rsehgal_paper_C_E_1.pdf','SSE','ref2',8,'Excellent work,\nDeserves ORAL');
+INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',6,'hMMMKM SEE due to non concrete result. Please resubmit it'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('nwwton_paper_A_c_1.pdf','ASE','ref1',6,'Good Work, POSTER'),('','','',0,NULL),('nwwton_paper_A_c_1.pdf','SSE','ref2',8,'Excellent results, ORAL'),('nwwton_paper_A_c_1.pdf','ABE','ref3',0,NULL),('rsehgal_paper_C_G_1.pdf','ASE','ref1',8,'Good job, Keep on doing good work like this. ALL THE BEST'),('rsehgal_paper_C_G_1.pdf','SSE','ref2',9,'Great work, ORAL'),('rsehgal_paper_C_E_1.pdf','ASE','ref1',4,'Good work, but some work is desirous'),('rsehgal_paper_C_E_1.pdf','SSE','ref2',5,'Good work,\nBut Deserves POSTER'),('rsehgal_paper_C_G_1.pdf','SLV','ref3',6,'Good work by the author, but some work needs to be  done.'),('rsehgal_paper_C_G_1.pdf','BRB','ref4',0,NULL);
 /*!40000 ALTER TABLE `refereeAllotment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -488,7 +514,7 @@ CREATE TABLE `refereeConfirmation` (
 
 LOCK TABLES `refereeConfirmation` WRITE;
 /*!40000 ALTER TABLE `refereeConfirmation` DISABLE KEYS */;
-INSERT INTO `refereeConfirmation` VALUES ('admin','sc.ramansehgal@gmail.com','accepted',0),('admin','sc.ramansehgal@gmail.com','accepted',0),('ASE','sc.ramansehgal@gmail.com','declined',0),('RSE','sc.ramansehgal@gmail.com','accepted',0);
+INSERT INTO `refereeConfirmation` VALUES ('admin','sc.ramansehgal@gmail.com','accepted',0),('admin','sc.ramansehgal@gmail.com','accepted',0),('ASE','sc.ramansehgal@gmail.com','declined',0),('RSE','sc.ramansehgal@gmail.com','allotted',0),('SSE','sc.ramansehgal@gmail.com','accepted',1);
 /*!40000 ALTER TABLE `refereeConfirmation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -636,7 +662,8 @@ CREATE TABLE `symposium` (
   `UploadLocation` varchar(254) DEFAULT NULL,
   `contrib_acc_date` date DEFAULT NULL,
   `certificate_issue_date` date DEFAULT NULL,
-  `receipt_issue_date` date DEFAULT NULL
+  `receipt_issue_date` date DEFAULT NULL,
+  `acceptance_end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -646,7 +673,7 @@ CREATE TABLE `symposium` (
 
 LOCK TABLES `symposium` WRITE;
 /*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
-INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-08','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14');
+INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL,'2023-10-15'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-08','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14','2023-10-15');
 /*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -799,7 +826,7 @@ CREATE TABLE `yourtasks` (
 
 LOCK TABLES `yourtasks` WRITE;
 /*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
-INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution',0),('View Contribution','Author','View_Contribution','View_Contribution',0),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application',1),('Allot Coordinator','Admin','Allot','AllotCoordinator',0),('Allot Referee','Coordinator','Allot','AllotReferee',0),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails',0),('View Papers','Admin','ViewPapers','ViewPapers',0),('Acceptance Status','Author','DownloadCertificate','DownloadAcceptanceCertificate',0),('Download Participation Certificate','Author','DownloadCertificate','DownloadParticipationCertificate',1),('Download Registration Receipt','Author','DownloadReceipt','registration',1),('Download Accommodation Receipt','Author','DownloadReceipt','accommodation',1),('Confirm Registration Payment','Admin','ConfirmPayment','registration',0),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation',0),('Fill Registration Payment Details','Author','PaymentForm','registration',1),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation',1),('Publish Results','Admin','PublishResults','PublishResults',0);
+INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution',0),('View Contribution','Author','View_Contribution','View_Contribution',0),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application',1),('Allot Coordinator','Admin','Allot','AllotCoordinator',0),('Allot Referee','Coordinator','Allot','AllotReferee',0),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails',0),('View Papers','Admin','ViewPapers','ViewPapers',0),('Acceptance Status','Author','DownloadCertificate','DownloadAcceptanceCertificate',0),('Download Participation Certificate','Author','DownloadCertificate','DownloadParticipationCertificate',1),('Download Registration Receipt','Author','DownloadReceipt','registration',1),('Download Accommodation Receipt','Author','DownloadReceipt','accommodation',1),('Confirm Registration Payment','Admin','ConfirmPayment','registration',0),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation',0),('Fill Registration Payment Details','Author','PaymentForm','registration',1),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation',1),('Publish Results','Admin','PublishResults','PublishResults',0),('Review Papers','Referee','Referee_UpdatePaperStatus','Referee_UpdatePaperStatus',0);
 /*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -812,4 +839,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-15 16:09:49
+-- Dump completed on 2023-07-18 15:07:24
