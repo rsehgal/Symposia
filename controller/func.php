@@ -1501,17 +1501,20 @@ return Message("Login credentials sent to email : ".$email,"alert-info");
 
 function Important_Dates(){
 
-if(!EnableMenuItem("ImportantDates"))
+if(!EnableMenuItem("Important_Dates"))
 return Message("Will be available soon.","alert-warning");
 
 //return Message("Dates available","alert-danger");
-$query='select reg_end_date,contrib_end_date from symposium where volume=67';
+$query='select reg_end_date,contrib_end_date from symposium';
 $obj = new DB();
 $result = $obj->GetQueryResult($query);
 if($result===false)
                                 return Message("Query execution fails","alert-danger");
 
 $retVal = Message("Important Dates","alert-info");
+$retVal.='<div class="row"> 
+          <div class="col"></div>
+          <div class="col">';
 $retVal .= '<table class="table table-striped table-bordered">';
 
 $row=$result->fetch_assoc();
@@ -1521,6 +1524,10 @@ $retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
 $contribDate = date("d F Y", strtotime($row["contrib_end_date"]));
 $retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td></tr>';
 $retVal.='</table>';
+
+$retVal.='</div>
+          <div class="col"></div>
+          </div>';
 $result->free();
 return $retVal;
 
@@ -2191,6 +2198,27 @@ function FreezeDecision(){
 	return Message("Thanks for reviewing the contributions for SNP-2023. You Decisions are now locked.","alert-info");
 }
 
+function BankDetails(){
+//return "Bank Details...";
+$obj=new DB();
+$query="select * from bankdetails";
+$result = $obj->GetQueryResult($query);
+$row = $result->fetch_assoc();
+$bankdetailsMsg='<div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                                <table class="table table-bordered table-striped">
+                                <tr class="text-center"><td class="font-weight-bold">Bank Name</td><td>'.$row["bankname"].'</td></tr>
+                                <tr class="text-center"><td class="font-weight-bold">Branch Name</td><td>'.$row["branch"].'</td></tr>
+                                <tr class="text-center"><td class="font-weight-bold">Account Name</td><td>'.$row["accountname"].'</td></tr>
+                                <tr class="text-center"><td class="font-weight-bold">Account Number</td><td>'.$row["accountnum"].'</td></tr>
+                                <tr class="text-center"><td class="font-weight-bold">IFSC</td><td>'.$row["ifsc"].'</td></tr></table>
+                        </div>
+                        <div class="col"></div>
+                 </div>';
+
+return Message("Bank Details","alert-info").$bankdetailsMsg;
+}
 
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
