@@ -308,6 +308,7 @@ function ServeLogin(){
 	$js='<script>
 			/*//alert("Raw loaded............");
 			$(function(){
+				//$("#YourTasks").trigger("click");
 			//	alert("JS loaded...");
 				//if($("#hiddenInfo").attr("logintype")="Admin" &&
 				if($("#hiddenInfo").attr("loggedin")="TRUE"){
@@ -360,11 +361,14 @@ function ServeLogin(){
 		//if($_SESSION["logintype"]=="Admin" && $_SESSION["loggedin"])
 		if($_SESSION["loggedin"])
 		echo '<input type="hidden" id="hiddenInfo" logintype="'.$_SESSION["logintype"].'" loggedin="'.$_SESSION["loggedin"].'" />';
+		return YourTasks();
+
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
 		return '<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>'.$js ;
 
-		if($_SESSION["logintype"]=="Referee"){
+
+	if($_SESSION["logintype"]=="Referee"){
 
 		$refAcceptanceStatus = RefereeAcceptanceStatus();
 		//return $refAcceptanceStatus;
@@ -376,11 +380,6 @@ function ServeLogin(){
 				$("#loginstatus").html("<h4><mark>Logged in as : '.
 				$_SESSION["username"].'");
 				});</script>';
-				//'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
-				//$("#loginstatus").html('.$loginStatusMsg.')});
-
-//		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg."<br/>".Referee_UpdatePaperStatus().$adCordJS;
-
 		$returnFromRefLogin=$localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>';
 
 		
@@ -874,7 +873,7 @@ function Referee_UpdatePaperStatus(){
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'" '.$readonly.'>'.$remarks.'</textarea></td>';
 		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control" placeholder="Out of 10" '.$readonly.'/></td>';
-		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="'.$buttonStatus.'" updateDecision" value="Update" functionName="UpdateStatus" '.$readonly.'/></td>';
+		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="'.$buttonStatus.' updateDecision" value="Update" functionName="UpdateStatus" '.$readonly.'/></td>';
 		$retTable.='</tr>';
 		//$retTable.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 
@@ -1074,9 +1073,9 @@ return Message("Will be available soon.","alert-warning");
 
 function Accommodation(){
 
-if(EnableMenuItem("Home")){}else{
+if(!EnableMenuItem("Accommodation"))
 return Message("Will be available soon.","alert-warning");
-}
+
 }
 
 function PopulateResubmissionForm(){
@@ -1421,6 +1420,8 @@ return $retVal;
 }
 
 function HowToReach(){
+	if(!EnableMenuItem("HowToReach"))
+	return Message("Will be available soon.","alert-warning");
 	//return "How to reach....";
 	$query='select How_To_Reach from HowToReach';
 	$result = GetQueryResult($query);
@@ -2152,9 +2153,9 @@ if($row["status"]=="Submitted"){
 
 return Message("Your $receipt_type payment details found, but not yet approved by Secretary.","alert-info");
 }else{
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 GeneratePDF($_SESSION["username"],$receipt_type);
 //return Message("Your $receipt_type payment receipt will be available soon.", "alert-success");

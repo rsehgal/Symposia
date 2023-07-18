@@ -355,9 +355,9 @@ var dataUp=new FormData();
 //session_write_close();
 //$_SESSION['logged']=TRUE;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 require "../globals.php";
 require "../model/Symposia.php";
 require "Forms.php";

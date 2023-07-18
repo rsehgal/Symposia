@@ -107,6 +107,7 @@ function AuthorTasks(){
     function YourTasks(){
     
     session_start();
+
     $associatedJs = "<script>
                      $(function(){
 				var data={};
@@ -178,7 +179,7 @@ function AuthorTasks(){
     
     return AdminTasks().$associatedJs;
     }*/
-	return GetTasks().$associatedJs;
+	return Message("Your Tasks","alert-info").GetTasks().$associatedJs;
     }else{
     
     return Message("Please login first","alert-danger");
