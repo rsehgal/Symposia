@@ -1,16 +1,28 @@
 <?php
+require_once "../model/Symposia.php";
+
 function DisplayFooter(){
+$obj = new DB();
+$query = "select * from contactus";
+$result = $obj->GetQueryResult($query);
+
+$rowConv=$result->fetch_assoc();
+
+$rowSec=$result->fetch_assoc();
+
 $footerMsg="<br/><hr/>";
 //$footerMsg.='<footer class="footer bg-dark text-light">
 $footerMsg.='<footer class="footer text-light">
+
 <br/><br/>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h5>Convener</h5>
-          <p class="font-weight-bold">Name: Dr. Aradhana Shrivastava</p>
-          <p>Email: convener@sympnp.org</p>
-          <p>Phone: Tel:+91-22-2559 3588</p>
+          <h5>'.$rowConv["Post"].'</h5>
+          <p class="font-weight-bold">Name: '.
+	  $rowConv["Name"].'</p>
+          <p>Email: '.$rowConv["Email"].'</p>
+          <p>Phone: Tel:'.$rowConv["ContactNumber"].'</p>
         </div>
         <div class="col-md-4">
           <h5>Quick Links</h5>
@@ -22,11 +34,12 @@ $footerMsg.='<footer class="footer text-light">
           </ul>
         </div>
 	<div class="col-md-4">
-          <h5>Secretary</h5>
-          <p class="font-weight-bold">Name: Dr. Sanat Pandit</p>
-          <p>Email: secretary@sympnp.org</p>
-          <p>Phone: Tel:+91-22-2559 5193</p>
-        </div>';
+	  <h5>'.$rowSec["Post"].'</h5>
+          <p class="font-weight-bold">Name: '.
+          $rowSec["Name"].'</p>
+          <p>Email: '.$rowSec["Email"].'</p>
+          <p>Phone: Tel:'.$rowSec["ContactNumber"].'</p>
+       </div>';
 
         /*<div class="col-md-4">
           <h5>Contact Us</h5>
