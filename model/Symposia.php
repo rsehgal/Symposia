@@ -242,9 +242,9 @@ private $conn;
 function __construct() {
   //echo "Constructor called...........<br/>";
   $this->sname='localhost';//$DBADDRESS;
-  $this->uname='sympnp_sympadmin';
+  $this->uname='sympadmin';
   $this->passwd='sympadmin@123';//$DBPASSWD;
-  $this->dbname='sympnp_sympnp2023'; 
+  $this->dbname='sympnp2023'; 
   //$this->Connect();  
 }
 
@@ -334,6 +334,54 @@ public function MakeTableRow($row){
 	}
 	echo $tabrow;
 	return $tabrow."</tr>";
+}
+public function GetTableDataContact($tableName,$showUname=0,$allowDeletion=0){
+	$table="<table border='1' class='table table-striped'>";
+	$columnNames = $this->GetFieldNames($tableName);
+	$query = "SELECT * FROM $tableName order by sno";
+	//$result = $this->conn->query($query);
+	$result = $this->GetQueryResult($query);
+	//echo
+	$table.="<tr class='table-warning'>";
+	        foreach ($columnNames as $columnName) {
+	//echo
+		if($columnName=='uname'){
+		if($showUname==1){
+		$table.="<th >" . $columnName . "</th>";
+		}
+		}elseif($columnName=='sno'){
+		}else{
+		$table.="<th >" . $columnName . "</th>";
+		}
+		}
+		if($allowDeletion==1)
+		$table.="<td>Update</td>";
+	//echo
+	       $table.="</tr>";
+	while ($row = $result->fetch_assoc()) {
+		//echo 
+		$table.= "<tr>";
+		foreach ($columnNames as $columnName) {
+			//echo
+
+			 if($columnName=='uname'){
+			if($showUname==1)
+				$table.="<td>" . $row[$columnName] . "</td>";
+			}elseif($columnName=='sno'){}else{
+				$table.="<td>" . $row[$columnName] . "</td>";
+			}
+		}
+		if($allowDeletion==1)
+		$table.="<td><input type='button' class='deleteEntry' oftable='".$tableName."' id='".$row['uname']."' value='Delete'></input></td>";
+		//echo 
+		$table.="</tr>";
+	}
+			//echo
+	/*if($showUname==1)
+	$table.="</table><br/>"."ShowUname set <br/>";
+	else
+	$table.="</table><br/>"."ShowUname NOT set <br/>";*/
+	return $table;
 }
 
 public function GetTableData($tableName,$showUname=0,$allowDeletion=0){

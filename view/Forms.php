@@ -682,7 +682,7 @@ public function RefereeingConfirmation(){
         //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
         //$obj->Connect();
 	$result = "<h2><br/>Contact Us<br/></h2>";
-        return $result.$obj->GetTableData($tableName);
+        return $result.$obj->GetTableDataContact($tableName);
 
 	/*return '<div class="container">
 		<div class="w-50 p-3" style="background-color: #eee;">

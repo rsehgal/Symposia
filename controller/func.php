@@ -426,7 +426,7 @@ function ShowCommittee($comm){
 	$obj = new DB();
 	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
 	//$obj->Connect();
-	$query = "select Name,Affiliation from ".$comm;
+	$query = "select Name,Affiliation from ".$comm." order by Name";
 	$result = $obj->GetQueryResult($query);
 	if($result===false)
                                 return Message("Query execution fails","alert-danger");
@@ -1505,7 +1505,8 @@ if(!EnableMenuItem("Important_Dates"))
 return Message("Will be available soon.","alert-warning");
 
 //return Message("Dates available","alert-danger");
-$query='select reg_end_date,contrib_end_date,acceptance_end_date from symposium';
+//$query='select reg_end_date,contrib_end_date,acceptance_end_date from symposium';
+$query='select * from symposium';
 $obj = new DB();
 $result = $obj->GetQueryResult($query);
 if($result===false)
@@ -1520,12 +1521,14 @@ $retVal .= '<table class="table table-striped table-bordered">';
 $row=$result->fetch_assoc();
 //For more info. keep on adding a line below
 $regDate = date("d F Y", strtotime($row["reg_end_date"]));
-$retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
 $contribDate = date("d F Y", strtotime($row["contrib_end_date"]));
 $acceptanceDate = date("d F Y", strtotime($row["acceptance_end_date"]));
+$invDate = date("d F Y", strtotime($row["inv_end_date"]));
 
 $retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td></tr>';
-$retVal.='<tr><td>Date of release of paper acceptance</td><td>'.$acceptanceDate.'</td></tr>';
+$retVal.='<tr><td>Last date of Invited talk submission</td><td>'.$invDate.'</td></tr>';
+$retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
+//$retVal.='<tr><td>Date of release of paper acceptance</td><td>'.$acceptanceDate.'</td></tr>';
 
 $retVal.='</table>';
 
