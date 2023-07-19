@@ -7,8 +7,8 @@ $query = "select * from contactus";
 $result = $obj->GetQueryResult($query);
 
 $rowConv=$result->fetch_assoc();
-
 $rowSec=$result->fetch_assoc();
+$rowLocalConv=$result->fetch_assoc();
 
 $footerMsg="<br/><hr/>";
 //$footerMsg.='<footer class="footer bg-dark text-light">
@@ -17,14 +17,29 @@ $footerMsg.='<footer class="footer text-light">
 <br/><br/>
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <h5>'.$rowConv["Post"].'</h5>
           <p class="font-weight-bold">Name: '.
 	  $rowConv["Name"].'</p>
           <p>Email: '.$rowConv["Email"].'</p>
           <p>Phone: Tel:'.$rowConv["ContactNumber"].'</p>
         </div>
-        <div class="col-md-4">
+	<div class="col-md-3">
+	  <h5>'.$rowLocalConv["Post"].'</h5>
+          <p class="font-weight-bold">Name: '.
+          $rowLocalConv["Name"].'</p>
+          <p>Email: '.$rowLocalConv["Email"].'</p>
+          <p>Phone: Tel:'.$rowLocalConv["ContactNumber"].'</p>
+       </div>
+
+       <div class="col-md-3">
+	  <h5>'.$rowSec["Post"].'</h5>
+          <p class="font-weight-bold">Name: '.
+          $rowSec["Name"].'</p>
+          <p>Email: '.$rowSec["Email"].'</p>
+          <p>Phone: Tel:'.$rowSec["ContactNumber"].'</p>
+       </div>
+	<div class="col-md-3">
           <h5>Quick Links</h5>
           <ul class="list-unstyled">
             <li><a href="#" class="nasiFooter" id="Home" function_name="Home">Home</a></li>
@@ -32,14 +47,8 @@ $footerMsg.='<footer class="footer text-light">
             <li><a href="#" class="nasiFooter" id="Register" function_name="Register">Register</a></li>
             <li><a href="#" class="nasiFooter" id="HowToReach" function_name="HowToReach">How To Reach</a></li>
           </ul>
-        </div>
-	<div class="col-md-4">
-	  <h5>'.$rowSec["Post"].'</h5>
-          <p class="font-weight-bold">Name: '.
-          $rowSec["Name"].'</p>
-          <p>Email: '.$rowSec["Email"].'</p>
-          <p>Phone: Tel:'.$rowSec["ContactNumber"].'</p>
-       </div>';
+        </divi>';
+
 
         /*<div class="col-md-4">
           <h5>Contact Us</h5>
