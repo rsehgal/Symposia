@@ -34,7 +34,7 @@ CREATE TABLE `AdvComm` (
 
 LOCK TABLES `AdvComm` WRITE;
 /*!40000 ALTER TABLE `AdvComm` DISABLE KEYS */;
-INSERT INTO `AdvComm` VALUES ('Bhalerao  R. S.','Indian Institute of Science Education and Research, Pune'),('Bhattacharyya  G.','Saha Institute of Nuclear Physics, Kolkata'),('Bhattacharya  S.','Variable Energy Cyclotron Centre, Kolkata'),('Chatterjee A.','Bhabha Atomic Research Centre, Mumbai'),('Chengalur Jayaram N.','Tata Institute of Fundamental Research, Mumbai'),('Choudhury R. K.','Bhabha Atomic Research Centre, Mumbai'),('Datar  V. M.','Institute of Mathematical Sciences, Chennai'),('Jain  A. K.','Amity University, Noida, Uttar Pradesh'),('Joshi Suhas S. ','Indian Institute of Technology, Indore'),('Kailas  S.','Centre for Excellence in Basic Sciences, Mumbai'),('Kanjilal  D.','Inter-University Accelerator Centre, Delhi'),('Kapoor  S. S.','Bhabha Atomic Research Centre, Mumbai'),('Mohanty  A. K.','Bhabha Atomic Research Centre, Mumbai'),('Nayak  B. K.','Bhabha Atomic Research Centre, Mumbai'),('Pandey  A. C.','Inter-University Accelerator Centre, Delhi'),('Pillay  R. G.','Indian Institute of Technology, Ropar'),('Ramamurthy  V. S.','National Institute of Advanced Studies, Bangalore'),('Saxena  A.','Bhabha Atomic Research Centre, Mumbai'),('Som  S.','Variable Energy Cyclotron Centre, Kolkata'),('Sinha  A. K.','UGC-DAE CSR, Kolkata'),('Srivastava  D. K.','National Institute of Advanced Studies, Bangalore'),('Vinod Kumar  P. C.','Sardar Patel University, Anand, Gujarat'),('Yusuf  S. M.','Bhabha Atomic Research Centre, Mumbai'),(' ','');
+INSERT INTO `AdvComm` VALUES ('Bhalerao  R. S.','Indian Institute of Science Education and Research, Pune'),('Bhattacharyya  G.','Saha Institute of Nuclear Physics, Kolkata'),('Bhattacharya  S.','Variable Energy Cyclotron Centre, Kolkata'),('Chatterjee A.','Bhabha Atomic Research Centre, Mumbai'),('Chengalur Jayaram N.','Tata Institute of Fundamental Research, Mumbai'),('Choudhury R. K.','Bhabha Atomic Research Centre, Mumbai'),('Datar  V. M.','Institute of Mathematical Sciences, Chennai'),('Jain  A. K.','Amity University, Noida, Uttar Pradesh'),('Joshi Suhas S. ','Indian Institute of Technology, Indore'),('Kailas  S.','Centre for Excellence in Basic Sciences, Mumbai'),('Kanjilal  D.','Inter-University Accelerator Centre, Delhi'),('Kapoor  S. S.','Bhabha Atomic Research Centre, Mumbai'),('Mohanty  A. K.','Bhabha Atomic Research Centre, Mumbai'),('Nayak  B. K.','Bhabha Atomic Research Centre, Mumbai'),('Pandey  A. C.','Inter-University Accelerator Centre, Delhi'),('Pillay  R. G.','Tata Institute of Fundamental Research, Mumbai'),('Ramamurthy  V. S.','National Institute of Advanced Studies, Bangalore'),('Saxena  A.','Bhabha Atomic Research Centre, Mumbai'),('Som  S.','Variable Energy Cyclotron Centre, Kolkata'),('Sinha  A. K.','UGC-DAE CSR, Kolkata'),('Srivastava  D. K.','National Institute of Advanced Studies, Bangalore'),('Vinod Kumar  P. C.','Sardar Patel University, Anand, Gujarat'),('Yusuf  S. M.','Bhabha Atomic Research Centre, Mumbai'),(' ','');
 /*!40000 ALTER TABLE `AdvComm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +155,7 @@ CREATE TABLE `OrgComm` (
 
 LOCK TABLES `OrgComm` WRITE;
 /*!40000 ALTER TABLE `OrgComm` DISABLE KEYS */;
-INSERT INTO `OrgComm` VALUES ('Alam  J.','Variable Energy Cyclotron Centre, Kolkata'),('Athar  M. S.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Behera  B. R.','Panjab University, Chandigarh'),('Chatterjee  R.','Indian Institute Of Technology, Roorkee'),('Chattopadhyay  S.','Variable Energy Cyclotron Centre, Kolkata'),('Das  J. J.','Cotton University, Guwahati, Assam'),('Das  P.','Indian Institute of Technology Bombay, Mumbai'),('Datta  U.','Saha Institute of Nuclear Physics, Kolkata'),('Dutta  D.','Bhabha Atomic Research Centre, Mumbai'),('Gore  J. A.','Bhabha Atomic Research Centre, Mumbai'),('Ghugre  S. S.','UGC-DAE CSR, Kolkata'),('Gupta  A. K.','Bhabha Atomic Research Centre, Mumbai (Chairman)'),('Jha  V.','Bhabha Atomic Research Centre, Mumbai'),('Lalremruata  B.','Mizoram University, Aizawl, Mizoram'),('Madhavan  N.','Inter-University Accelerator Centre, Delhi'),('Mahata  K.','Bhabha Atomic Research Centre, Mumbai'),('Mandal  S. K.','University of Delhi, New Delhi'),('Mazumdar  I.','Tata Institute of Fundamental Research, Mumbai'),('Mohanty  B.','National Institute of Science Education and Research, Bhubaneswar, Odisha'),('Muralithar  S.','Inter-University Accelerator Centre, Delhi'),('Mustafa  M. G.','Saha Institute of Nuclear Physics, Kolkata'),('Musthafa M.M.','University of Calicut, Malappuram, Kerala'),('Nanal  V.','Tata Institute of Fundamental Research, Mumbai'),('Palit  R.','Tata Institute of Fundamental Research, Mumbai'),('Pandit  S. K.','Bhabha Atomic Research Centre, Mumbai (Secretary)'),('Pant  L. M.','Bhabha Atomic Research Centre, Mumbai'),('Patra  S. K.','Institute of Physics, Bhubaneswar, Odisha'),('Sahoo  R.','Indian Institute of Technology , Indore'),('Santra  S.','Bhabha Atomic Research Centre, Mumbai'),('Sharma  M. K.','Thapar Institute of Engineering and Technology, Patiala, Punjab'),('Shrivastava  A.','Bhabha Atomic Research Centre, Mumbai (Convener)'),('Shukla  P.','Bhabha Atomic Research Centre, Mumbai'),('Singh  B. K.','Banaras Hindu University, Varanasi, Uttar Pradesh'),('Singh  B. P.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Tandel  S. K.','Centre for Excellence in Basic Sciences, Mumbai'),('Rai  A. K.','Sardar Vallabhbhai National Institute of Technology, Surat, Gujarat'),(' ','');
+INSERT INTO `OrgComm` VALUES ('Alam  J.','Variable Energy Cyclotron Centre, Kolkata'),('Athar  M. S.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Behera  B. R.','Panjab University, Chandigarh'),('Chatterjee  R.','Indian Institute Of Technology, Roorkee'),('Chattopadhyay  S.','Variable Energy Cyclotron Centre, Kolkata'),('Das  J. J.','Cotton University, Guwahati, Assam'),('Das  P.','Indian Institute of Technology Bombay, Mumbai'),('Datta  U.','Saha Institute of Nuclear Physics, Kolkata'),('Dutta  D.','Bhabha Atomic Research Centre, Mumbai'),('Gore  J. A.','Bhabha Atomic Research Centre, Mumbai'),('Ghugre  S. S.','UGC-DAE CSR, Kolkata'),('Gupta  A. K.','Bhabha Atomic Research Centre, Mumbai (Chairman)'),('Jha  V.','Bhabha Atomic Research Centre, Mumbai'),('Lalremruata  B.','Mizoram University, Aizawl, Mizoram'),('Madhavan  N.','Inter-University Accelerator Centre, Delhi'),('Mahata  K.','Bhabha Atomic Research Centre, Mumbai'),('Mandal  S. K.','University of Delhi, New Delhi'),('Mazumdar  I.','Tata Institute of Fundamental Research, Mumbai'),('Mohanty  B.','National Institute of Science Education and Research, Bhubaneswar, Odisha'),('Muralithar  S.','Inter-University Accelerator Centre, Delhi'),('Mustafa  M. G.','Saha Institute of Nuclear Physics, Kolkata'),('Musthafa M.M.','University of Calicut, Malappuram, Kerala'),('Nanal  V.','Tata Institute of Fundamental Research, Mumbai'),('Palit  R.','Tata Institute of Fundamental Research, Mumbai'),('Pandit  S. K.','Bhabha Atomic Research Centre, Mumbai (Secretary)'),('Pant  L. M.','Bhabha Atomic Research Centre, Mumbai'),('Patra  S. K.','Institute of Physics, Bhubaneswar, Odisha'),('Sahoo  R.','Indian Institute of Technology , Indore (Local Convener)'),('Santra  S.','Bhabha Atomic Research Centre, Mumbai'),('Sharma  M. K.','Thapar Institute of Engineering and Technology, Patiala, Punjab'),('Shrivastava  A.','Bhabha Atomic Research Centre, Mumbai (Convener)'),('Shukla  P.','Bhabha Atomic Research Centre, Mumbai'),('Singh  B. K.','Banaras Hindu University, Varanasi, Uttar Pradesh'),('Singh  B. P.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Tandel  S. K.','Centre for Excellence in Basic Sciences, Mumbai'),('Rai  A. K.','Sardar Vallabhbhai National Institute of Technology, Surat, Gujarat'),(' ','');
 /*!40000 ALTER TABLE `OrgComm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,7 +374,8 @@ CREATE TABLE `contactus` (
   `Post` varchar(255) DEFAULT NULL,
   `Name` varchar(255) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL,
-  `ContactNumber` varchar(20) DEFAULT NULL
+  `ContactNumber` varchar(20) DEFAULT NULL,
+  `sno` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -384,7 +385,7 @@ CREATE TABLE `contactus` (
 
 LOCK TABLES `contactus` WRITE;
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
-INSERT INTO `contactus` VALUES ('admin','Convener','Dr. Aradhana Shrivastava','convener@sympnp.org','+91-22-2559-3588'),('admin','Secretary','Dr. Sanat Pandit','secretary@sympnp.org','+91-22-2559-5193');
+INSERT INTO `contactus` VALUES ('admin','Convener','Dr. Aradhana Shrivastava','aradhana@barc.gov.in','+91-22-2559-3588',2),('admin','Secretary','Dr. Sanat Pandit','snpdae@barc.gov.in','+91-22-2559-5193',1),('admin','Local Convener','Prof. Raghunath Sahoo','loc-dae-np-2023@iiti.ac.in','+91-731-6603329',3);
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -603,7 +604,7 @@ CREATE TABLE `registration_payment_detail` (
 
 LOCK TABLES `registration_payment_detail` WRITE;
 /*!40000 ALTER TABLE `registration_payment_detail` DISABLE KEYS */;
-INSERT INTO `registration_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-28','AUGUST897TYR',5487,'Received'),('ayush','Ayush Sehgal','Bank of california','2023-07-12','CAL78IND',8000,'Received');
+INSERT INTO `registration_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-28','AUGUST897TYR',5487,'Submitted'),('ayush','Ayush Sehgal','Bank of california','2023-07-12','CAL78IND',8000,'Received');
 /*!40000 ALTER TABLE `registration_payment_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -663,7 +664,9 @@ CREATE TABLE `symposium` (
   `contrib_acc_date` date DEFAULT NULL,
   `certificate_issue_date` date DEFAULT NULL,
   `receipt_issue_date` date DEFAULT NULL,
-  `acceptance_end_date` date DEFAULT NULL
+  `acceptance_end_date` date DEFAULT NULL,
+  `inv_end_date` date DEFAULT NULL,
+  `theses_end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -673,7 +676,7 @@ CREATE TABLE `symposium` (
 
 LOCK TABLES `symposium` WRITE;
 /*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
-INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL,'2023-10-15'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-08','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14','2023-10-15');
+INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-31','2023-09-01','2023-09-15','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL,'2023-10-15','2023-09-30','2023-09-30'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-15','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14','2023-10-15','2023-09-30','2023-09-30');
 /*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -839,4 +842,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-18 15:07:24
+-- Dump completed on 2023-07-19 15:51:07
