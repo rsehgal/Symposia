@@ -11,8 +11,16 @@ $carouselMsg='<div id="mySlider" class="carousel slide" data-ride="carousel">
     <!-- Slides -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../images/homePic.png" class="d-block w-100" alt="Slide 1">
+        <img src="../images/homeScreen1.PNG" class="d-block w-100" alt="Slide 1">
       </div>
+	<div class="carousel-item">
+        <img src="../images/homeScreen2.PNG" class="d-block w-100" alt="Slide 1">
+      </div>
+	<div class="carousel-item">
+        <img src="../images/homeScreen3.PNG" class="d-block w-100" alt="Slide 1">
+      </div>
+
+
        <!-- Add here more blocks to start slide show --> 
      </div>
   
