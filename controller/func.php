@@ -2073,8 +2073,7 @@ Please note that papers given in the proper format only will be considered for r
 Maximum allowed file size is 1 MB.
 <br/><br/>
 Users would be able to edit/modify the submitted papers via resubmission till <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
-<br/><br/>
-The Paper submission gateway will be closed on <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.";
+<br/><br/>";
 
 $guidelines.="</h5></div></div>";
 

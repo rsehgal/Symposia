@@ -10,6 +10,7 @@ class Forms{
 
 	public function Signup(){
 	return '<br/><div class="container">
+		<h2 class="text-danger">Previous User Accouts is no more valid, Kindly signup to create a new accout.</h2><hr/>
 		<h2>User Account Creation Form</h2>
 		      <form method="POST" id="signup" class="symposiaForms">
 			<div class="form-group">
@@ -108,6 +109,7 @@ class Forms{
 
 	public function Login($loginType){
 	return '<br/><div class="container">
+		<h2 class="text-danger">Previous User Accouts is no more valid, Kindly signup to create a new accout.</h2><hr/>
                 <h2>'.$loginType.' Login Form</h2>
                 <form method="POST" id="login" class="symposiaForms">
                         <div class="form-group">
