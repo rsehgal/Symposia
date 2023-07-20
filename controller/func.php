@@ -7,6 +7,7 @@ require_once "mailer.php";
 require_once "../view/header.php";
 require_once "../view/yourtasks.php";
 require_once "usercorner.php";
+require_once "viewerUpdater.php";
 require_once "receiptsAndCertificates.php";
 function Contact(){
 $forms = new Forms();
@@ -1525,9 +1526,10 @@ $contribDate = date("d F Y", strtotime($row["contrib_end_date"]));
 $acceptanceDate = date("d F Y", strtotime($row["acceptance_end_date"]));
 $invDate = date("d F Y", strtotime($row["inv_end_date"]));
 
-$retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td></tr>';
-$retVal.='<tr><td>Last date of Invited talk submission</td><td>'.$invDate.'</td></tr>';
-$retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
+$retVal.='<tr><td>Submission of Contributory paper</td><td>'.$contribDate.'</td></tr>';
+$retVal.='<tr><td>Submission of Thesis abstract</td><td>'.$invDate.'</td></tr>';
+$retVal.='<tr><td>Submission of Plenary Talk abstract</td><td>'.$invDate.'</td></tr>';
+$retVal.='<tr><td>Registration end Date</td><td>'.$regDate."</td></tr>";
 //$retVal.='<tr><td>Date of release of paper acceptance</td><td>'.$acceptanceDate.'</td></tr>';
 
 $retVal.='</table>';
@@ -2064,7 +2066,7 @@ $guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
 ";
 $guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
 <br/><br/>
-You will need to create a ‘user account’ at the symposium website to submit a paper. Please download template file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
+You will need to create a ‘user account’ at the symposium website to submit a paper. Please download<a href='#' class='linkTemplate text-danger'> <u>template</u> </a>file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
 <br/><br/>
 Please note that papers given in the proper format only will be considered for review.
 <br/><br/>
@@ -2076,7 +2078,15 @@ The Paper submission gateway will be closed on <textcolor class='text-primary'>"
 
 $guidelines.="</h5></div></div>";
 
-return $guidelines;
+$associatedJS = '<script>
+		$(function(){
+		 $(".linkTemplate").click(function(){
+			$("#Templates").trigger("click");
+		});
+		});
+		</script>';
+
+return $guidelines.$associatedJS;
 }
 
 function YourTasks_orig(){
@@ -2091,15 +2101,35 @@ function Templates(){
 if(!EnableMenuItem("Templates"))
 return Message("Will be available soon.","alert-warning");
 
-$templates="<hr/><br/><div class='align-items-center justify-content-center'>
+//$templates="<h2 class='text-center'>Templates for Abstracts</h2> <br/>";
+$templates.="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
-$templates.="<h2>Abstract Templates</h2> <br/><table class='table table-bordered table-striped'>";
-$templates.="<tr><td>Word templates for abstracts</td><td><a href='../docs/word_template.zip'>Download</a></td>";
-$templates.="<tr><td>Latex templates for abstracts</td><td><a href='../docs/latex_template.zip'>Download</a></td>";
-$templates.="<tr><td>PdfLatex templates for abstracts</td><td><a href='../docs/pdflatex_template.zip'>Download</a></td>";
-
+$templates.="<h2>Contributory, thesis, Young Achiever Award</h2> <br/>
+<table class='table table-bordered table-striped'>";
+$templates.="<tr><td>Word template</td><td><a href='../docs/word_template.zip' class='text-primary'>Download</a></td>";
+$templates.="<tr><td>Latex template</td><td><a href='../docs/latex_template.zip' class='text-primary'>Download</a></td>";
+$templates.="<tr><td>PdfLatex template</td><td><a href='../docs/pdflatex_template.zip' class='text-primary'>Download</a></td>";
 $templates.="</table></h3></div></div>";
+
+$templates.="<hr/><br/><div class='align-items-center justify-content-center'>
+<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
+";
+$templates.="<h2>Plenary talks</h2> <br/><table class='table table-bordered table-striped'>";
+$templates.="<tr><td>Word template</td><td><a href='../docs/word_template_invt.zip' class='text-primary'>Download</a></td>";
+$templates.="<tr><td>Latex template</td><td><a href='../docs/latex_template_invt.zip' class='text-primary'>Download</a></td>";
+$templates.="<tr><td>PdfLatex template</td><td><a href='../docs/pdflatex_template_invt.zip' class='text-primary'>Download</a></td>";
+$templates.="</table></h3></div></div>";
+
+$templates.="<hr/><br/><div class='align-items-center justify-content-center'>
+<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
+";
+
+$templates.="<h2>Young Achiever Award Application form and Guidelines</h2> <br/><table class='table table-bordered table-striped'>";
+$templates.="<tr><td>Word Template</td><td><a href='../docs/YAA_app.doc' class='text-primary'>Download</a></td>";
+$templates.="<tr><td>Pdf Template</td><td><a href='../docs/YAA_app.pdf' class='text-primary'>Download</a></td>";
+$templates.="</table></h3></div></div>";
+
 return $templates;
 }
 
