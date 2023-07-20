@@ -179,7 +179,8 @@ function AuthorTasks(){
     
     return AdminTasks().$associatedJs;
     }*/
-	return Message("Your Tasks","alert-info").GetTasks().$associatedJs;
+	//return Message("Your Tasks","alert-info").GetTasks().$associatedJs;
+	return GetTasks().$associatedJs;
     }else{
     
     return Message("Please login first","alert-danger");

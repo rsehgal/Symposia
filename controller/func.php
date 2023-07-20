@@ -1513,7 +1513,7 @@ $result = $obj->GetQueryResult($query);
 if($result===false)
                                 return Message("Query execution fails","alert-danger");
 
-$retVal = Message("Important Dates","alert-info");
+//$retVal = Message("Important Dates","alert-info");
 $retVal.='<div class="row"> 
           <div class="col"></div>
           <div class="col">';

@@ -18,12 +18,12 @@ function SympnpHeader($headerType=""){
 }else
 {
 
-                    $headerMsg.='<div class="row">
+                    /*$headerMsg.='<div class="row">
                         <div class="col-12 colHeader">
 			    <h3 class="text-center  text-light" id="sympnpHomeLink">Home /&nbsp'.$headerType.' </h3>
                         </div>
 
-                    </div>';
+                    </div>';*/
 }
  $headerMsg.=' </div>
             </div>';
