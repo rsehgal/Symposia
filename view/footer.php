@@ -17,6 +17,14 @@ $footerMsg.='<footer class="footer text-light">
 <br/><br/>
     <div class="container">
       <div class="row">
+	<div class="col-md-4">
+	  <h5>'.$rowSec["Post"].'</h5>
+          <p class="font-weight-bold">'.
+          $rowSec["Name"].'</p>
+          <p>'.$rowSec["Email"].'</p>
+          <p>Tel:'.$rowSec["ContactNumber"].'</p>
+       </div>
+
         <div class="col-md-4">
           <h5>'.$rowConv["Post"].'</h5>
           <p class="font-weight-bold"> '.
@@ -32,14 +40,7 @@ $footerMsg.='<footer class="footer text-light">
           <p>Tel:'.$rowLocalConv["ContactNumber"].'</p>
        </div>
 
-       <div class="col-md-4">
-	  <h5>'.$rowSec["Post"].'</h5>
-          <p class="font-weight-bold">'.
-          $rowSec["Name"].'</p>
-          <p>'.$rowSec["Email"].'</p>
-          <p>Tel:'.$rowSec["ContactNumber"].'</p>
-       </div>
-	<!--<div class="col-md-3">
+       	<!--<div class="col-md-3">
           <h5>Quick Links</h5>
           <ul class="list-unstyled">
             <li><a href="#" class="nasiFooter" id="Home" function_name="Home">Home</a></li>
