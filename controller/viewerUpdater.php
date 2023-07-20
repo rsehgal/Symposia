@@ -60,6 +60,7 @@ $showUname=1;
 //if($tableName=="refereeList")
 //$showUname=1;
 $allowDeletion=0;
+$allowUpdation=1;
 $table="<table border='1' class='table table-striped'>";
         $columnNames = $obj->GetFieldNames($tableName);
         $query = "SELECT * FROM $tableName";
@@ -79,9 +80,17 @@ $table="<table border='1' class='table table-striped'>";
                 }
                 if($allowDeletion==1)
                 $table.="<td>Update</td>";
+
+		if($allowUpdation==1)
+                $table.="<td class='font-weight-bold'>Change It</td>";
+
         //echo
                $table.="</tr>";
+
+	$counter=0;
         while ($row = $result->fetch_assoc()) {
+		$counter++;
+		$buttonId="Button_".$counter;
                 //echo 
                 $table.= "<tr>";
                 foreach ($columnNames as $columnName) {
@@ -89,13 +98,15 @@ $table="<table border='1' class='table table-striped'>";
 
                          if($columnName=='uname'){
                         if($showUname==1)
-                                $table.="<td>" . $row[$columnName] . "</td>";
+                                $table.="<td class='".$buttonId."'>" . $row[$columnName] . "</td>";
                         }else{
-                                $table.="<td>" . $row[$columnName] . "</td>";
+                                $table.="<td class='".$buttonId."'>" . $row[$columnName] . "</td>";
                         }
                 }
-                if($allowDeletion==1)
-                $table.="<td><input type='button' class='deleteEntry' oftable='".$tableName."' id='".$row['uname']."' value='Delete'></input></td>";
+                //if($allowDeletion==1)
+                if($allowUpdation==1)
+                //$table.="<td><input type='button' class='deleteEntry' oftable='".$tableName."' id='".$row['uname']."' value='Update'></input></td>";
+                $table.="<td><input type='button' class='btn btn-primary deleteEntry' oftable='".$tableName."' id='".$buttonId."' value='Update'></input></td>";
                 //echo 
                 $table.="</tr>";
         }
@@ -112,7 +123,7 @@ function FillDropDown(){
 $obj = new DB();
 $query = "select * from mapping";
 $result = $obj->GetQueryResult($query);
-$dropDownMsg='<select class="select" id="tableToView">';
+$dropDownMsg='<h2 class="text-primary">Select a table to view</h2><select class="custom-select" id="tableToView">';
 while($row = $result->fetch_assoc()){
 $dropDownMsg.='<option class="optionTable" tablename="'.$row["tablename"].'">'.$row["taskname"].'</option>';
 }
