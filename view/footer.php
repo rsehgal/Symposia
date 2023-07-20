@@ -19,25 +19,25 @@ $footerMsg.='<footer class="footer text-light">
       <div class="row">
         <div class="col-md-4">
           <h5>'.$rowConv["Post"].'</h5>
-          <p class="font-weight-bold">Name: '.
+          <p class="font-weight-bold"> '.
 	  $rowConv["Name"].'</p>
-          <p>Email: '.$rowConv["Email"].'</p>
-          <p>Phone: Tel:'.$rowConv["ContactNumber"].'</p>
+          <p>'.$rowConv["Email"].'</p>
+          <p>Tel:'.$rowConv["ContactNumber"].'</p>
         </div>
 	<div class="col-md-4">
 	  <h5>'.$rowLocalConv["Post"].'</h5>
-          <p class="font-weight-bold">Name: '.
+          <p class="font-weight-bold"> '.
           $rowLocalConv["Name"].'</p>
-          <p>Email: '.$rowLocalConv["Email"].'</p>
-          <p>Phone: Tel:'.$rowLocalConv["ContactNumber"].'</p>
+          <p>'.$rowLocalConv["Email"].'</p>
+          <p>Tel:'.$rowLocalConv["ContactNumber"].'</p>
        </div>
 
        <div class="col-md-4">
 	  <h5>'.$rowSec["Post"].'</h5>
-          <p class="font-weight-bold">Name: '.
+          <p class="font-weight-bold">'.
           $rowSec["Name"].'</p>
-          <p>Email: '.$rowSec["Email"].'</p>
-          <p>Phone: Tel:'.$rowSec["ContactNumber"].'</p>
+          <p>'.$rowSec["Email"].'</p>
+          <p>Tel:'.$rowSec["ContactNumber"].'</p>
        </div>
 	<!--<div class="col-md-3">
           <h5>Quick Links</h5>
