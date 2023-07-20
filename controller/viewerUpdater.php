@@ -134,23 +134,32 @@ $dropDownMsg.='<div id="viewTable"></div>';
 
 $associatedJS='<script>
 		$(function(){
+			//alert("JS loaded");
 			var data={};
 			data["function_name"]="GenerateUpdaterView";
-			$(".optionTable").on("click",function(e){
-				e.preventDefault();
-				data["tablename"]=$(this).attr("tablename");
-				//alert($(this).attr("tablename"));
+			//alert(data["function_name"]);
 
-			$.ajax({
-			    url: "../controller/func.php",
-			    method: "POST",
-			    data : data,
-			    success: function(response) {
-			    $("#viewTable").html(response);
-			    }
-			  });
-
+			/*$("#tableToView").change(function() {
+			var id = $(this).children(":selected").attr("tablename");
+			alert(id);
 			});
+			*/
+
+			$("#tableToView").change(function(e) {
+				e.preventDefault();
+				data["tablename"]=$(this).children(":selected").attr("tablename");
+				alert(data["tablename"]);
+				$.ajax({
+				    url: "../controller/func.php",
+				    method: "POST",
+				    data : data,
+				    success: function(response) {
+				    $("#viewTable").html(response);
+				    }
+				  });
+		
+			});
+			
 		});
 		</script>';
 return $dropDownMsg.$associatedJS;
