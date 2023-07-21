@@ -106,7 +106,7 @@ Your have successfully submitted your paper $renamedFileName
 You can view your paper in View_Contribution link.";
 
 
-                SendMail("submission",$_SESSION["email"],"SNP 2023 : Contribution submitted",$body);
+                //SendMail("submission",$_SESSION["email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
