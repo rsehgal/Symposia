@@ -84,14 +84,14 @@ function Upload(){
 		                //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
                 		//$obj->Connect();
 
-			$query='select count(*) as count from contributions where Filename like "%paper_'.$topicId.'_'.$categoryId.'%"';
+			$query='select count(*) as count from contributions where Filename like "%paper_'.$categoryId.'_'.$topicId.'%"';
 				$result=$obj->GetQueryResult($query);
 				if($result===false)
 				return Message("Query execution fails","alert-danger");
 				$row = $result->fetch_assoc();
 				$count=$row["count"];
 				$count++;
-			$renamedFileName=$_SESSION["username"].'_paper_'.$topicId.'_'.$categoryId.'_'.$count.'.pdf';
+			$renamedFileName=$_SESSION["username"].'_paper_'.$categoryId.'_'.$topicId.'_'.$count.'.pdf';
 			//$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
 			$targetFilePath = $targetDirectory.$renamedFileName; // Get the file path
 			//echo "Taget file path :".$targetFilePath."<br/>";
@@ -508,7 +508,11 @@ function NewSubmission(){
 	$obj = new DB();
         //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
         //$obj->Connect();
-	$fieldNames = $obj->GetFieldNames("contributions");
+	$query = "select Category,Topic,Title,Filename,AuthorNamesList,AuthorEmailsList from contributions";
+	$fieldNames = $obj->GetFieldNamesFromQuery($query);
+	//$fieldNames = $obj->GetFieldNames("contributions");
+	
+
 	//return count($fieldNames);
 
 	$forms = new Forms();

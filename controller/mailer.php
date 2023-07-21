@@ -4,7 +4,7 @@ function SendMail($user,$to,$subject,$body){
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
 
-ini_set("include_path", '/home/nasiin/php:' . ini_get("include_path") );
+ini_set("include_path", '/home/sympnp/php:' . ini_get("include_path") );
 
 
 require_once "Mail.php";
@@ -15,10 +15,10 @@ require_once "Mail.php";
 //$body = "Hello , this is just a text msg";//$Msg;
 
 
-$host = "mail.nasi2023.in";
-$username = $user."@nasi2023.in";//"admin@nasi2023.in";
-$from=strtoupper($user)." <".$user."@nasi2023.in>";
-$password = "nasi123by!#*";
+$host = "mail.sympnp.org";
+$username = $user."@sympnp.org";//"admin@nasi2023.in";
+$from=strtoupper($user)." <".$user."@sympnp.org>";
+$password = "nps123by!#*";
 
 
  $headers = array ('From' => $from,

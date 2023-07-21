@@ -283,6 +283,22 @@ public function GetFieldNames($tableName){
 	}
 }
 
+public function GetFieldNamesFromQuery($query){
+	//echo "GetFieldName called.... <br/>";
+	//$query = "SELECT * FROM $tableName LIMIT 1";
+	$result = $this->GetQueryResult($query);// $this->conn->query($query);
+	if ($result->num_rows > 0) {
+	    $fieldNames = [];
+	        $row = $result->fetch_assoc();
+	    foreach ($row as $fieldName => $value) {
+		    //echo $fieldName;
+			        $fieldNames[] = $fieldName;
+	    }
+	return $fieldNames;
+	}
+}
+
+
 public function GetAssociativeArray($tablename){
 	$fieldNames = $this->GetFieldNames($tablename);
 	$assArr = array();

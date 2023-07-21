@@ -40,7 +40,7 @@ $table="<table border='1' class='table table-striped'>";
                         }
                 }
                 if($allowDeletion==1)
-                $table.="<td><input type='button' class='deleteEntry' oftable='".$tableName."' id='".$row['uname']."' value='Delete'></input></td>";
+                $table.="<td><input type='button' class='updateEntry' oftable='".$tableName."' id='".$row['uname']."' value='Delete'></input></td>";
                 //echo 
                 $table.="</tr>";
         }
@@ -106,7 +106,7 @@ $table="<table border='1' class='table table-striped'>";
                 //if($allowDeletion==1)
                 if($allowUpdation==1)
                 //$table.="<td><input type='button' class='deleteEntry' oftable='".$tableName."' id='".$row['uname']."' value='Update'></input></td>";
-                $table.="<td><input type='button' class='btn btn-primary deleteEntry' oftable='".$tableName."' id='".$buttonId."' value='Update'></input></td>";
+                $table.="<td><input type='button' class='btn btn-primary updateEntry' oftable='".$tableName."' id='".$buttonId."' value='Update'></input></td>";
                 //echo 
                 $table.="</tr>";
         }
