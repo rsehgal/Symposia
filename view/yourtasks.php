@@ -126,7 +126,7 @@ function AuthorTasks(){
 					data['function_name']=funcName;
 					data['allotmentType']=$(this).attr('tasktype');
 					console.log(data);
-					alert(data['function_name']);
+					//alert(data['function_name']);
 					if(data['function_name'] == 'DownloadReceipt'){
 					$.ajax({
 						url: '../controller/func.php',
