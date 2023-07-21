@@ -103,7 +103,13 @@ function Upload(){
 $body="Dear ".$_SESSION["username"].", 
 
 Your have successfully submitted your paper $renamedFileName 
-You can view your paper in View_Contribution link.";
+
+You can view your paper in View_Contribution link.
+
+
+With Regards,
+SNP-2023
+";
 
 
                 SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
@@ -164,7 +170,13 @@ function ResubmitUpload(){
 $body="Dear ".$_SESSION["username"].", 
 
 Your have successfully resubmitted your paper $renamedFileName 
-You can view your updated paper in View_Contribution link.";
+
+You can view your updated paper in View_Contribution link.
+
+
+Regards,
+SNP-2023
+";
 
 
 		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
@@ -234,7 +246,12 @@ Your Account is successfully created with following details:
 username : $username 
 password : $password
 
-Your can use these credentials to do the registration and to upload your paper.";
+Your can use these credentials to do the registration and to upload your paper.
+
+
+With Regards,
+SNP-2023
+";
 		//SendMail($from,$to,$subject,$body);
 	 	SendMail("newaccount",$email,"SNP 2023 : Account Created",$body);	
 		//echo "$username : $password : $firstname : $lastname : $email";	
