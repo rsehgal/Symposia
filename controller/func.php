@@ -1045,7 +1045,7 @@ $obj = new DB();
 $query = "select * from topics";
 $result = $obj->GetQueryResult($query);
 while($row=$result->fetch_assoc()){
-$topicMsg.='<tr class="text-center"><td>'.$row["code"].'</td><td>'.$row["category"].'</td></tr>';
+$topicMsg.='<tr class="text-center"><td>'.$row["code"].'</td><td>'.$row["Topic"].'</td></tr>';
 }
 
 $topicMsg.='</table>';
