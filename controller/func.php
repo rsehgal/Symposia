@@ -106,7 +106,7 @@ Your have successfully submitted your paper $renamedFileName
 You can view your paper in View_Contribution link.";
 
 
-                //SendMail("submission",$_SESSION["email"],"SNP 2023 : Contribution submitted",$body);
+                SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -167,7 +167,7 @@ Your have successfully resubmitted your paper $renamedFileName
 You can view your updated paper in View_Contribution link.";
 
 
-		SendMail("resubmission",$_SESSION["email"],"SNP 2023 : Contribution Resubmitted",$body);
+		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {

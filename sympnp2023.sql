@@ -319,7 +319,7 @@ DROP TABLE IF EXISTS `categories`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categories` (
   `uname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
   `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -330,8 +330,32 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES ('admin','Nuclear structure','A'),('admin','Nuclear reactions','B'),('admin','Nuclear astrophysics','C'),('admin','Hadron physics','D'),('admin','Relativistic nuclear collisions and QGP','E'),('admin','Electroweak interaction in nuclei','F'),('admin','Nuclear instrumentation, techniques and applications','G');
+INSERT INTO `categories` VALUES ('admin','Contributory Papers','C'),('admin','Invited Talk','I'),('admin','Thesis Presentation','T'),('admin','Young Achiever Award','Y');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories_backup`
+--
+
+DROP TABLE IF EXISTS `categories_backup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories_backup` (
+  `uname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories_backup`
+--
+
+LOCK TABLES `categories_backup` WRITE;
+/*!40000 ALTER TABLE `categories_backup` DISABLE KEYS */;
+INSERT INTO `categories_backup` VALUES ('admin','Nuclear structure','A'),('admin','Nuclear reactions','B'),('admin','Nuclear astrophysics','C'),('admin','Hadron physics','D'),('admin','Relativistic nuclear collisions and QGP','E'),('admin','Electroweak interaction in nuclei','F'),('admin','Nuclear instrumentation, techniques and applications','G');
+/*!40000 ALTER TABLE `categories_backup` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -416,7 +440,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('admin',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,'Submitted'),('rsehgal','C','G','Test paper on category G','rsehgal_paper_C_G_1.pdf','Oral','Raman sehgal','ramansehga@abc.com','AYH','ref1 : Good job, Keep on doing good work like this. ALL THE BEST<br/>ref2 : <br/>'),('rsehgal','C','E','Modified title with updated file : Test paper on category E','rsehgal_paper_C_E_1.pdf','Poster','Raman Sehgal,Ayush Sehgal','sc.ramansehgal@gmail.com,ayush.sehgal@gmail.com','RSE','ref1 : Good work, but some work is desirous<br/>ref2 : Excellent work,\nDeserves ORAL<br/>'),('rsehgal','C','E','Another paper on cat E','rsehgal_paper_C_E_2.pdf','Rejected','Ayush Sehgal','ayush.sehgal@abc.com','','');
+INSERT INTO `contributions` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rsehgal','E','C','RESUBMITTED : First paper on Category C and Topic E','rsehgal_paper_C_E_1.pdf','submitted','Raman Sehgal','ayush.sehgal@gmail.com','','');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,6 +467,30 @@ LOCK TABLES `coordinatorList` WRITE;
 /*!40000 ALTER TABLE `coordinatorList` DISABLE KEYS */;
 INSERT INTO `coordinatorList` VALUES ('RSE','admin@nasi2023','sc.ramansehgal@gmail.com','Raman Sehgal'),('AYH','admin@nasi2023','ayush.sehgal@gmail.com','Ayush Sehgal');
 /*!40000 ALTER TABLE `coordinatorList` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mapping`
+--
+
+DROP TABLE IF EXISTS `mapping`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mapping` (
+  `uname` varchar(20) DEFAULT NULL,
+  `taskname` varchar(100) DEFAULT NULL,
+  `tablename` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mapping`
+--
+
+LOCK TABLES `mapping` WRITE;
+/*!40000 ALTER TABLE `mapping` DISABLE KEYS */;
+INSERT INTO `mapping` VALUES ('admin','User Accounts','user_credentials'),('admin','Topics','topics'),('admin','Symposium Details','symposium'),('admin','Registration Payment Details','registration_payment_detail'),('admin','Registration Forms','registration'),('admin','Referee List','refereeList'),('admin','Referee Acceptance','refereeConfirmation');
+/*!40000 ALTER TABLE `mapping` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -676,7 +724,7 @@ CREATE TABLE `symposium` (
 
 LOCK TABLES `symposium` WRITE;
 /*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
-INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-31','2023-09-01','2023-09-15','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL,'2023-10-15','2023-09-30','2023-09-30'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-15','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14','2023-10-15','2023-09-30','2023-09-30');
+INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-31','2023-07-10','2023-09-15','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL,'2023-10-15','2023-09-30','2023-09-30'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','2023-07-10','2023-09-15','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14','2023-10-15','2023-09-30','2023-09-30');
 /*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -712,11 +760,10 @@ DROP TABLE IF EXISTS `topics`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `topics` (
-  `uname` varchar(100) DEFAULT NULL,
+  `uname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Topic` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL,
-  UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -725,7 +772,7 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES ('admin','Contributory Papers','C'),('admin','Invited Talk','I'),('admin','Thesis Presentation','T');
+INSERT INTO `topics` VALUES ('admin','Nuclear structure','A'),('admin','Nuclear reactions','B'),('admin','Nuclear astrophysics','C'),('admin','Hadron physics','D'),('admin','Relativistic nuclear collisions and QGP','E'),('admin','Electroweak interaction in nuclei','F'),('admin','Nuclear instrumentation, techniques and applications','G');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -749,7 +796,7 @@ CREATE TABLE `topics_backup` (
 
 LOCK TABLES `topics_backup` WRITE;
 /*!40000 ALTER TABLE `topics_backup` DISABLE KEYS */;
-INSERT INTO `topics_backup` VALUES ('admin','Physics','A'),('admin','Chemistry','B'),('admin','Mathematics','C'),('admin','Biology','D');
+INSERT INTO `topics_backup` VALUES ('admin','Contributory Papers','C'),('admin','Invited Talk','I'),('admin','Thesis Presentation','T');
 /*!40000 ALTER TABLE `topics_backup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -829,7 +876,7 @@ CREATE TABLE `yourtasks` (
 
 LOCK TABLES `yourtasks` WRITE;
 /*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
-INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution',0),('View Contribution','Author','View_Contribution','View_Contribution',0),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application',1),('Allot Coordinator','Admin','Allot','AllotCoordinator',0),('Allot Referee','Coordinator','Allot','AllotReferee',0),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails',0),('View Papers','Admin','ViewPapers','ViewPapers',0),('Acceptance Status','Author','DownloadCertificate','DownloadAcceptanceCertificate',0),('Download Participation Certificate','Author','DownloadCertificate','DownloadParticipationCertificate',1),('Download Registration Receipt','Author','DownloadReceipt','registration',1),('Download Accommodation Receipt','Author','DownloadReceipt','accommodation',1),('Confirm Registration Payment','Admin','ConfirmPayment','registration',0),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation',0),('Fill Registration Payment Details','Author','PaymentForm','registration',1),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation',1),('Publish Results','Admin','PublishResults','PublishResults',0),('Review Papers','Referee','Referee_UpdatePaperStatus','Referee_UpdatePaperStatus',0);
+INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution',0),('View Contribution','Author','View_Contribution','View_Contribution',0),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application',1),('Allot Coordinator','Admin','Allot','AllotCoordinator',0),('Allot Referee','Coordinator','Allot','AllotReferee',0),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails',0),('View Papers','Admin','ViewPapers','ViewPapers',0),('Acceptance Status','Author','DownloadCertificate','DownloadAcceptanceCertificate',0),('Download Participation Certificate','Author','DownloadCertificate','DownloadParticipationCertificate',1),('Download Registration Receipt','Author','DownloadReceipt','registration',1),('Download Accommodation Receipt','Author','DownloadReceipt','accommodation',1),('Confirm Registration Payment','Admin','ConfirmPayment','registration',0),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation',0),('Fill Registration Payment Details','Author','PaymentForm','registration',1),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation',1),('Publish Results','Admin','PublishResults','PublishResults',0),('Review Papers','Referee','Referee_UpdatePaperStatus','Referee_UpdatePaperStatus',0),('Viewer/Updater','Admin','ViewerUpdater','ViewerUpdater',0);
 /*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -842,4 +889,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-19 15:51:07
+-- Dump completed on 2023-07-21 10:33:52
