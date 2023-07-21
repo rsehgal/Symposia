@@ -62,7 +62,7 @@ $showUname=1;
 //$showUname=1;
 $allowDeletion=0;
 $allowUpdation=1;
-$table="<table border='1' class='table table-striped'>";
+$table="<table border='1' class='table table-striped table-responsive'>";
         $columnNames = $obj->GetFieldNames($tableName);
         $query = "SELECT * FROM $tableName";
         //$result = $obj->conn->query($query);
