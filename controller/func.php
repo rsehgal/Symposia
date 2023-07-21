@@ -1042,7 +1042,7 @@ $topicMsg.='<tr class="text-center bg-primary text-light">
 	   <th>Title</th>
 	   </tr>';
 $obj = new DB();
-$query = "select * from categories";
+$query = "select * from topics";
 $result = $obj->GetQueryResult($query);
 while($row=$result->fetch_assoc()){
 $topicMsg.='<tr class="text-center"><td>'.$row["code"].'</td><td>'.$row["category"].'</td></tr>';
