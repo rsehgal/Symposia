@@ -3,11 +3,11 @@ require_once "../model/Symposia.php";
 
 function DisplayFooter(){
 $obj = new DB();
-$query = "select * from contactus";
+$query = "select * from contactus order by sno";
 $result = $obj->GetQueryResult($query);
 
-$rowConv=$result->fetch_assoc();
 $rowSec=$result->fetch_assoc();
+$rowConv=$result->fetch_assoc();
 $rowLocalConv=$result->fetch_assoc();
 
 $footerMsg="<br/><hr/>";
