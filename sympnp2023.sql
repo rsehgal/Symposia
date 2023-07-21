@@ -23,8 +23,9 @@ DROP TABLE IF EXISTS `AdvComm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `AdvComm` (
-  `Name` varchar(100) DEFAULT NULL,
-  `Affiliation` varchar(255) DEFAULT NULL
+  `Name` varchar(100) NOT NULL,
+  `Affiliation` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -34,7 +35,7 @@ CREATE TABLE `AdvComm` (
 
 LOCK TABLES `AdvComm` WRITE;
 /*!40000 ALTER TABLE `AdvComm` DISABLE KEYS */;
-INSERT INTO `AdvComm` VALUES ('Bhalerao  R. S.','Indian Institute of Science Education and Research, Pune'),('Bhattacharyya  G.','Saha Institute of Nuclear Physics, Kolkata'),('Bhattacharya  S.','Variable Energy Cyclotron Centre, Kolkata'),('Chatterjee A.','Bhabha Atomic Research Centre, Mumbai'),('Chengalur Jayaram N.','Tata Institute of Fundamental Research, Mumbai'),('Choudhury R. K.','Bhabha Atomic Research Centre, Mumbai'),('Datar  V. M.','Institute of Mathematical Sciences, Chennai'),('Jain  A. K.','Amity University, Noida, Uttar Pradesh'),('Joshi Suhas S. ','Indian Institute of Technology, Indore'),('Kailas  S.','Centre for Excellence in Basic Sciences, Mumbai'),('Kanjilal  D.','Inter-University Accelerator Centre, Delhi'),('Kapoor  S. S.','Bhabha Atomic Research Centre, Mumbai'),('Mohanty  A. K.','Bhabha Atomic Research Centre, Mumbai'),('Nayak  B. K.','Bhabha Atomic Research Centre, Mumbai'),('Pandey  A. C.','Inter-University Accelerator Centre, Delhi'),('Pillay  R. G.','Tata Institute of Fundamental Research, Mumbai'),('Ramamurthy  V. S.','National Institute of Advanced Studies, Bangalore'),('Saxena  A.','Bhabha Atomic Research Centre, Mumbai'),('Som  S.','Variable Energy Cyclotron Centre, Kolkata'),('Sinha  A. K.','UGC-DAE CSR, Kolkata'),('Srivastava  D. K.','National Institute of Advanced Studies, Bangalore'),('Vinod Kumar  P. C.','Sardar Patel University, Anand, Gujarat'),('Yusuf  S. M.','Bhabha Atomic Research Centre, Mumbai'),(' ','');
+INSERT INTO `AdvComm` VALUES (' ',''),('Bhalerao  R. S.','Indian Institute of Science Education and Research, Pune'),('Bhattacharya  S.','Variable Energy Cyclotron Centre, Kolkata'),('Bhattacharyya  G.','Saha Institute of Nuclear Physics, Kolkata'),('Chatterjee A.','Bhabha Atomic Research Centre, Mumbai'),('Chengalur Jayaram N.','Tata Institute of Fundamental Research, Mumbai'),('Choudhury R. K.','Bhabha Atomic Research Centre, Mumbai'),('Datar  V. M.','Institute of Mathematical Sciences, Chennai'),('Jain  A. K.','Amity University, Noida, Uttar Pradesh'),('Joshi Suhas S. ','Indian Institute of Technology, Indore'),('Kailas  S.','Centre for Excellence in Basic Sciences, Mumbai'),('Kanjilal  D.','Inter-University Accelerator Centre, Delhi'),('Kapoor  S. S.','Bhabha Atomic Research Centre, Mumbai'),('Mohanty  A. K.','Bhabha Atomic Research Centre, Mumbai'),('Nayak  B. K.','Bhabha Atomic Research Centre, Mumbai'),('Pandey  A. C.','Inter-University Accelerator Centre, Delhi'),('Pillay  R. G.','Tata Institute of Fundamental Research, Mumbai'),('Ramamurthy  V. S.','National Institute of Advanced Studies, Bangalore'),('Saxena  A.','Bhabha Atomic Research Centre, Mumbai'),('Sinha  A. K.','UGC-DAE CSR, Kolkata'),('Som  S.','Variable Energy Cyclotron Centre, Kolkata'),('Srivastava  D. K.','National Institute of Advanced Studies, Bangalore'),('Vinod Kumar  P. C.','Sardar Patel University, Anand, Gujarat'),('Yusuf  S. M.','Bhabha Atomic Research Centre, Mumbai');
 /*!40000 ALTER TABLE `AdvComm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,8 +145,9 @@ DROP TABLE IF EXISTS `OrgComm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `OrgComm` (
-  `Name` varchar(100) DEFAULT NULL,
-  `Affiliation` varchar(255) DEFAULT NULL
+  `Name` varchar(100) NOT NULL,
+  `Affiliation` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,7 +157,7 @@ CREATE TABLE `OrgComm` (
 
 LOCK TABLES `OrgComm` WRITE;
 /*!40000 ALTER TABLE `OrgComm` DISABLE KEYS */;
-INSERT INTO `OrgComm` VALUES ('Alam  J.','Variable Energy Cyclotron Centre, Kolkata'),('Athar  M. S.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Behera  B. R.','Panjab University, Chandigarh'),('Chatterjee  R.','Indian Institute Of Technology, Roorkee'),('Chattopadhyay  S.','Variable Energy Cyclotron Centre, Kolkata'),('Das  J. J.','Cotton University, Guwahati, Assam'),('Das  P.','Indian Institute of Technology Bombay, Mumbai'),('Datta  U.','Saha Institute of Nuclear Physics, Kolkata'),('Dutta  D.','Bhabha Atomic Research Centre, Mumbai'),('Gore  J. A.','Bhabha Atomic Research Centre, Mumbai'),('Ghugre  S. S.','UGC-DAE CSR, Kolkata'),('Gupta  A. K.','Bhabha Atomic Research Centre, Mumbai (Chairman)'),('Jha  V.','Bhabha Atomic Research Centre, Mumbai'),('Lalremruata  B.','Mizoram University, Aizawl, Mizoram'),('Madhavan  N.','Inter-University Accelerator Centre, Delhi'),('Mahata  K.','Bhabha Atomic Research Centre, Mumbai'),('Mandal  S. K.','University of Delhi, New Delhi'),('Mazumdar  I.','Tata Institute of Fundamental Research, Mumbai'),('Mohanty  B.','National Institute of Science Education and Research, Bhubaneswar, Odisha'),('Muralithar  S.','Inter-University Accelerator Centre, Delhi'),('Mustafa  M. G.','Saha Institute of Nuclear Physics, Kolkata'),('Musthafa M.M.','University of Calicut, Malappuram, Kerala'),('Nanal  V.','Tata Institute of Fundamental Research, Mumbai'),('Palit  R.','Tata Institute of Fundamental Research, Mumbai'),('Pandit  S. K.','Bhabha Atomic Research Centre, Mumbai (Secretary)'),('Pant  L. M.','Bhabha Atomic Research Centre, Mumbai'),('Patra  S. K.','Institute of Physics, Bhubaneswar, Odisha'),('Sahoo  R.','Indian Institute of Technology , Indore (Local Convener)'),('Santra  S.','Bhabha Atomic Research Centre, Mumbai'),('Sharma  M. K.','Thapar Institute of Engineering and Technology, Patiala, Punjab'),('Shrivastava  A.','Bhabha Atomic Research Centre, Mumbai (Convener)'),('Shukla  P.','Bhabha Atomic Research Centre, Mumbai'),('Singh  B. K.','Banaras Hindu University, Varanasi, Uttar Pradesh'),('Singh  B. P.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Tandel  S. K.','Centre for Excellence in Basic Sciences, Mumbai'),('Rai  A. K.','Sardar Vallabhbhai National Institute of Technology, Surat, Gujarat'),(' ','');
+INSERT INTO `OrgComm` VALUES (' ',''),('Alam  J.','Variable Energy Cyclotron Centre, Kolkata'),('Athar  M. S.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Behera  B. R.','Panjab University, Chandigarh'),('Chatterjee  R.','Indian Institute Of Technology, Roorkee'),('Chattopadhyay  S.','Variable Energy Cyclotron Centre, Kolkata'),('Das  J. J.','Cotton University, Guwahati, Assam'),('Das  P.','Indian Institute of Technology Bombay, Mumbai'),('Datta  U.','Saha Institute of Nuclear Physics, Kolkata'),('Dutta  D.','Bhabha Atomic Research Centre, Mumbai'),('Ghugre  S. S.','UGC-DAE CSR, Kolkata'),('Gore  J. A.','Bhabha Atomic Research Centre, Mumbai'),('Gupta  A. K.','Bhabha Atomic Research Centre, Mumbai (Chairman)'),('Jha  V.','Bhabha Atomic Research Centre, Mumbai'),('Lalremruata  B.','Mizoram University, Aizawl, Mizoram'),('Madhavan  N.','Inter-University Accelerator Centre, Delhi'),('Mahata  K.','Bhabha Atomic Research Centre, Mumbai'),('Mandal  S. K.','University of Delhi, New Delhi'),('Mazumdar  I.','Tata Institute of Fundamental Research, Mumbai'),('Mohanty  B.','National Institute of Science Education and Research, Bhubaneswar, Odisha'),('Muralithar  S.','Inter-University Accelerator Centre, Delhi'),('Mustafa  M. G.','Saha Institute of Nuclear Physics, Kolkata'),('Musthafa M.M.','University of Calicut, Malappuram, Kerala'),('Nanal  V.','Tata Institute of Fundamental Research, Mumbai'),('Palit  R.','Tata Institute of Fundamental Research, Mumbai'),('Pandit  S. K.','Bhabha Atomic Research Centre, Mumbai (Secretary)'),('Pant  L. M.','Bhabha Atomic Research Centre, Mumbai'),('Patra  S. K.','Institute of Physics, Bhubaneswar, Odisha'),('Rai  A. K.','Sardar Vallabhbhai National Institute of Technology, Surat, Gujarat'),('Sahoo  R.','Indian Institute of Technology , Indore (Local Convener)'),('Santra  S.','Bhabha Atomic Research Centre, Mumbai'),('Sharma  M. K.','Thapar Institute of Engineering and Technology, Patiala, Punjab'),('Shrivastava  A.','Bhabha Atomic Research Centre, Mumbai (Convener)'),('Shukla  P.','Bhabha Atomic Research Centre, Mumbai'),('Singh  B. K.','Banaras Hindu University, Varanasi, Uttar Pradesh'),('Singh  B. P.','Aligarh Muslim University, Aligarh, Uttar Pradesh'),('Tandel  S. K.','Centre for Excellence in Basic Sciences, Mumbai');
 /*!40000 ALTER TABLE `OrgComm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,13 +217,14 @@ DROP TABLE IF EXISTS `accommodation_payment_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accommodation_payment_detail` (
-  `uname` varchar(100) DEFAULT NULL,
+  `uname` varchar(100) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `bankname` varchar(300) DEFAULT NULL,
   `dateoftrans` varchar(50) DEFAULT NULL,
   `refnum` varchar(100) DEFAULT NULL,
   `amount` int DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL
+  `status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -246,7 +249,8 @@ CREATE TABLE `admin_credentials` (
   `uname` varchar(4) NOT NULL,
   `passwd` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -294,9 +298,10 @@ CREATE TABLE `bankdetails` (
   `bankname` varchar(150) DEFAULT NULL,
   `branch` varchar(150) DEFAULT NULL,
   `accountname` varchar(150) DEFAULT NULL,
-  `accountnum` varchar(50) DEFAULT NULL,
+  `accountnum` varchar(50) NOT NULL,
   `ifsc` varchar(20) DEFAULT NULL,
-  `swiftcode` varchar(25) DEFAULT NULL
+  `swiftcode` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`accountnum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -319,9 +324,10 @@ DROP TABLE IF EXISTS `categories`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categories` (
   `uname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `category` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,7 +405,8 @@ CREATE TABLE `contactus` (
   `Name` varchar(255) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL,
   `ContactNumber` varchar(20) DEFAULT NULL,
-  `sno` int DEFAULT NULL
+  `sno` int NOT NULL,
+  PRIMARY KEY (`sno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -409,7 +416,7 @@ CREATE TABLE `contactus` (
 
 LOCK TABLES `contactus` WRITE;
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
-INSERT INTO `contactus` VALUES ('admin','Convener','Dr. Aradhana Shrivastava','aradhana@barc.gov.in','+91-22-2559-3588',2),('admin','Secretary','Dr. Sanat Pandit','snpdae@barc.gov.in','+91-22-2559-5193',1),('admin','Local Convener','Prof. Raghunath Sahoo','loc-dae-np-2023@iiti.ac.in','+91-731-6603329',3);
+INSERT INTO `contactus` VALUES ('admin','Secretary','Dr. Sanat Pandit','snpdae@barc.gov.in','+91-22-2559-5193',1),('admin','Convener','Dr. Aradhana Shrivastava','aradhana@barc.gov.in','+91-22-2559-3588',2),('admin','Local Convener','Prof. Raghunath Sahoo','loc-dae-np-2023@iiti.ac.in','+91-731-6603329',3);
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,12 +432,13 @@ CREATE TABLE `contributions` (
   `Topic` varchar(255) DEFAULT NULL,
   `Category` varchar(255) DEFAULT NULL,
   `Title` varchar(500) DEFAULT NULL,
-  `Filename` varchar(255) DEFAULT NULL,
+  `Filename` varchar(255) NOT NULL,
   `status` varchar(100) DEFAULT NULL,
   `AuthorNamesList` varchar(1000) DEFAULT NULL,
   `AuthorEmailsList` varchar(1000) DEFAULT NULL,
   `refereeName` varchar(4) DEFAULT NULL,
-  `remarks` varchar(1000) DEFAULT NULL
+  `remarks` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`Filename`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -440,7 +448,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rsehgal','E','C','RESUBMITTED : First paper on Category C and Topic E','rsehgal_paper_C_E_1.pdf','submitted','Raman Sehgal','ayush.sehgal@gmail.com','','');
+INSERT INTO `contributions` VALUES ('rsehgal','C','E','Modified title with updated file : Test paper on category E','rsehgal_paper_C_E_1.pdf','Poster','Raman Sehgal,Ayush Sehgal','sc.ramansehgal@gmail.com,ayush.sehgal@gmail.com','RSE','ref1 : Good work, but some work is desirous<br/>ref2 : Excellent work,\nDeserves ORAL<br/>'),('rsehgal','C','E','Another paper on cat E','rsehgal_paper_C_E_2.pdf','Rejected','Ayush Sehgal','ayush.sehgal@abc.com','',''),('rsehgal','C','G','Test paper on category G','rsehgal_paper_C_G_1.pdf','Oral','Raman sehgal','ramansehga@abc.com','AYH','ref1 : Good job, Keep on doing good work like this. ALL THE BEST<br/>ref2 : <br/>'),('rsehgal','D','I','Again : Resubmitte : Invited talk by Raman','rsehgal_paper_I_D_1.pdf','submitted','Raman ','ayush.sehgal','',''),('admin',NULL,NULL,NULL,'testFile','',NULL,NULL,NULL,'Submitted');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -452,10 +460,11 @@ DROP TABLE IF EXISTS `coordinatorList`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `coordinatorList` (
-  `uname` varchar(4) DEFAULT NULL,
+  `uname` varchar(4) NOT NULL,
   `passwd` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`uname`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -477,10 +486,11 @@ DROP TABLE IF EXISTS `mapping`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mapping` (
-  `uname` varchar(20) DEFAULT NULL,
-  `taskname` varchar(100) DEFAULT NULL,
-  `tablename` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `uname` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `taskname` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `tablename` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `prikey` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -489,7 +499,7 @@ CREATE TABLE `mapping` (
 
 LOCK TABLES `mapping` WRITE;
 /*!40000 ALTER TABLE `mapping` DISABLE KEYS */;
-INSERT INTO `mapping` VALUES ('admin','User Accounts','user_credentials'),('admin','Topics','topics'),('admin','Symposium Details','symposium'),('admin','Registration Payment Details','registration_payment_detail'),('admin','Registration Forms','registration'),('admin','Referee List','refereeList'),('admin','Referee Acceptance','refereeConfirmation');
+INSERT INTO `mapping` VALUES ('admin','User Accounts','user_credentials','uname'),('admin','Topics','topics','code'),('admin','Symposium Details','symposium','volume'),('admin','Registration Payment Details','registration_payment_detail','uname'),('admin','Registration Forms','registration','uname'),('admin','Referee List','refereeList','uname'),('admin','Referee Acceptance','refereeConfirmation','uname'),('admin','Your Tasks','yourtasks','taskname'),('admin','Various Features','menuitems','item'),('admin','List of Coordinators','coordinatorList','uname'),('admin','Contributions','contributions','Filename'),('admin','Contact Us','contactus','sno'),('admin','Advisory Committee','AdvComm','Name'),('admin','Organizing Committee','OrgComm','Name'),('admin','Accommodation Payment Detail','accommodation_payment_detail','uname'),('admin','Admin Credentials','admin_credentials','email'),('admin','Bank Details','bankdetails','accountnum'),('admin','Category','categories','code');
 /*!40000 ALTER TABLE `mapping` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -501,8 +511,9 @@ DROP TABLE IF EXISTS `menuitems`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `menuitems` (
-  `item` varchar(255) DEFAULT NULL,
-  `value` tinyint(1) NOT NULL
+  `item` varchar(255) NOT NULL,
+  `value` tinyint(1) NOT NULL,
+  PRIMARY KEY (`item`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -512,7 +523,7 @@ CREATE TABLE `menuitems` (
 
 LOCK TABLES `menuitems` WRITE;
 /*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
-INSERT INTO `menuitems` VALUES ('Home',1),('About',1),('Committees',1),('Signup',1),('Login',1),('Submissions',0),('Accommodation',0),('Contact',1),('Upload_Contribution',1),('Resubmit_Contribution',0),('View_Contribution',1),('DAECC',1),('Tunga',1),('JewelOfChembur',1),('PGHostel',1),('AuthorLogin',1),('RefereeLogin',1),('Topic',1),('Venue',1),('Poster',0),('ImportantDates',0),('CoordinatorLogin',1),('AdminLogin',1),('Submission_Guidelines',1),('Templates',1),('Register',1),('Finsup_Application',0),('Important_Dates',1);
+INSERT INTO `menuitems` VALUES ('About',1),('Accommodation',0),('AdminLogin',1),('AuthorLogin',1),('Committees',1),('Contact',1),('CoordinatorLogin',1),('DAECC',1),('Finsup_Application',0),('Home',1),('Important_Dates',1),('ImportantDates',0),('JewelOfChembur',1),('Login',1),('PGHostel',1),('Poster',0),('RefereeLogin',1),('Register',1),('Resubmit_Contribution',0),('Signup',1),('Submission_Guidelines',1),('Submissions',0),('Templates',1),('Topic',1),('Tunga',1),('Upload_Contribution',1),('Venue',1),('View_Contribution',1);
 /*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -550,10 +561,11 @@ DROP TABLE IF EXISTS `refereeConfirmation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `refereeConfirmation` (
-  `uname` varchar(5) DEFAULT NULL,
+  `uname` varchar(5) NOT NULL,
   `refereeEmail` varchar(150) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `screeningStatus` tinyint(1) DEFAULT NULL
+  `screeningStatus` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -563,7 +575,7 @@ CREATE TABLE `refereeConfirmation` (
 
 LOCK TABLES `refereeConfirmation` WRITE;
 /*!40000 ALTER TABLE `refereeConfirmation` DISABLE KEYS */;
-INSERT INTO `refereeConfirmation` VALUES ('admin','sc.ramansehgal@gmail.com','accepted',0),('admin','sc.ramansehgal@gmail.com','accepted',0),('ASE','sc.ramansehgal@gmail.com','declined',0),('RSE','sc.ramansehgal@gmail.com','allotted',0),('SSE','sc.ramansehgal@gmail.com','accepted',1);
+INSERT INTO `refereeConfirmation` VALUES ('ASE','sc.ramansehgal@gmail.com','declined',0),('RSE','sc.ramansehgal@gmail.com','allotted',0),('SSE','sc.ramansehgal@gmail.com','accepted',0);
 /*!40000 ALTER TABLE `refereeConfirmation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -575,10 +587,11 @@ DROP TABLE IF EXISTS `refereeList`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `refereeList` (
-  `uname` varchar(4) DEFAULT NULL,
+  `uname` varchar(4) NOT NULL,
   `passwd` varchar(255) DEFAULT NULL,
   `refereeEmail` varchar(255) DEFAULT NULL,
-  `refereeName` varchar(255) DEFAULT NULL
+  `refereeName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -588,7 +601,7 @@ CREATE TABLE `refereeList` (
 
 LOCK TABLES `refereeList` WRITE;
 /*!40000 ALTER TABLE `refereeList` DISABLE KEYS */;
-INSERT INTO `refereeList` VALUES ('RSE','ramansehgal','sc.ramansehgal@gmail.com','Raman Sehgal'),('ASE','ayushsehgal','ayush.sehgal@gmail.com','Ayush Sehgal'),('SSE','shachisehgal','shachi.sehgal@gmail.com','Shachi Sehgal'),('SLV','admin@nasi2023','slv@nasi2023.in','Sunder Lal'),('BRB','admin@nasi2023','brb@nasi2023.in','Bunder Lal'),('ABE','admin@nasi2023','abe@nasi2023.in','Ander Lal');
+INSERT INTO `refereeList` VALUES ('ABE','admin@nasi2023','abe@nasi2023.in','Ander Lal'),('ASE','ayushsehgal','ayush.sehgal@gmail.com','Ayush Sehgal'),('BRB','admin@nasi2023','brb@nasi2023.in','Bunder Lal'),('RSE','ramansehgal','sc.ramansehgal@gmail.com','Raman Sehgal'),('SLV','admin@nasi2023','slv@nasi2023.in','Sunder Lal'),('SSE','shachisehgal','bktsachi@gmail.com','Shachi Sehgal');
 /*!40000 ALTER TABLE `refereeList` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -600,7 +613,7 @@ DROP TABLE IF EXISTS `registration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `registration` (
-  `uname` varchar(255) DEFAULT NULL,
+  `uname` varchar(255) NOT NULL,
   `Initials` varchar(15) DEFAULT NULL,
   `FirstName` varchar(500) DEFAULT NULL,
   `LastName` varchar(500) DEFAULT NULL,
@@ -614,7 +627,8 @@ CREATE TABLE `registration` (
   `Accommodation_Preference` varchar(100) DEFAULT NULL,
   `Accommodation_Type` varchar(500) DEFAULT NULL,
   `Arrival_Date` datetime DEFAULT NULL,
-  `Departure_Date` datetime DEFAULT NULL
+  `Departure_Date` datetime DEFAULT NULL,
+  PRIMARY KEY (`uname`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -624,7 +638,7 @@ CREATE TABLE `registration` (
 
 LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `registration` DISABLE KEYS */;
-INSERT INTO `registration` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rasehgal','Dr.','Raman','Sehgal','Male','rsehgal@barc.gov.in','BARC','SO/F','Indian','9870091358','No','','','2023-07-28 00:00:00','2023-07-31 00:00:00'),('rsehgal','Dr.','Raman','Sehgal','Male','sc.ramansehgal@gmail.com','BARC','SOF','Indian','9969476966','Yes','DAECC Guest House','Single Occupancy','2023-07-22 00:00:00','2023-07-31 00:00:00'),('ayush','Mr.','Ayush','Sehgal','Male','ayush.sehgal@gmail.com','GOOGLE','Research Scientist','Indian','9769412308','No','','','2023-07-28 00:00:00','2023-07-31 00:00:00');
+INSERT INTO `registration` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rasehgal','Dr.','Raman','Sehgal','Male','rsehgal@barc.gov.in','BARC','SO/F','Indian','9870091358','No','','','2023-07-28 00:00:00','2023-07-31 00:00:00'),('rsehgal','Dr.\n				 ','Raman\n				 ','Sehgal\n				 ','Male\n				 ','sc.ramansehgal@gmail.com\n				 ','BARC\n				 ','SOF\n				 ','Indian\n				 ','9870091358\n				','Yes\n				 ','DAECC Guest House\n				 ','Single Occupancy\n				 ','2023-07-22 00:00:00','2023-07-31 00:00:00'),('ayush','Mr.','Ayush','Sehgal','Male','ayush.sehgal@gmail.com','GOOGLE','Research Scientist','Indian','9769412308','No','','','2023-07-28 00:00:00','2023-07-31 00:00:00');
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -636,13 +650,14 @@ DROP TABLE IF EXISTS `registration_payment_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `registration_payment_detail` (
-  `uname` varchar(100) DEFAULT NULL,
+  `uname` varchar(100) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `bankname` varchar(300) DEFAULT NULL,
   `dateoftrans` varchar(50) DEFAULT NULL,
   `refnum` varchar(100) DEFAULT NULL,
   `amount` int DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL
+  `status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -652,7 +667,7 @@ CREATE TABLE `registration_payment_detail` (
 
 LOCK TABLES `registration_payment_detail` WRITE;
 /*!40000 ALTER TABLE `registration_payment_detail` DISABLE KEYS */;
-INSERT INTO `registration_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-28','AUGUST897TYR',5487,'Submitted'),('ayush','Ayush Sehgal','Bank of california','2023-07-12','CAL78IND',8000,'Received');
+INSERT INTO `registration_payment_detail` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,'Submitted'),('ayush','Ayush Sehgal','Bank of california','2023-07-12','CAL78IND',8000,'Received'),('rsehgal','Raman Sehgal','Punjab National Bank','2023-07-28','AUGUST897TYR',5487,'Received');
 /*!40000 ALTER TABLE `registration_payment_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -693,7 +708,7 @@ DROP TABLE IF EXISTS `symposium`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `symposium` (
   `uname` varchar(50) DEFAULT NULL,
-  `volume` int DEFAULT NULL,
+  `volume` int NOT NULL,
   `title` varchar(500) DEFAULT NULL,
   `venue` varchar(500) DEFAULT NULL,
   `datefrom` date DEFAULT NULL,
@@ -714,7 +729,8 @@ CREATE TABLE `symposium` (
   `receipt_issue_date` date DEFAULT NULL,
   `acceptance_end_date` date DEFAULT NULL,
   `inv_end_date` date DEFAULT NULL,
-  `theses_end_date` date DEFAULT NULL
+  `theses_end_date` date DEFAULT NULL,
+  PRIMARY KEY (`volume`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -724,7 +740,7 @@ CREATE TABLE `symposium` (
 
 LOCK TABLES `symposium` WRITE;
 /*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
-INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-31','2023-07-10','2023-09-15','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL,'2023-10-15','2023-09-30','2023-09-30'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','2023-07-10','2023-09-15','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14','2023-10-15','2023-09-30','2023-09-30');
+INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-31','2023-09-01','2023-09-15','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-11-05',NULL,NULL,'2023-10-15','2023-09-30','2023-09-30'),('admin',67,'DAE Symposium on Nuclear Physics','IIT Indore','2023-12-09','2023-12-13','2023-06-30','2023-10-31','0202-06-30','2023-09-15','2023-06-30','2023-10-30','Indore','Madhya Pradesh','India','','Uploads/','2023-11-05','2023-07-10','2023-12-14','2023-10-15','2023-09-30','2023-09-30');
 /*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -761,9 +777,10 @@ DROP TABLE IF EXISTS `topics`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `topics` (
   `uname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `Topic` varchar(255) DEFAULT NULL,
-  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Topic` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -796,7 +813,7 @@ CREATE TABLE `topics_backup` (
 
 LOCK TABLES `topics_backup` WRITE;
 /*!40000 ALTER TABLE `topics_backup` DISABLE KEYS */;
-INSERT INTO `topics_backup` VALUES ('admin','Contributory Papers','C'),('admin','Invited Talk','I'),('admin','Thesis Presentation','T');
+INSERT INTO `topics_backup` VALUES ('admin','Physics','A'),('admin','Chemistry','B'),('admin','Mathematics','C'),('admin','Biology','D');
 /*!40000 ALTER TABLE `topics_backup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -824,7 +841,7 @@ CREATE TABLE `user_credentials` (
 
 LOCK TABLES `user_credentials` WRITE;
 /*!40000 ALTER TABLE `user_credentials` DISABLE KEYS */;
-INSERT INTO `user_credentials` VALUES ('ajayaksingh_au@yahoo','Singh@123456789','Ajaya Kumar','Singh','ajayaksingh_au@yahoo.co.in',NULL),('anandp5','science123','Anand ','Pathak','anandp5@yahoo.com',NULL),('Aravindan_Kavitha','aaron3407','Aravindan','V','aronearvind1994@gmail.com',NULL),('arijitsahahri','prathomalo1S$','ARIJIT','SAHA','arijit@iopb.res.in',NULL),('ashishrtanna','ART@80art','Ashish','Tanna','ashish.tanna@rku.ac.in','2023-06-19 11:57:09'),('ashiskrmanna','ashis1111','Ashis Kumar','Manna','ashiskrmanna@gmail.com','2023-06-20 10:43:04'),('athira7rythm@gmail.c','Athi7598','ATHIRA','A','athira7rythm@gmail.com',NULL),('ayush','ayushsehgal','Ayush','Sehgal','ayush.sehgal@gmail.com','2023-07-13 10:34:14'),('gobinda','Jat735216!','Gobinda','Majumder','gobinda@tifr.res.in','2023-06-21 16:44:49'),('jmondal','jay2tanu377','JAYANTA','MONDAL','jmondal@barc.gov.in','2023-06-19 10:43:37'),('kumartvl88','Selva!1988','Selvakumar','S','kumartvl88@gmail.com','2023-06-16 22:21:35'),('Manju','Manju@1991','Manjunatha ','Mushtagatte','manjuna999@gmail.com',NULL),('mmdnaseer','flower99a','Mohamed Naseer Ali','Mohamed','mmdnaseer@gmail.com',NULL),('nifeeya','Nif123@@@','Nifeeya ','Singh','n_singh@ph.iitr.ac.in','2023-06-25 16:10:53'),('nwwton','maphy@2020','Madhukumar','R','nwwton@gmail.com',NULL),('pandeeswariprabhakar','Rpandeeswari@12345','Dr. Pandeeswari ','R','pandeeswari.r@srec.ac.in',NULL),('PCRout','PCRout~12345','Prakash Chandra ','Rout','pcrout2002@gmail.com',NULL),('Poonkodi ','Mscchemistry*1','Dr K','Poonkodi','poonks.che@gmail.com',NULL),('Rajib','sairambaba2','Rajib','Deb','drrajibdeb@gmail.com','2023-06-20 22:49:46'),('rasehgal','#Gudia123','Raman','Sehgal','rsehgal@barc.gov.in','2023-06-16 09:48:55'),('resanvs','Barc@2023','VELUSAMY','SUNDARESAN','vsundaresan@cimap.res.in','2023-06-19 13:15:59'),('rsehgal','ijklmnop','Raman','Sehgal','sc.ramansehgal@gmail.com','2023-06-15 17:32:38'),('santoshg@barc.gov.in','Sun2*ruma','Santosh K.','Gupta','santoshg@barc.gov.in',NULL),('sawaghuley','[Anandrao123','Sandeep','Waghuley','sandeepwaghuley@sgbau.ac.in','2023-06-18 08:05:30'),('snbramha','orissa','SATYANARAYAN','BRAMHA','snbramha@gmail.com',NULL),('tcsshetty@gmail.com','mymother','CHANDRA SHEKHARA','SHETTY T','tcsshetty@gmail.com',NULL);
+INSERT INTO `user_credentials` VALUES ('ajayaksingh_au@yahoo','Singh@123456789','Ajaya Kumar','Singh','ajayaksingh_au@yahoo.co.in',NULL),('anandp5','science123','Anand ','Pathak','anandp5@yahoo.com',NULL),('Aravindan_Kavitha','aaron3407','Aravindan','V','aronearvind1994@gmail.com',NULL),('arijitsahahri','prathomalo1S$','ARIJIT','SAHA','arijit@iopb.res.in',NULL),('ashishrtanna','ART@80art','Ashish','Tanna','ashish.tanna@rku.ac.in','2023-06-19 11:57:09'),('ashiskrmanna','ashis1111','Ashis Kumar','Manna','ashiskrmanna@gmail.com','2023-06-20 10:43:04'),('athira7rythm@gmail.c','Athi7598','ATHIRA','A','athira7rythm@gmail.com',NULL),('ayush','ayushsehgal','Ayush','Sehgal','ayush.sehgal@gmail.com','2023-07-13 10:34:14'),('gobinda','Jat735216!','Gobinda','Majumder','gobinda@tifr.res.in','2023-06-21 16:44:49'),('jmondal','jay2tanu377','JAYANTA','MONDAL','jmondal@barc.gov.in','2023-06-19 10:43:37'),('kumartvl88','Selva!1988','Selvakumar','S','kumartvl88@gmail.com','2023-06-16 22:21:35'),('Manju','Manju@1991','Manjunatha ','Mushtagatte','manjuna999@gmail.com',NULL),('mmdnaseer','flower99a','Mohamed Naseer Ali','Mohamed','mmdnaseer@gmail.com',NULL),('nifeeya','Nif123@@@','Nifeeya ','Singh','n_singh@ph.iitr.ac.in','2023-06-25 16:10:53'),('nwwton','maphy@2020','Madhukumar','R','nwwton@gmail.com',NULL),('pandeeswariprabhakar','Rpandeeswari@12345','Dr. Pandeeswari ','R','pandeeswari.r@srec.ac.in',NULL),('PCRout','PCRout~12345','Prakash Chandra ','Rout','pcrout2002@gmail.com',NULL),('Poonkodi ','Mscchemistry*1','Dr K','Poonkodi','poonks.che@gmail.com',NULL),('Rajib','sairambaba2','Rajib','Deb','drrajibdeb@gmail.com','2023-06-20 22:49:46'),('rasehgal','#Gudia123','Raman','Sehgal','rsehgal@barc.gov.in','2023-06-16 09:48:55'),('resanvs','Barc@2023','VELUSAMY','SUNDARESAN','vsundaresan@cimap.res.in','2023-06-19 13:15:59'),('rsehgal','#Gudia123','Raman','Sehgal','sc.ramansehgal@gmail.com','2023-07-21 12:25:36'),('sanat','pandit@2023','Sanat','Pandit','drsanatpandit@gmail.com','2023-07-20 16:49:03'),('santoshg@barc.gov.in','Sun2*ruma','Santosh K.','Gupta','santoshg@barc.gov.in',NULL),('sawaghuley','[Anandrao123','Sandeep','Waghuley','sandeepwaghuley@sgbau.ac.in','2023-06-18 08:05:30'),('snbramha','orissa','SATYANARAYAN','BRAMHA','snbramha@gmail.com',NULL),('tcsshetty@gmail.com','mymother','CHANDRA SHEKHARA','SHETTY T','tcsshetty@gmail.com',NULL);
 /*!40000 ALTER TABLE `user_credentials` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -862,11 +879,12 @@ DROP TABLE IF EXISTS `yourtasks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `yourtasks` (
-  `taskname` varchar(150) DEFAULT NULL,
+  `taskname` varchar(150) NOT NULL,
   `logintype` varchar(100) DEFAULT NULL,
   `function_name` varchar(150) DEFAULT NULL,
   `tasktype` varchar(150) DEFAULT NULL,
-  `registration_required` tinyint(1) DEFAULT NULL
+  `registration_required` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`taskname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -876,7 +894,7 @@ CREATE TABLE `yourtasks` (
 
 LOCK TABLES `yourtasks` WRITE;
 /*!40000 ALTER TABLE `yourtasks` DISABLE KEYS */;
-INSERT INTO `yourtasks` VALUES ('Upload Contribution','Author','Upload_Contribution','Upload_Contribution',0),('View Contribution','Author','View_Contribution','View_Contribution',0),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application',1),('Allot Coordinator','Admin','Allot','AllotCoordinator',0),('Allot Referee','Coordinator','Allot','AllotReferee',0),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails',0),('View Papers','Admin','ViewPapers','ViewPapers',0),('Acceptance Status','Author','DownloadCertificate','DownloadAcceptanceCertificate',0),('Download Participation Certificate','Author','DownloadCertificate','DownloadParticipationCertificate',1),('Download Registration Receipt','Author','DownloadReceipt','registration',1),('Download Accommodation Receipt','Author','DownloadReceipt','accommodation',1),('Confirm Registration Payment','Admin','ConfirmPayment','registration',0),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation',0),('Fill Registration Payment Details','Author','PaymentForm','registration',1),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation',1),('Publish Results','Admin','PublishResults','PublishResults',0),('Review Papers','Referee','Referee_UpdatePaperStatus','Referee_UpdatePaperStatus',0),('Viewer/Updater','Admin','ViewerUpdater','ViewerUpdater',0);
+INSERT INTO `yourtasks` VALUES ('Acceptance Status','Author','DownloadCertificate','DownloadAcceptanceCertificate',0),('Allot Coordinator','Admin','Allot','AllotCoordinator',0),('Allot Referee','Coordinator','Allot','AllotReferee',0),('Apply for Financial Support','Author','Finsup_Application','Finsup_Application',1),('Confirm Accommodation Payment','Admin','ConfirmPayment','accommodation',0),('Confirm Registration Payment','Admin','ConfirmPayment','registration',0),('Download Accommodation Receipt','Author','DownloadReceipt','accommodation',1),('Download Participation Certificate','Author','DownloadCertificate','DownloadParticipationCertificate',1),('Download Registration Receipt','Author','DownloadReceipt','registration',1),('Fill Accommodation Payment Details','Author','PaymentForm','accommodation',1),('Fill Registration Payment Details','Author','PaymentForm','registration',1),('Publish Results','Admin','PublishResults','PublishResults',0),('Review Papers','Referee','Referee_UpdatePaperStatus','Referee_UpdatePaperStatus',0),('Upload Contribution','Author','Upload_Contribution','Upload_Contribution',0),('View Contribution','Author','View_Contribution','View_Contribution',0),('View Papers','Admin','ViewPapers','ViewPapers',0),('View Registration Details','Admin','RegistrationDetails','RegistrationDetails',0),('Viewer/Updater','Admin','ViewerUpdater','ViewerUpdater',0);
 /*!40000 ALTER TABLE `yourtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -889,4 +907,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-21 10:33:52
+-- Dump completed on 2023-07-21 18:20:56
