@@ -31,10 +31,15 @@ class Forms{
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control signupForm" id="username" name="username" required>
                         </div>
-                                               <div class="form-group">
+                        <div class="form-group">
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control signupForm" id="password" name="password" required>
                         </div>
+			<div class="form-group">
+                                <label for="phonenum">Contact Num:</label>
+                                <input type="text" class="form-control signupForm" id="phonenum" name="phonenum" required>
+                        </div>
+
                         <button type="submit" class="btn btn-primary sympFormSubmit round-ended-btn">Create Account</button>
 		</form>
 		<script>
@@ -233,7 +238,7 @@ public function Register($fieldNames){
 			$formContent.='<div class="form-group" id="group_'.$fieldNames[$i].'">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
 				
-				if($fieldNames[$i]=="FirstName" || $fieldNames[$i]=="LastName" || $fieldNames[$i]=="Email")
+				if($fieldNames[$i]=="FirstName" || $fieldNames[$i]=="LastName" || $fieldNames[$i]=="Email" || $fieldNames[$i]=="Mobile")
 				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION[$fieldNames[$i]].'" readonly > </div>';
 				elseif($fieldNames[$i]=="Initials"){
 					$options = array('None', 'Dr.', 'Ms.', 'Mrs.','Mr.','Prof.','Kum.'); // The available options

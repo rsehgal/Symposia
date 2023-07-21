@@ -221,6 +221,7 @@ function ServeSignup(){
 		$email=$_POST['email'];
 		$username=$_POST['username'];
 		$password=$_POST['password'];
+		$phonenum=$_POST['phonenum'];
 		$query='select uname from user_credentials where uname="'.$username.'"';
 		//$fetchedUname=GetQueryResult($query)->fetch_assoc()["uname"];
 		//echo "Fetch uname : ".$fetchedUname."<br/>";
@@ -232,7 +233,7 @@ function ServeSignup(){
 			return Message("Email : $email already registered.","alert-danger");
 
 
-		$query = "insert into user_credentials values('$username','$password','$firstname','$lastname','$email',NOW())";
+		$query = "insert into user_credentials values('$username','$password','$firstname','$lastname','$email',NOW(),'$phonenum')";
 //return $query;
 		//echo $query."<br/>";
 		$obj->GetQueryResult($query);
@@ -375,6 +376,7 @@ function ServeLogin(){
 		$_SESSION["FirstName"]=$row["firstname"];
 		$_SESSION["LastName"]=$row["lastname"];
 		$_SESSION["Email"]=$row["email"];
+		$_SESSION["Mobile"]=$row["phonenum"];
 		$result->free();
 		//if($_SESSION["logintype"]=="Admin" && $_SESSION["loggedin"])
 		if($_SESSION["loggedin"])
