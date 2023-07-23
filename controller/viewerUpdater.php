@@ -57,6 +57,7 @@ function GenerateUpdaterView(){
 $obj=new DB();
 $tableName = $_POST["tablename"];
 $prikey= $_POST["prikey"];
+$deletion= $_POST["deletion"];
 $showUname=1;
 //if($tableName=="refereeList")
 //$showUname=1;
@@ -84,6 +85,9 @@ $table="<table border='1' class='table table-striped table-responsive'>";
 
 		if($allowUpdation==1)
                 $table.="<td class='font-weight-bold'>Change It</td>";
+		
+		if($deletion==1)
+                $table.="<td class='font-weight-bold'>Delete It</td>";
 
         //echo
                $table.="</tr>";
@@ -110,7 +114,10 @@ $table="<table border='1' class='table table-striped table-responsive'>";
                 //if($allowDeletion==1)
                 if($allowUpdation==1)
                 //$table.="<td><input type='button' class='deleteEntry' oftable='".$tableName."' id='".$row['uname']."' value='Update'></input></td>";
-                $table.="<td><input type='button' class='btn btn-primary updateEntry' oftable='".$tableName."' id='".$buttonId."' value='Update' prikey='".$prikey."'></input></td>";
+			$table.="<td><input type='button' class='btn btn-primary updateEntry' oftable='".$tableName."' id='".$buttonId."' value='Update' prikey='".$prikey."' function_name='UpdateIt'></input></td>";
+
+		if($deletion==1)
+                $table.="<td><input type='button' class='btn btn-primary deleteEntry' oftable='".$tableName."' id='".$buttonId."' value='Delete' prikey='".$prikey."' function_name='DeleteIt'></input></td>";
                 //echo 
                 $table.="</tr>";
         }
@@ -125,7 +132,7 @@ $table="<table border='1' class='table table-striped table-responsive'>";
 			
 			$(function(){
 								
-				$(".updateEntry").click(function(e){
+				$(".updateEntry, .deleteEntry").click(function(e){
 					var tablename=$(this).attr("oftable");
 					var reqClass="."+$(this).attr("id");
 					var data={};
@@ -134,7 +141,8 @@ $table="<table border='1' class='table table-striped table-responsive'>";
 			                	data[$(this).attr("id")]=$(this).val();
 		        		});
 
-					data["function_name"]="UpdateIt";
+					//data["function_name"]="UpdateIt";
+					data["function_name"]=$(this).attr("function_name");
 					data["prikey"]=$(this).attr("prikey");
 					data["tablename"]=tablename;
 				
@@ -161,7 +169,24 @@ $table="<table border='1' class='table table-striped table-responsive'>";
         return $table.$associatedJS;
 
 }
+function DeleteIt(){
+        //return "Update It...";
+        //return $_POST["prikey"];
 
+        $prikey = $_POST["prikey"];
+	$tablename = $_POST["tablename"];
+
+	$query = "delete from $tablename where $prikey='".$_POST[$prikey]."'";
+
+	$obj = new DB();
+	$result=$obj->GetQueryResult($query);
+	if($result===false)
+        	return Message("Deletion Query execution fails","alert-danger");
+	else
+		return Message("Entry deleted successfully","alert-success");
+	//return $query;
+	
+}
 function UpdateIt(){
 	//return "Update It...";
 	//return $_POST["prikey"];
@@ -204,7 +229,7 @@ $dropDownMsg='<h2 class="text-primary">Select a table to view</h2>
 	<span class="border bg-info">Primary-Key</span>
 	<select class="custom-select" id="tableToView">';
 while($row = $result->fetch_assoc()){
-$dropDownMsg.='<option class="optionTable" tablename="'.$row["tablename"].'" prikey="'.$row["prikey"].'">'.$row["taskname"].'</option>';
+$dropDownMsg.='<option class="optionTable" tablename="'.$row["tablename"].'" prikey="'.$row["prikey"].'" deletion="'.$row["deletion"].'">'.$row["taskname"].'</option>';
 }
 $dropDownMsg.='</select><br/><hr/>';
 
@@ -228,6 +253,7 @@ $associatedJS='<script>
 				e.preventDefault();
 				data["tablename"]=$(this).children(":selected").attr("tablename");
 				data["prikey"]=$(this).children(":selected").attr("prikey");
+				data["deletion"]=$(this).children(":selected").attr("deletion");
 				alert(data["tablename"]);
 				$.ajax({
 				    url: "../controller/func.php",
