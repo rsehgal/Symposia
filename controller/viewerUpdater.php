@@ -96,13 +96,15 @@ $table="<table border='1' class='table table-striped table-responsive'>";
                 $table.= "<tr>";
                 foreach ($columnNames as $columnName) {
                         //echo
-
+			 $primaryCell="<td>";
+			 if($columnName==$prikey)
+				 $primaryCell="<td class='bg-info'>";
                          if($columnName=='uname'){
                         if($showUname==1)
-                                $table.="<td><input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."'/>"."</td>";
+                                $table.=$primaryCell."<input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."'/>"."</td>";
                         }else{
                                 //$table.="<td class='".$buttonId."'>" . $row[$columnName] . "</td>";
-                                $table.="<td><input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."'/>"."</td>";
+                                $table.=$primaryCell."<input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."'/>"."</td>";
                         }
                 }
                 //if($allowDeletion==1)
@@ -198,7 +200,9 @@ function FillDropDown(){
 $obj = new DB();
 $query = "select * from mapping";
 $result = $obj->GetQueryResult($query);
-$dropDownMsg='<h2 class="text-primary">Select a table to view</h2><select class="custom-select" id="tableToView">';
+$dropDownMsg='<h2 class="text-primary">Select a table to view</h2>
+	<span class="border bg-info">Primary-Key</span>
+	<select class="custom-select" id="tableToView">';
 while($row = $result->fetch_assoc()){
 $dropDownMsg.='<option class="optionTable" tablename="'.$row["tablename"].'" prikey="'.$row["prikey"].'">'.$row["taskname"].'</option>';
 }
