@@ -104,7 +104,7 @@ $table="<table border='1' class='table table-striped table-responsive'>";
 			 $disabled="";
 			 if($columnName==$prikey){
 				 $primaryCell="<td class='bg-info'>";
-				 $disabled = "";// "disabled";
+				 $disabled = "disabled";
 			 }
                          if($columnName=='uname'){
                         if($showUname==1)
@@ -156,7 +156,10 @@ $table="<table border='1' class='table table-striped table-responsive'>";
 					    method: "POST",
 					    data : data,
 					    success: function(response) {
-					    $("#result").html(response);
+					    //$("#result").html(response);
+						$("#refereeUpdateStatus").html(response);
+						$("#refereeUpdateStatus").show();
+						$("#refereeUpdateStatus").delay(800).fadeOut(); 
 					    }
 					  });
 	
