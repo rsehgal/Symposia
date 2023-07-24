@@ -54,7 +54,7 @@ function AddMenuEntry($entry){
           <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
         $subentries=array("AuthorLogin","RefereeLogin","CoordinatorLogin","AdminLogin");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
-	}elseif($entry=="Accommodation"){
+	}elseif($entry=="Accommodationn"){ ///intentionally wrong spelling
 
 	$obj = new DB();
 	$query = 'select * from accommodation';
@@ -242,9 +242,9 @@ private $conn;
 function __construct() {
   //echo "Constructor called...........<br/>";
   $this->sname='localhost';//$DBADDRESS;
-  $this->uname='sympnp_sympadmin';
+  $this->uname='sympadmin';
   $this->passwd='sympadmin@123';//$DBPASSWD;
-  $this->dbname='sympnp_sympnp2023'; 
+  $this->dbname='sympnp2023'; 
   //$this->Connect();  
 }
 
