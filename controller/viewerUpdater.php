@@ -101,14 +101,17 @@ $table="<table border='1' class='table table-striped table-responsive'>";
                 foreach ($columnNames as $columnName) {
                         //echo
 			 $primaryCell="<td>";
-			 if($columnName==$prikey)
+			 $disabled="";
+			 if($columnName==$prikey){
 				 $primaryCell="<td class='bg-info'>";
+				 $disabled = "";// "disabled";
+			 }
                          if($columnName=='uname'){
                         if($showUname==1)
-                                $table.=$primaryCell."<input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."'/>"."</td>";
+                                $table.=$primaryCell."<input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."' ".$disabled."/>"."</td>";
                         }else{
                                 //$table.="<td class='".$buttonId."'>" . $row[$columnName] . "</td>";
-                                $table.=$primaryCell."<input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."'/>"."</td>";
+                                $table.=$primaryCell."<input type='text' class='form-control ".$buttonId."' id='".$columnName."' value='".$row[$columnName]."' ".$disabled."/>"."</td>";
                         }
                 }
                 //if($allowDeletion==1)
