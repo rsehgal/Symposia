@@ -379,9 +379,15 @@ function ServeLogin(){
 		$_SESSION["Mobile"]=$row["phonenum"];
 		$result->free();
 		//if($_SESSION["logintype"]=="Admin" && $_SESSION["loggedin"])
+
+		$yourTaskJS = '<script>
+				$(function(){
+					$("#YourTasks").show();
+				});
+				</script>';
 		if($_SESSION["loggedin"])
 		echo '<input type="hidden" id="hiddenInfo" logintype="'.$_SESSION["logintype"].'" loggedin="'.$_SESSION["loggedin"].'" />';
-		return YourTasks();
+		return YourTasks().$yourTaskJS;
 
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
