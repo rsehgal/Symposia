@@ -34,8 +34,6 @@ $carouselMsg='<div id="mySlider" class="carousel slide" data-ride="carousel">
       <span class="sr-only">Next</span>
     </a>
   </div>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 ';
 
