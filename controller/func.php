@@ -1032,7 +1032,7 @@ return Message("Will be available soon.","alert-warning");
 
 return Message("Will be Available soon.","alert-warning");
 }*/
-function Topic(){
+function Topics(){
 if(!EnableMenuItem("Topic"))
 return Message("Will be available soon.","alert-warning");
 $topicMsg='<div class="row">';
@@ -1552,7 +1552,7 @@ $invDate = date("d F Y", strtotime($row["inv_end_date"]));
 $retVal.='<tr><td>Submission of Contributory paper</td><td>'.$contribDate.'</td></tr>';
 $retVal.='<tr><td>Submission of Thesis abstract</td><td>'.$invDate.'</td></tr>';
 $retVal.='<tr><td>Submission of Plenary Talk abstract</td><td>'.$invDate.'</td></tr>';
-$retVal.='<tr><td>Registration end Date</td><td>'.$regDate."</td></tr>";
+$retVal.='<tr><td>Registration </td><td>'.$regDate."</td></tr>";
 //$retVal.='<tr><td>Date of release of paper acceptance</td><td>'.$acceptanceDate.'</td></tr>';
 
 $retVal.='</table>';
@@ -2057,6 +2057,8 @@ function Register(){
 	if(!EnableMenuItem("Register"))
 	return Message("Will be available soon.","alert-warning");
 
+	echo RegistrationFee();
+
 	$obj = new DB();
 	$query = "select reg_start_date,reg_end_date from symposium where volume=67";
 	$result = $obj->GetQueryResult($query);
@@ -2277,6 +2279,36 @@ $bankdetailsMsg='<div class="row">
                  </div>';
 
 return Message("Bank Details","alert-info").$bankdetailsMsg;
+}
+
+function RegistrationFee(){
+
+	$regFeeMsg='<h3>Registration Fees (Non refundable)</h3><hr/>';
+        $table="<table border='1' class='table table-striped'>";
+	$obj = new DB();
+	$result = $obj->GetQueryResult("select regis_payment_due_date from symposium where volume=67");
+	$rowPayment=$result->fetch_assoc();
+
+		
+	$paymentDueDate=date("d-M-Y",strtotime($rowPayment["regis_payment_due_date"]));
+	
+	$query = "select * from registration_fee order by sno";
+	$result = $obj->GetQueryResult($query);
+        $table.='<tr>
+		 <th>Type</th>
+		 <th>Before '.$paymentDueDate.'</th>
+		 <th>After '.$paymentDueDate.'</th>
+		 </tr>';
+	while($row = $result->fetch_assoc()){
+		$table.='<tr>
+			<td>'.$row["orgType"].'</td>
+			<td>'.$row["fee_before_duedate"].'</td>
+			<td>'.$row["fee_after_duedate"].'</td>
+			</tr>';
+	}
+
+	$table.="</table>";
+        return $regFeeMsg.$table;
 }
 
 if (isset($_POST['function_name'])) {

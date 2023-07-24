@@ -254,7 +254,7 @@ $associatedJS='<script>
 				data["tablename"]=$(this).children(":selected").attr("tablename");
 				data["prikey"]=$(this).children(":selected").attr("prikey");
 				data["deletion"]=$(this).children(":selected").attr("deletion");
-				alert(data["tablename"]);
+				//alert(data["tablename"]);
 				$.ajax({
 				    url: "../controller/func.php",
 				    method: "POST",

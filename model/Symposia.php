@@ -203,7 +203,7 @@ $result.='
       <ul class="navbar-nav ml-auto">'.
         $this->AddMenuEntry("Home").
         $this->AddMenuEntry("Poster").
-        $this->AddMenuEntry("Topic").
+        $this->AddMenuEntry("Topics").
         $this->AddMenuEntry("Important_Dates").
 	//$this->AddMenuEntry("About").
 	$this->AddMenuEntry("Committees");
