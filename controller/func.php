@@ -2060,6 +2060,10 @@ function Register(){
 	//ini_set('display_startup_errors', 1);
 	//error_reporting(E_ALL);
 
+	session_start();
+	if(!isset($_SESSION["loggedin"]))
+		return  RegistrationFee();
+
 	if(!EnableMenuItem("Register"))
 	return Message("Will be available soon.","alert-warning");
 
