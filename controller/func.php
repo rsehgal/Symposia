@@ -112,7 +112,7 @@ SNP-2023
 ";
 
 
-                SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
+                //SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -179,7 +179,7 @@ SNP-2023
 ";
 
 
-		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
+		//SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
@@ -254,7 +254,7 @@ With Regards,
 SNP-2023
 ";
 		//SendMail($from,$to,$subject,$body);
-	 	SendMail("newaccount",$email,"SNP 2023 : Account Created",$body);	
+	 	//SendMail("newaccount",$email,"SNP 2023 : Account Created",$body);	
 		//echo "$username : $password : $firstname : $lastname : $email";	
                //return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
 		return Message("User account creation successful.","alert-success");
@@ -1524,7 +1524,7 @@ SNP-2023
 ';
 
 //return $body;
-SendMail("admin",$email,"SNP 2023 : Credentials",$body);
+//SendMail("admin",$email,"SNP 2023 : Credentials",$body);
 $result->free();
 return Message("Login credentials sent to email : ".$email,"alert-info");
 }
@@ -2010,10 +2010,10 @@ function UpdateRegistration(){
 	$checkinDate=trim($_POST["Arrival_Date"]);
 	$checkoutDate=trim($_POST["Departure_Date"]);
 	$attendingOrientation=trim($_POST["Attending_Orientation"]);
-
+	$regno=trim($_POST["regno"]);
 
 	$obj = new DB();
-
+	
 	$query = 'select uname, count(*) as counter from registration where uname="'.$_SESSION["username"].'"';
 	//return $query;
 	$result = $obj->GetQueryResult($query);
@@ -2023,12 +2023,16 @@ function UpdateRegistration(){
 	//return $counter;
 
 	if($counter==0){
+	$regCounter=$obj->GetCounterFromQuery("select * from registration");
+	$regCounter++;
+	$regno = "REG-".str_pad($regCounter, 4, '0', STR_PAD_LEFT);
+
 		//$query = 'insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile) values("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'","'.$gender.'","'.$email.'
 	//","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'")';
 	$query='insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
-			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,Attending_Orientation) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
+			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,Attending_Orientation,regno) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
 			,"'.$gender.'","'.$email.'","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$accommReq.'","'.$accommPref.'","'.$accommType.'"
-			,"'.$checkinDate.'","'.$checkoutDate.'","'.$attendingOrientation.'")';
+			,"'.$checkinDate.'","'.$checkoutDate.'","'.$attendingOrientation.'","'.$regno.'")';
 			//return $query;
 	}
 
@@ -2047,12 +2051,13 @@ function UpdateRegistration(){
 				 ",Accommodation_Type="'.$accommType.'
 				 ",Arrival_Date="'.$checkinDate.'
 				 ",Departure_Date="'.$checkoutDate.'
-				 ",Attending_Orientation="'.$attendingOrientation.'" where uname="'.$_SESSION["username"].'"';
+				",Attending_Orientation="'.$attendingOrientation.'
+				",regno="'.$regno.'" where uname="'.$_SESSION["username"].'"';
 //return $query;
 
 		$obj->GetQueryResult($query);
 
-	return Message("Registration data updated","alert-success");
+	return Message("Registration data updated : ".$regno,"alert-success");
 
 
 }

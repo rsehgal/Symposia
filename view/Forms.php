@@ -230,8 +230,13 @@ public function Register($fieldNames){
                 <h2>Participant Registration</h2>
                 <form method="POST" id="register" enctype="multipart/form-data" class="">';
 		
-		for($i=0 ; $i<count($fieldNames) ; $i++){
-			if($fieldNames[$i]=="uname"){
+
+	$regno="";
+	for($i=0 ; $i<count($fieldNames) ; $i++){
+
+		if($fieldNames[$i]=="regno"){
+			$regno=$row["regno"];
+		}elseif($fieldNames[$i]=="uname"){
 				$formContent.='<input type="hidden" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION["username"].'" readonly >';
 			}else{
 				
@@ -316,8 +321,7 @@ public function Register($fieldNames){
 					}
 					$selAccReq.='</select></div>';	
 					$formContent.=$selAccReq;
-				}
-				else
+				}else
 				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$row[$fieldNames[$i]].'" required> </div>';
 				
 		}
@@ -325,7 +329,7 @@ public function Register($fieldNames){
 
 		}
 
-		$formContent.='<center><input type="submit" class="btn btn-primary form-group" value="Submit" id="updateRegistration"  functionName="UpdateRegistration"></input></center>';
+		$formContent.='<center><input type="submit" class="btn btn-primary form-group" value="Submit" id="updateRegistration"  functionName="UpdateRegistration" regno="'.$regno.'"></input></center>';
 		$formContent.="</form></div>";
 		$associateJs = '<script>
 					
@@ -370,6 +374,7 @@ public function Register($fieldNames){
 							$("loadingGif").show();
 							
 							data["function_name"]=$(this).attr("functionName");
+							data["regno"]=$(this).attr("regno");
 							//alert(data["function_name"]);
 							$(".registration").each(function(){
 								if($(this).val()=="None" || $(this).val()=="" ){
