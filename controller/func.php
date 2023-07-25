@@ -2047,7 +2047,7 @@ function UpdateRegistration(){
 				 ",Accommodation_Type="'.$accommType.'
 				 ",Arrival_Date="'.$checkinDate.'
 				 ",Departure_Date="'.$checkoutDate.'
-				 ",Attending_Orientation="'..$attendingOrientation'" where uname="'.$_SESSION["username"].'"';
+				 ",Attending_Orientation="'.$attendingOrientation.'" where uname="'.$_SESSION["username"].'"';
 //return $query;
 
 		$obj->GetQueryResult($query);
