@@ -2063,7 +2063,7 @@ function Register(){
 	if(!EnableMenuItem("Register"))
 	return Message("Will be available soon.","alert-warning");
 
-	echo RegistrationFee();
+	//echo RegistrationFee();
 
 	$obj = new DB();
 	$query = "select reg_start_date,reg_end_date from symposium where volume=67";
