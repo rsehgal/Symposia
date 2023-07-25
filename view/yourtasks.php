@@ -73,7 +73,7 @@ function AuthorTasks(){
     $logintype=$_SESSION['logintype'];
 
     $obj = new DB();
-    $query = "select taskname,function_name,logintype,tasktype,registration_required from yourtasks where logintype='".$logintype."'";
+    $query = "select taskname,function_name,logintype,tasktype,registration_required from yourtasks where logintype='".$logintype."' order by sno";
     $result = $obj->GetQueryResult($query);
 
     $additionalClasses=" yourtask";
