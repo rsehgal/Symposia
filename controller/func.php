@@ -2214,6 +2214,15 @@ function UpdatePayment(){
 
 function DownloadReceipt(){
 $receipt_type=$_POST["allotmentType"];
+
+$now = time();
+$startDate="";
+$startDate = GetUserDates("receipt_issue_date");
+$acc_time = GetStartTime($startDate);
+if($now < $acc_time){
+return Message("Receipt will be issue on ".date("d-M-Y",strtotime($startDate)),"alert-info");
+}
+
 $tablename = $receipt_type."_payment_detail";
 $obj = new DB();
 $counter = $obj->GetCounter($tablename);

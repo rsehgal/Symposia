@@ -218,10 +218,21 @@ function DownloadCertificate(){
 	$certType= $_POST["allotmentType"];
 	//return "hello...";
 	$now = time();
+	$startDate="";
+	if($certType==="DownloadAcceptanceCertificate")
+	$startDate = GetUserDates("acceptance_end_date");
+
+	if($certType==="DownloadParticipationCertificate")
 	$startDate = GetUserDates("certificate_issue_date");
+
 	$acc_time = GetStartTime($startDate);
 	if($now < $acc_time){
+		
+	if($certType==="DownloadAcceptanceCertificate")
+		return Message("Paper acceptance status will be released on ".date("d-M-Y",strtotime($startDate)),"alert-info");
+	if($certType==="DownloadParticipationCertificate")
 		return Message("Participation certificates will be released on ".date("d-M-Y",strtotime($startDate)),"alert-info");
+
 }
 	else{
 	//TODO : LOGIC to generate acceptance certificate.
