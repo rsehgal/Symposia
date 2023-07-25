@@ -2062,7 +2062,7 @@ function Register(){
 
 	session_start();
 	if(!isset($_SESSION["loggedin"]))
-		return  RegistrationFee();
+		return  RegistrationFee().Message("Please login to do the registration.","alert-danger");
 
 	if(!EnableMenuItem("Register"))
 	return Message("Will be available soon.","alert-warning");
