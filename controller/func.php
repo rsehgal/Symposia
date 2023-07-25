@@ -2009,6 +2009,7 @@ function UpdateRegistration(){
 	$accommType=trim($_POST["Accommodation_Type"]);
 	$checkinDate=trim($_POST["Arrival_Date"]);
 	$checkoutDate=trim($_POST["Departure_Date"]);
+	$attendingOrientation=trim($_POST["Attending_Orientation"]);
 
 
 	$obj = new DB();
@@ -2025,9 +2026,9 @@ function UpdateRegistration(){
 		//$query = 'insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile) values("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'","'.$gender.'","'.$email.'
 	//","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'")';
 	$query='insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
-			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
+			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,Attending_Orientation) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
 			,"'.$gender.'","'.$email.'","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$accommReq.'","'.$accommPref.'","'.$accommType.'"
-			,"'.$checkinDate.'","'.$checkoutDate.'")';
+			,"'.$checkinDate.'","'.$checkoutDate.'","'.$attendingOrientation.'")';
 			//return $query;
 	}
 
@@ -2045,7 +2046,8 @@ function UpdateRegistration(){
 				 ",Accommodation_Preference="'.$accommPref.'
 				 ",Accommodation_Type="'.$accommType.'
 				 ",Arrival_Date="'.$checkinDate.'
-				 ",Departure_Date="'.$checkoutDate.'" where uname="'.$_SESSION["username"].'"';
+				 ",Departure_Date="'.$checkoutDate.'
+				 ",Attending_Orientation="'..$attendingOrientation'" where uname="'.$_SESSION["username"].'"';
 //return $query;
 
 		$obj->GetQueryResult($query);
