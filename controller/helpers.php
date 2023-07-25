@@ -146,14 +146,14 @@ function HomeNASI(){
 $homeMsg="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 <h3>";
-$homeMsg.= "<raman class='text-primary font-weight-bold'>DAE Symposium on Nuclear Physics</raman> covering a wide range of topics is conducted annually. The aim of this series of symposia is to provide a scientific forum to the nuclear physics community to present their research work and to interact with the researchers in this area. This year the symposium will be held at <raman class='font-weight-bold'> Indian Institute of Technology Indore, Madhya Pradesh </raman> during 
-<raman class='text-primary font-weight-bold'> December 09-13, 2023.</raman> 
+$homeMsg.= "<raman class='font-weight-bold'>DAE Symposium on Nuclear Physics</raman> covering a wide range of topics is conducted annually. The aim of this series of symposia is to provide a scientific forum to the nuclear physics community to present their research work and to interact with the researchers in this area. This year the symposium will be held at <raman class='font-weight-bold'> Indian Institute of Technology Indore, Madhya Pradesh </raman> during 
+<raman class='font-weight-bold'> December 09-13, 2023.</raman> 
 The scientific deliberations of the symposium will consist of plenary
 talks, oral / poster presentations of contributory paper and
  theses presentations. 
 In addition, there will be talks by selected Young Achiever Award (YAA) nominees. 
 <raman class='font-weight-bold'>A one-day pre-symposium Orientation Programme</raman> 
-will be held on <raman class='text-primary font-weight-bold'>December 8, 2023.</raman>";
+will be held on <raman class='font-weight-bold'>December 8, 2023.</raman>";
 $homeMsg.="</h3></div></div>";
 
 return $homeMsg;
