@@ -377,7 +377,7 @@ echo "</div>";
 echo "<div class='row' >";
 echo "<div class='col-1'></div>";
 echo "<div class='col maincontent border border-dashed border-primary'>";
-echo "<div id='menuDiv'>";
+echo "<div id='menuDiv' class='sticky-top'>";
 echo $objSympo->Menu();
 echo "</div>";
 
