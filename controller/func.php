@@ -112,7 +112,7 @@ SNP-2023
 ";
 
 
-                //SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
+                SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -179,7 +179,7 @@ SNP-2023
 ";
 
 
-		//SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
+		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
@@ -254,7 +254,7 @@ With Regards,
 SNP-2023
 ";
 		//SendMail($from,$to,$subject,$body);
-	 	//SendMail("newaccount",$email,"SNP 2023 : Account Created",$body);	
+	 	SendMail("newaccount",$email,"SNP 2023 : Account Created",$body);	
 		//echo "$username : $password : $firstname : $lastname : $email";	
                //return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
 		return Message("User account creation successful.","alert-success");
@@ -1524,7 +1524,7 @@ SNP-2023
 ';
 
 //return $body;
-//SendMail("admin",$email,"SNP 2023 : Credentials",$body);
+SendMail("admin",$email,"SNP 2023 : Credentials",$body);
 $result->free();
 return Message("Login credentials sent to email : ".$email,"alert-info");
 }
