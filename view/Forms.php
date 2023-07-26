@@ -298,7 +298,17 @@ public function Register($fieldNames){
 					}
 					$selAccReq.='</select></div>';	
 					$formContent.=$selAccReq;
-				}
+				}elseif($fieldNames[$i]=="Designation"){
+                                        $options = array('None', 'Student', 'Research Associate','Scientist','Faculty','Others'); // The available options
+                                        $selectedOption=trim($row[$fieldNames[$i]]);
+                                        $selAccReq= '<select class="form-control accommodation registration" id="Designation">';
+                                        foreach ($options as $option) {
+                                                $selected = ($option == $selectedOption) ? 'selected' : '';
+                                                $selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+                                        }
+                                        $selAccReq.='</select></div>';  
+                                        $formContent.=$selAccReq;
+                                }
 				elseif($fieldNames[$i]=="Accommodation_Preference"){
 					$options = array('None', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
 					$selectedOption=trim($row[$fieldNames[$i]]);

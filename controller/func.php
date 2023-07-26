@@ -2057,7 +2057,7 @@ function UpdateRegistration(){
 
 		$obj->GetQueryResult($query);
 
-	return Message("Registration data updated : ".$regno,"alert-success");
+	return Message("Registration data updated. Your registration number is : ".$regno.". <br/><br/>Please help our registration desk at the venue with your registration number to collect your registration kit.","alert-success");
 
 
 }
