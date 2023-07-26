@@ -397,7 +397,7 @@ function ServeLogin(){
 	if($_SESSION["logintype"]=="Referee"){
 
 		$refAcceptanceStatus = RefereeAcceptanceStatus();
-		//return $refAcceptanceStatus;
+		return $refAcceptanceStatus;
 
 		$loginStatusMsg='<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
 		$localJs = '<script>

@@ -170,16 +170,34 @@ function AuthorTasks(){
                      </script>";
     
     if(isset($_SESSION["loggedin"])){
+
+	if($_SESSION["logintype"]=="Referee"){
+
+                $refAcceptanceStatus = RefereeAcceptanceStatus();
+                //return $refAcceptanceStatus;
+
+                $loginStatusMsg='<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
+                $localJs = '<script>
+                                $(function(){
+
+                                $("#loginstatus").html("<h4><mark>Logged in as : '.
+                                $_SESSION["username"].'");
+                                });</script>';
+                $returnFromRefLogin=$localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>';
+
+
+                if($refAcceptanceStatus=="allotted"){
+                        $forms = new Forms();
+                        return $forms->RefereeingConfirmation();//"Acceptance Form...";
+                }elseif($refAcceptanceStatus=="accepted"){
+                        //return $returnFromRefLogin.Referee_UpdatePaperStatus().$adCordJS;
+			return GetTasks().$associatedJs;
+                }elseif($refAcceptanceStatus=="declined"){
+                        return Message("It seems you had already declined our invitation. Kindly contact secretary.","alert-danger");
+                }
+
+                }
     
-    /*if($_SESSION["logintype"]=="Author"){
-    
-    return AuthorTasks().$associatedJs;
-    }
-    if($_SESSION["logintype"]=="Admin"){
-    
-    return AdminTasks().$associatedJs;
-    }*/
-	//return Message("Your Tasks","alert-info").GetTasks().$associatedJs;
 	return GetTasks().$associatedJs;
     }else{
     
