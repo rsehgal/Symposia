@@ -524,4 +524,72 @@ return $regisPaymentMsg.$associatedJs;
 
 }
 
+
+function RefereeStats(){
+//$query='select refereeName , count(refereeName) as refCount from refereeAllotment group by refereeName order by refereeName';
+$query='select refereeName , count(refereeName) as refCount, COUNT(CASE WHEN remarks IS NOT NULL THEN 1 ELSE NULL END) as reviewed from refereeAllotment group by refereeName order by refereeName';
+$obj=new DB();
+$result=$obj->GetQueryResult($query);
+
+$refStatsMsg='<table class="table table-striped table-bordered">';
+$refStatsMsg.='<tr>
+		<th>S. No.</th>
+		<th>Referee Code</th>
+		<th>Referee Name</th>
+		<th>Referee Email</th>
+		<th>Papers Assigned</th> 
+		<th>Review Request</th> 
+		<th >Reviewed</th> 
+		<th>Pending</th> 
+		<th>Final Status</th> 
+		</tr>';
+
+$counter=0;
+while($row = $result->fetch_assoc()){
+	if($row["refereeName"]==="")
+		continue;
+	$counter++;
+	$queryName="select refereeName,refereeEmail from refereeList where uname='".$row["refereeName"]."'";
+	$resName=$obj->GetQueryResult($queryName);
+	$rowName=$resName->fetch_assoc();
+
+	$queryStatus="select status,screeningStatus from refereeConfirmation where uname='".$row["refereeName"]."'";
+	$resStatus=$obj->GetQueryResult($queryStatus);
+	$rowStatus=$resStatus->fetch_assoc();
+	$finalStatus="Not Locked";
+	$statusClass="text-danger";
+	$acceptanceClass="";
+	if($rowStatus["status"]==="accepted"){
+		$acceptanceClass="text-success";
+	}
+	if($rowStatus["status"]==="declined"){
+		$acceptanceClass="text-danger";
+	}
+
+	
+	if((int)$rowStatus["screeningStatus"]===1){
+		$finalStatus="Locked";
+		$statusClass="text-success";
+	}
+
+	$pending = $row["refCount"]-$row["reviewed"];
+	$refStatsMsg.='<tr>
+			<td>'.$counter.'</td>
+			<td>'.$row["refereeName"].'</td>
+			<td>'.$rowName["refereeName"].'</td>
+			<td>'.$rowName["refereeEmail"].'</td>
+			<td class="font-weight-bold">'.$row["refCount"].'</td>
+			<td class="font-weight-bold '.$acceptanceClass.'">'.$rowStatus["status"].'</td>
+			<td class="font-weight-bold text-success">'.$row["reviewed"].'</td>
+			<td class="font-weight-bold text-danger">'.$pending.'</td>
+			<td class="font-weight-bold '.$statusClass.'">'.$finalStatus.'</td>
+			</tr>';
+}
+
+$refStatsMsg.='</table>';
+$result->free();
+return $refStatsMsg;
+
+}
+
 ?>
