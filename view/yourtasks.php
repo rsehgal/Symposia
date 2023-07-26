@@ -592,4 +592,119 @@ return $refStatsMsg;
 
 }
 
+function ShowDetails(){
+	$category = $_POST["category"];
+	$topic = $_POST["topic"];
+	$query="";
+	if($topic=="None")
+		$query='select * from contributions where Category="'.$category.'"';
+	else
+		$query='select * from contributions where Category="'.$category.'" and Topic="'.$topic.'"';
+	return ViewPapersTable($query);
+}
+
+function ViewPapers(){
+	return ViewPapersTable("select * from contributions");
+}
+
+function ViewPapersTable($query){
+	//$query='select * from contributions';
+	$obj = new DB();
+	$result = $obj->GetQueryResult($query);
+	$viewPaperMsg = '<table class="table table-dark table-striped table-bordered">';
+	$viewPaperMsg.= '<tr>
+			<th>S.No.</th>
+			<th>uname</th>
+			<th>Title</th>
+			<th>Category</th>
+			<th>Topic</th>
+			<th>Filename</th>
+			</tr>';
+	$counter=0;
+	while($row = $result->fetch_assoc()){
+		$counter++;
+		$viewPaperMsg.='<tr>
+				<td>'.$counter.'</td>
+				<td>'.$row["uname"].'</td>
+				<td>'.$row["Title"].'</td>
+				<td>'.$row["Category"].'</td>
+				<td>'.$row["Topic"].'</td>
+				<td><a href="../Uploads/'.$row["Filename"].'">'.$row["Filename"].'</a></td>
+				</tr>';
+	}
+	$viewPaperMsg.='</table>';
+	return $viewPaperMsg;
+}
+
+function RegistrationDetails(){
+
+}
+
+function ViewContributionsSummary(){
+	$associatedJS="<script>
+			$(function(){
+
+				var data={};
+				$('.details').click(function(e){
+				data['function_name']=$(this).attr('function_name');
+				data['category']=$(this).attr('category');
+				data['topic']=$(this).attr('topic');
+				$.ajax({
+                                                url: '../controller/func.php',
+                                                method: 'POST',
+                                                data : data,
+                                                success: function(response) {
+                                                        $('#paperDetails').hide();
+                                                        $('#paperDetails').html(response);
+                                                        $('#paperDetails').fadeIn(1000);
+                                                        }
+                                      });
+
+				});	
+			});
+			</script>";
+	return ViewTable(FALSE,"select * from categories").
+			"<hr/><div id='paperDetails'></div><hr/>
+			<h3 class='text-center font-weight-bold'>Contributory Papers</h3>".
+			ViewTable(TRUE,"select * from topics").$associatedJS;
+}
+
+function ViewTable($contr,$queryTab){
+	//return "Contribution summary...";
+	//$queryCat = "select * from categories";
+	$type="category";
+	if($contr){
+		$type="Topic";
+	}
+	$obj = new DB();
+	$resultCat = $obj->GetQueryResult($queryTab);
+	$summaryMsg='<table class="table table-striped table-bordered">';
+	$summaryMsg.='<tr class="bg-warning">
+			<th>Category</th>
+			<th>No. Of Papers</th>
+			<th>Detail</th>
+			</tr>';
+	while($rowCat = $resultCat->fetch_assoc()){
+		if($contr)
+			$queryCount = 'select Filename from contributions where Topic="'.$rowCat["code"].'"';
+		else
+			$queryCount = 'select Filename from contributions where Category="'.$rowCat["code"].'"';
+		$count = $obj->GetCounterFromQuery($queryCount);
+		$summaryMsg.='<tr>
+				<td>'.$rowCat["code"].' . '.$rowCat[$type].'</td>
+				<td>'.$count.'</td>';
+		if(!$contr){
+		if($rowCat["code"]==="C")
+			$summaryMsg.='<td>See Below</td>';
+		else
+			$summaryMsg.='<td><input type=button class="btn btn-primary details" value="Show" function_name="ShowDetails" category="'.$rowCat["code"].'" topic="None"/></td>';
+		}else
+			$summaryMsg.='<td><input type=button class="btn btn-primary details" value="Show" function_name="ShowDetails" category="C" topic="'.$rowCat["code"].'"/></td>';
+
+		$summaryMsg.='</tr>';
+	}
+
+	$summaryMsg.='</table>';
+	return $summaryMsg;
+}
 ?>
