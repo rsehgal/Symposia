@@ -1504,6 +1504,8 @@ $query = 'select * from user_credentials where email="'.$email.'"';
 $result = $obj->GetQueryResult($query);
 if($result===false)
                                 return Message("Query execution fails","alert-danger");
+if(!EmailExist($email))
+	return Message("Email id : "."<b class='text-dark'>".$email."</b>"." is not registered with the symposium. Kindly contract secretary.","alert-danger");
 
 $row=$result->fetch_assoc();
 $uname=$row["uname"];

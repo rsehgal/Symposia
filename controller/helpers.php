@@ -263,4 +263,14 @@ function RefereeAcceptanceStatus(){
 	}
 	
 }
+
+function EmailExist($email){
+$query = 'select email from user_credentials where email="'.$email.'"';
+$obj = new DB();
+$counter = $obj->GetCounterFromQuery($query);
+if((int)$counter===0)
+	return FALSE;
+else
+	return TRUE;
+}
 ?>
