@@ -1718,11 +1718,23 @@ function Allot(){
 			<th>'.$allotmentType.'</th>
 			<th>Update Status</th>
 			</tr>';
-	$decArray=array();
+	//$decArray=array();
+	$refCoorArray="";
 	if($allotmentType=="AllotReferee")
-	$decArray["Referee"]=GetArray("Referee");//array("RSE","BRB","SLV","ABE");
+	$refCoorArray=GetArray("Referee");
 	elseif($allotmentType=="AllotCoordinator"){
-	$decArray["Coordinator"]=GetArray("Coordinator");//array("RSE","BRB","SLV","ABE");
+	$refCoorArray=GetArray("Coordinator");//array("RSE","BRB","SLV","ABE");
+	}
+
+	$decArray=array();
+	if($allotmentType=="AllotReferee"){
+
+	$decArray["Referee"]=$refCoorArray["uname"];//GetArray("Referee");//array("RSE","BRB","SLV","ABE");
+	$decNameArray["Referee"]=$refCoorArray["name"];//GetArray("Referee");//array("RSE","BRB","SLV","ABE");
+	}
+	elseif($allotmentType=="AllotCoordinator"){
+	$decArray["Coordinator"]=$refCoorArray["uname"];//GetArray("Coordinator");//array("RSE","BRB","SLV","ABE");
+	$decNameArray["Coordinator"]=$refCoorArray["name"];//GetArray("Coordinator");//array("RSE","BRB","SLV","ABE");
 	}
 	else
 	$decArray["Decision"]=array("RSE","BRB","SLV","ABE");
@@ -1784,10 +1796,10 @@ function Allot(){
 
 		$referees='<td><table class="table">
 			   <tr>				
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref1"],$fileName,$allotmentType,1).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref2"],$fileName,$allotmentType,2).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref3"],$fileName,$allotmentType,3).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref4"],$fileName,$allotmentType,4).'</td>
+			   <td>'.AddDecisionEntries($decArray,$decNameArray,"Referee",$updateButtonId,$refArray["ref1"],$fileName,$allotmentType,1).'</td>
+			   <td>'.AddDecisionEntries($decArray,$decNameArray,"Referee",$updateButtonId,$refArray["ref2"],$fileName,$allotmentType,2).'</td>
+			   <td>'.AddDecisionEntries($decArray,$decNameArray,"Referee",$updateButtonId,$refArray["ref3"],$fileName,$allotmentType,3).'</td>
+			   <td>'.AddDecisionEntries($decArray,$decNameArray,"Referee",$updateButtonId,$refArray["ref4"],$fileName,$allotmentType,4).'</td>
 			   </tr>
 			   </table>';	
 
@@ -1795,9 +1807,9 @@ function Allot(){
 
 		}
 		elseif($allotmentType=="AllotCoordinator")
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId,$status,$fileName,$allotmentType);
+		$retTable.='<td>'.AddDecisionEntries($decArray,$decNameArray,"Coordinator",$updateButtonId,$status,$fileName,$allotmentType);
 		else
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status,$fileName,$allotmentType);
+		$retTable.='<td>'.AddDecisionEntries($decArray,$decNameArray,"Decision",$updateButtonId,$status,$fileName,$allotmentType);
 		if($status=="")
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control bg-warning"/></td>';
 	//	else
@@ -1892,10 +1904,12 @@ $result->free();
 				$("#loadingGif").show();
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
-				alert(textBoxId);
+				//alert(textBoxId);
 				var dataRef={};
 				var prevValue = $(textBoxId).val();		
-				var newValue = $(this).attr("value");	
+				var newValue = $(this).attr("value");
+				//var toolTipValue = $(this).attr("title");
+				//alert("Raman : "+newValue);	
 				var functionName = $(this).attr("functionName");// "AllotReferee_V2";	
 				dataRef["function_name"]=functionName;
 
@@ -1904,7 +1918,7 @@ $result->free();
 				dataRef["filename"]=$(this).attr("filename");
 				dataRef["refnum"]=$(this).attr("refnum");
 
-				alert(dataRef["prevValue"]+" : "+dataRef["newValue"]+" : "+dataRef["filename"]+" : "+dataRef["refnum"]);
+				//alert(dataRef["prevValue"]+" : "+dataRef["newValue"]+" : "+dataRef["filename"]+" : "+dataRef["refnum"]);
 
 								var okornot=false;
 				if(prevValue!=newValue){
@@ -1932,6 +1946,7 @@ $result->free();
 					return;
 				
 				$(textBoxId).val($(this).attr("value"));
+				$(textBoxId).attr("title",$(this).attr("title"));
 				//$(textBoxId).attr("value",$(this).attr("value"));
 				
 			});

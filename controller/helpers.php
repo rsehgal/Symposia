@@ -30,8 +30,9 @@
                 //return $valArray[0];
         }
 
- function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId,$status,$filename,$allotmenType,$id=0){
+ function AddDecisionEntries($associativeSubEntries,$associativeSubNameEntries,$mainEntry,$buttonId,$status,$filename,$allotmenType,$id=0){
 	$subEntries = $associativeSubEntries[$mainEntry];
+	$subNameEntries = $associativeSubNameEntries[$mainEntry];
 	$catEntries = $associativeSubEntries["code"];
 	$str='<table class="table">
 		<tr>
@@ -40,16 +41,18 @@
     <button type="button" class="btn btn-primary dropdown-toggle" id="topicDropDown" data-toggle="dropdown">'.
       $mainEntry.'
     </button>';
-        $subMenu='<div class="dropdown-menu">';
+        $subMenu='<div class="dropdown-menu" style="height: 200px; overflow-y: auto;">';
+        $codeNameMapping=array();
         for($i= 0 ; $i < count($subEntries) ; $i++){
+		$codeNameMapping[$subEntries[$i]]=$subNameEntries[$i];
            
-           $subMenu.='<a class="dropdown-item '.$mainEntry.'" functionName="'.$allotmenType.'" filename="'.$filename.'" refnum="ref'.$id.'" id="'.$subEntries[$i].'" buttonid="'.$buttonId.'_'.$id.'" value="'.$subEntries[$i].'" refid="'.$id.'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
+           $subMenu.='<a class="dropdown-item '.$mainEntry.'" functionName="'.$allotmenType.'" filename="'.$filename.'" refnum="ref'.$id.'" id="'.$subEntries[$i].'" buttonid="'.$buttonId.'_'.$id.'" value="'.$subEntries[$i].'" refid="'.$id.'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'" title="'.$subNameEntries[$i].'" data-toggle="tooltip" data-placement="right">'.$subEntries[$i].'</a>';
 }
         
         $subMenu.='</div>';
 
 	$str.=$main.$subMenu.'</td></tr>';
-	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control decisionText"/></td></tr>';
+	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" title="'.$codeNameMapping[$status].'" class="form-control decisionText" data-toggle="tooltip" data-placement="right"/></td></tr>';
 
 	if($allotmenType=="AllotReferee"){
 	$obj = new DB();
@@ -66,7 +69,7 @@
 
 	$associatedJs = '<script>
 			$(".decisionText").change(function(){
-				alert($(this).attr("id"));
+				//alert($(this).attr("id"));
 			});
 			 </script>
 			';
@@ -87,12 +90,24 @@ $query='select * from coordinatorList where 1';
 $result = $obj->GetQueryResult($query);
 
 $coordinatorsArray = array();
+$coordinatorsArrayUname = array();
+$coordinatorsArrayName = array();
+$superArray = array();
 $counter=0;
 while($row = $result->fetch_assoc()){
- $coordinatorsArray[$counter]=$row["uname"];
+ $coordinatorsArrayUname[$counter]=$row["uname"];
+if($allotmenType=="Referee")
+ $coordinatorsArrayName[$counter]=$row["refereeName"];
+if($allotmenType=="Coordinator")
+ $coordinatorsArrayName[$counter]=$row["name"];
  $counter++;
 }
-return $coordinatorsArray;
+
+$superArray["uname"]=$coordinatorsArrayUname;
+$superArray["name"]=$coordinatorsArrayName;
+
+//return $coordinatorsArray;
+return $superArray;
 }
 
 //For Ajax Call
