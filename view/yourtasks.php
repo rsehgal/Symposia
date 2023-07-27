@@ -537,8 +537,8 @@ $refStatsMsg.='<tr>
 		<th>Referee Code</th>
 		<th>Referee Name</th>
 		<th>Referee Email</th>
-		<th>Papers Assigned</th> 
 		<th>Review Request</th> 
+		<th>Papers Assigned</th> 
 		<th >Reviewed</th> 
 		<th>Pending</th> 
 		<th>Final Status</th> 
@@ -578,8 +578,8 @@ while($row = $result->fetch_assoc()){
 			<td>'.$row["refereeName"].'</td>
 			<td>'.$rowName["refereeName"].'</td>
 			<td>'.$rowName["refereeEmail"].'</td>
-			<td class="font-weight-bold">'.$row["refCount"].'</td>
 			<td class="font-weight-bold '.$acceptanceClass.'">'.$rowStatus["status"].'</td>
+			<td class="font-weight-bold">'.$row["refCount"].'</td>
 			<td class="font-weight-bold text-success">'.$row["reviewed"].'</td>
 			<td class="font-weight-bold text-danger">'.$pending.'</td>
 			<td class="font-weight-bold '.$statusClass.'">'.$finalStatus.'</td>
