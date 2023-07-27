@@ -1979,13 +1979,18 @@ $newValue=$_POST["newValue"];
 
 $obj = new DB();
 $query="";
-
-if($prevValue=="")
+$queryForConfirmation = "";
+if($prevValue==""){
 $query='insert into refereeAllotment (Filename, refereeName,refnum) values("'.$filename.'","'.$newValue.'","'.$refnum.'")';
+
+$queryForConfirmation = 'insert into refereeConfirmation values ("'.$newValue.'","","allotted",0)';
+$obj->GetQueryResult($queryForConfirmation);
+}
 else
 $query='update refereeAllotment set Filename="'.$filename.'",refereeName="'.$newValue.'",refnum="'.$refnum.'",marks=0,remarks="" where Filename="'.$filename.'" and refereeName="'.$prevValue.'" and refnum="'.$refnum.'" ';
 
 $obj->GetQueryResult($query);
+
 return Message("Referee Updated","alert-success");
 }
 
