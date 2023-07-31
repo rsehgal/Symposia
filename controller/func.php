@@ -1698,9 +1698,9 @@ function Allot(){
  	$allotmentType = $_POST["allotmentType"];
 	$query="";
 	if($allotmentType=="AllotReferee")	
-	$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
+	$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'" and status<>"Deleted"';
 	else	
-	$query = 'select * from contributions where 1';//refereeName="'.$_SESSION["username"].'"';
+	$query = 'select * from contributions where status<>"Deleted"';//refereeName="'.$_SESSION["username"].'"';
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
