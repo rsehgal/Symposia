@@ -2019,6 +2019,7 @@ function UpdateRegistration(){
 	$uname=trim($_POST["uname"]);
 	$initials=trim($_POST["Initials"]);
 	$firstname = trim($_POST["FirstName"]);
+	$middlename = trim($_POST["MiddleName"]);
 	$lastname=trim($_POST["LastName"]);
 	$gender=trim($_POST["Gender"]);
 	$email = trim($_POST["Email"]);
@@ -2051,8 +2052,8 @@ function UpdateRegistration(){
 
 		//$query = 'insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile) values("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'","'.$gender.'","'.$email.'
 	//","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'")';
-	$query='insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
-			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,Attending_Orientation,regno) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
+	$query='insert into registration (uname,Initials,FirstName,MiddleName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
+			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,Attending_Orientation,regno) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$middlename.'","'.$lastname.'"
 			,"'.$gender.'","'.$email.'","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$accommReq.'","'.$accommPref.'","'.$accommType.'"
 			,"'.$checkinDate.'","'.$checkoutDate.'","'.$attendingOrientation.'","'.$regno.'")';
 			//return $query;
@@ -2062,6 +2063,7 @@ function UpdateRegistration(){
 		$query = 'update registration set FirstName="'.$firstname.'
 				 ",Initials="'.$initials.'
 				 ",Gender="'.$gender.'
+				 ",MiddleName="'.$middlename.'
 				 ",LastName="'.$lastname.'
 				 ",Email="'.$email.'
 				 ",Affiliation="'.$affil.'

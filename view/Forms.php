@@ -243,7 +243,8 @@ public function Register($fieldNames){
 			$formContent.='<div class="form-group" id="group_'.$fieldNames[$i].'">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
 				
-				if($fieldNames[$i]=="FirstName" || $fieldNames[$i]=="LastName" || $fieldNames[$i]=="Email" || $fieldNames[$i]=="Mobile")
+				//if($fieldNames[$i]=="FirstName" || $fieldNames[$i]=="LastName" || $fieldNames[$i]=="Email" || $fieldNames[$i]=="Mobile")
+				if($fieldNames[$i]=="Email")
 				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION[$fieldNames[$i]].'" readonly > </div>';
 				elseif($fieldNames[$i]=="Initials"){
 					$options = array('None', 'Dr.', 'Ms.', 'Mrs.','Mr.','Prof.','Kum.'); // The available options
@@ -310,7 +311,8 @@ public function Register($fieldNames){
                                         $formContent.=$selAccReq;
                                 }
 				elseif($fieldNames[$i]=="Accommodation_Preference"){
-					$options = array('None', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
+					//$options = array('None', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
+					$options = array('None', 'Hostel', 'Hotel','Others'); // The available options
 					$selectedOption=trim($row[$fieldNames[$i]]);
 					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Preference" >';
 					foreach ($options as $option) {
