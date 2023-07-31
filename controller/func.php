@@ -97,7 +97,7 @@ function Upload(){
 			//echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				//echo 'File uploaded successfully.<br/>';
-				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'","","")';
+				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'","'.$_SESSION["Email"].'","'.$_SESSION["username"].'","","")';
 				//echo $query."<br/>";
 								$obj->GetQueryResult($query);
 $body="Dear ".$_SESSION["username"].", 
