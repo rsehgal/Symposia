@@ -66,7 +66,7 @@ function AuthorList(){
 				$("#copy").click( function(e) {
 					e.preventDefault();
                                         counter++;
-                                        alert("Counter : "+counter);
+                                        //alert("Counter : "+counter);
 					var copy = $("#troriginal").clone(true);
 					copy.attr("id",counter);
                                         copy.insertAfter("#troriginal");
