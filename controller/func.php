@@ -74,7 +74,8 @@ function Upload(){
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
 			$categoryId = $_POST['categoryid'];
 			$topicId = $_POST['topicid'];
-			$authorNamesList=$_POST['authornameslist'];
+			$authorFirstNamesList=$_POST['authorfirstnameslist'];
+			$authorLastNamesList=$_POST['authorlastnameslist'];
 			$authorEmailsList=$_POST['authoremailslist'];
 			//echo $targetDirectory."<br/>";
 			//echo basename($_FILES['file']['name'])."<br/>";
@@ -97,7 +98,8 @@ function Upload(){
 			//echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				//echo 'File uploaded successfully.<br/>';
-				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'","'.$_SESSION["Email"].'","'.$_SESSION["username"].'","","")';
+				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorFirstNamesList.'","'.$authorLastNamesList.'","'.$authorEmailsList.'","'.$_SESSION["Email"].'","'.$_SESSION["username"].'","","")';
+				//return $query;
 				//echo $query."<br/>";
 								$obj->GetQueryResult($query);
 $body="Dear ".$_SESSION["username"].", 
@@ -112,7 +114,7 @@ SNP-2023
 ";
 
 
-                SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
+                //SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -137,7 +139,8 @@ function ResubmitUpload(){
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
 			$categoryId = $_POST['categoryid'];
 			$topicId = $_POST['topicid'];
-			$authorNamesList=$_POST['authornameslist'];
+			$authorFirstNamesList=$_POST['authorfirstnameslist'];
+			$authorLastNamesList=$_POST['authorlastnameslist'];
 			$authorEmailsList=$_POST['authoremailslist'];
 			$actualFileName = $_POST['filename'];
 			//echo $targetDirectory."<br/>";
@@ -163,7 +166,7 @@ function ResubmitUpload(){
 				//echo 'File uploaded successfully.<br/>';
 				//$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'","","")';
 
-				$query = 'update contributions set Title="'.$_POST["title"].'" , AuthorNamesList="'.$authorNamesList.'" , AuthorEmailsList="'.$authorEmailsList.'" where FileName="'.$actualFileName.'"';
+				$query = 'update contributions set Title="'.$_POST["title"].'" , AuthorFirstNamesList="'.$authorFirstNamesList.'",AuthorLastNamesList="'.$authorLastNamesList.'" , AuthorEmailsList="'.$authorEmailsList.'" where FileName="'.$actualFileName.'"';
 				//echo $query."<br/>";
 				//return $query;
 								$obj->GetQueryResult($query);
@@ -179,7 +182,7 @@ SNP-2023
 ";
 
 
-		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
+		//SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
@@ -533,7 +536,7 @@ function NewSubmission(){
 	$obj = new DB();
         //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
         //$obj->Connect();
-	$query = "select Category,Topic,Title,Filename,AuthorNamesList,AuthorEmailsList from contributions";
+	$query = "select Category,Topic,Title,Filename,AuthorFirstNamesList,AuthorLastNamesList,AuthorEmailsList from contributions";
 	$fieldNames = $obj->GetFieldNamesFromQuery($query);
 	//$fieldNames = $obj->GetFieldNames("contributions");
 	
@@ -1235,16 +1238,27 @@ $result->free();
                                 return;
                         }
 
-                        $(".authorName").each(function(){
+                        $(".authorfirstname").each(function(){
                                 if($(this).val()==""){
                                    $(this).css("background", "yellow");
                                    returnVar=1;
-                                   alert("Please fill the Author Name : "+returnVar);
+                                   alert("Please fill the First Name : "+returnVar);
                                 }
                         });
                         if(returnVar==1){
                         return;
                         }
+			$(".authorlastname").each(function(){
+                                if($(this).val()==""){
+                                   $(this).css("background", "yellow");
+                                   returnVar=1;
+                                   alert("Please fill the Last Name : "+returnVar);
+                                }
+                        });
+                        if(returnVar==1){
+                        return;
+                        }
+
 
                         $(".authorEmail").each(function(){
                                 if($(this).val()==""){
@@ -1272,13 +1286,19 @@ $result->free();
         	        $(this).prop("disabled",true);
 
                		//Lets try to get the author names and email list.
-                          var authorNameTextBoxValues = $(".authorName").map(function() {
+                          var authorFirstNameTextBoxValues = $(".authorfirstname").map(function() {
                           return $(this).val();
                           }).get();
+
+			  var authorLastNameTextBoxValues = $(".authorlastname").map(function() {
+                          return $(this).val();
+                          }).get();
+
                           var authorEmailTextBoxValues = $(".authorEmail").map(function() {
                           return $(this).val();
                           }).get();
-                          dataUp.append("authornameslist",authorNameTextBoxValues);
+                          dataUp.append("authorfirstnameslist",authorFirstNameTextBoxValues);
+                          dataUp.append("authorlastnameslist",authorLastNameTextBoxValues);
                           dataUp.append("authoremailslist",authorEmailTextBoxValues);
                          //alert(authorNameTextBoxValues+" : "+authorEmailTextBoxValues);
 
