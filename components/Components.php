@@ -38,9 +38,9 @@ function AuthorList(){
 	$authList = '<div id="original">
 			<table class="table" id="authorTable">
 			<tr id="troriginal">
-			<td><input type="text"class="form-control authorlastname" placeholder="Last Name" required/></td>
-			<td><input type="text"class="form-control authorfirstname" placeholder="First / Middle Name" required/></td>
-			<td><input type="email" class="form-control authoremail" placeholder="Author Email" required/></td>
+			<td><input type="text"class="form-control authorlastname" id="lastname" placeholder="Last Name" required/></td>
+			<td><input type="text"class="form-control authorfirstname" id="firstname" placeholder="First / Middle Name" required/></td>
+			<td><input type="email" class="form-control authoremail" id="email" placeholder="Author Email" required/></td>
 		        <td><button id="0" class="remove btn btn-danger">Remove</button></td>
 			</tr>
 			</table>
@@ -71,6 +71,9 @@ function AuthorList(){
 					var copy = $("#troriginal").clone(true);
 					copy.attr("id",counter);
 					copy.find("input").val("");
+					copy.find("#firstname").val("small test");
+					copy.find("#lastname").val("CAPITAL TEST");
+					copy.find("#email").val("EMAIL@TEST.COM");
                                         //copy.insertAfter("#troriginal");
                                         copy.appendTo("#authorTable");
 				});
