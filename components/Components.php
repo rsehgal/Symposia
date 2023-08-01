@@ -38,7 +38,8 @@ function AuthorList(){
 	$authList = '<div id="original">
 			<table class="table">
 			<tr id="troriginal">
-			<td><input type="text"class="form-control authorname" placeholder="Author Name" required/></td>
+			<td><input type="text"class="form-control authorlastname" placeholder="Last Name" required/></td>
+			<td><input type="text"class="form-control authorfirstname" placeholder="First / Middle Name" required/></td>
 			<td><input type="email" class="form-control authoremail" placeholder="Author Email" required/></td>
 		        <td><button id="0" class="remove btn btn-danger">Remove</button></td>
 			</tr>

@@ -499,7 +499,7 @@ public function RefereeingConfirmation(){
                 <form method="POST" id="newsubmisson" enctype="multipart/form-data" class="">';
 		
 		for($i=0 ; $i<count($fieldNames) ; $i++){
-			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName"){
+			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorFirstNamesList" || $fieldNames[$i]=="AuthorLastNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName"){
 			}else{
 			$formContent.='<div class="form-group">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
@@ -591,13 +591,19 @@ public function RefereeingConfirmation(){
 
 		//Lets try to get the author names and email list.
 		//$("#testUploadAndSubmit").click(function(e){
-                                var authorNameTextBoxValues = $(".authorName").map(function() {
+                                var authorFirstNameTextBoxValues = $(".authorfirstname").map(function() {
                                 return $(this).val();
                                 }).get();
+				var authorLastNameTextBoxValues = $(".authorlastname").map(function() {
+                                return $(this).val();
+                                }).get();
+				//alert("FirstName : "+authorFirstNameTextBoxValues);
+				//alert("LastName : "+authorLastNameTextBoxValues);
                                 var authorEmailTextBoxValues = $(".authorEmail").map(function() {
                                 return $(this).val();
                                 }).get();
-				dataUp.append("authornameslist",authorNameTextBoxValues);
+				dataUp.append("authorfirstnameslist",authorFirstNameTextBoxValues);
+				dataUp.append("authorlastnameslist",authorLastNameTextBoxValues);
 				dataUp.append("authoremailslist",authorEmailTextBoxValues);
                                //alert(authorNameTextBoxValues+" : "+authorEmailTextBoxValues);
                  //});
@@ -622,16 +628,27 @@ public function RefereeingConfirmation(){
 				return;
 			}
 
-			$(".authorName").each(function(){
+			$(".authorlastname").each(function(){
 				if($(this).val()==""){
          			   $(this).css("background", "yellow");
 				   returnVar=1;
-				   alert("Please fill the Author Name : "+returnVar);
+				   alert("Please fill the Last Name : "+returnVar);
         			}
 			});
 			if(returnVar==1){
 			return;
 			}
+			$(".authorfirstname").each(function(){
+				if($(this).val()==""){
+         			   $(this).css("background", "yellow");
+				   returnVar=1;
+				   alert("Please fill the First Name : "+returnVar);
+        			}
+			});
+			if(returnVar==1){
+			return;
+			}
+
 
 			$(".authorEmail").each(function(){
 				if($(this).val()==""){
