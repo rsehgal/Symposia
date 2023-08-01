@@ -389,9 +389,13 @@ public function Register($fieldNames){
 							data["regno"]=$(this).attr("regno");
 							//alert(data["function_name"]);
 							$(".registration").each(function(){
+								if($(this).attr("name")=="MiddleName"){
+
+								}else{
 								if($(this).val()=="None" || $(this).val()=="" ){
 									alert("Please fill "+$(this).attr("id"));
 									exit;
+								}
 								}
 								data[$(this).attr("id")]=$(this).val();
 								//alert($(this).attr("id")+" : "+data[$(this).attr("id")])
