@@ -114,7 +114,7 @@ SNP-2023
 ";
 
 
-                //SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
+                SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -182,7 +182,7 @@ SNP-2023
 ";
 
 
-		//SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
+		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
