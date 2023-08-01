@@ -36,7 +36,7 @@ class Components{
 
 function AuthorList(){
 	$authList = '<div id="original">
-			<table class="table">
+			<table class="table" id="authorTable">
 			<tr id="troriginal">
 			<td><input type="text"class="form-control authorlastname" placeholder="Last Name" required/></td>
 			<td><input type="text"class="form-control authorfirstname" placeholder="First / Middle Name" required/></td>
@@ -70,7 +70,9 @@ function AuthorList(){
                                         //alert("Counter : "+counter);
 					var copy = $("#troriginal").clone(true);
 					copy.attr("id",counter);
-                                        copy.insertAfter("#troriginal");
+					copy.find("input").val("");
+                                        //copy.insertAfter("#troriginal");
+                                        copy.appendTo("#authorTable");
 				});
 				$("#testUploadAndSubmit").click(function(e){
 					e.preventDefault();
