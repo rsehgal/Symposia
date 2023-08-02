@@ -282,8 +282,8 @@ public function GetFieldNames($tableName){
 	return $fieldNames;
 	}
 }
-
 public function GetFieldNamesFromQuery($query){
+	$query.=" LIMIT 1";
 	//echo "GetFieldName called.... <br/>";
 	//$query = "SELECT * FROM $tableName LIMIT 1";
 	$result = $this->GetQueryResult($query);// $this->conn->query($query);

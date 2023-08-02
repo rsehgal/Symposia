@@ -54,6 +54,7 @@ $table="<table border='1' class='table table-striped'>";
 }
 
 function GenerateUpdaterView(){
+session_start();
 $obj=new DB();
 $tableName = $_POST["tablename"];
 $prikey= $_POST["prikey"];
@@ -64,8 +65,18 @@ $showUname=1;
 $allowDeletion=0;
 $allowUpdation=1;
 $table="<table border='1' class='table table-striped table-responsive'>";
-        $columnNames = $obj->GetFieldNames($tableName);
-        $query = "SELECT * FROM $tableName";
+        //$columnNames = $obj->GetFieldNames($tableName);
+	$query = "SELECT * FROM $tableName";
+	if(isset($_SESSION["loggedin"]) && $_SESSION["logintype"]==="Admin"){
+		if($tableName==="user_credentials"){
+		if($_SESSION["username"]==="ADM")
+		        $query = "SELECT * FROM $tableName";
+		else
+		        $query = "SELECT uname,firstname,lastname,email,creation_date,phonenum FROM $tableName";
+		}
+	}
+        $columnNames = $obj->GetFieldNamesFromQuery($query);
+		
         //$result = $obj->conn->query($query);
         $result = $obj->GetQueryResult($query);
         //echo
