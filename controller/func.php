@@ -114,7 +114,7 @@ SNP-2023
 ";
 
 
-                SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
+                //SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -182,7 +182,7 @@ SNP-2023
 ";
 
 
-		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
+		//SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
@@ -610,7 +610,7 @@ return Message("Will be available soon.","alert-warning");
 	//return $query;
 	
 	$retValue="";
-	$retTable='<table class="table table-striped table-bordered">';
+	$retTable='<table class="table table-striped table-bordered table-responsive">';
 	$retTable.='<tr><td>uname</th>
 			<th>Name</th>
 			<th>Title</th>
@@ -1135,6 +1135,27 @@ $row=$result->fetch_assoc();
 
 $filename=$row["Filename"];
 
+$listAuthorFirstNames = explode(',', $row["AuthorFirstNamesList"]);
+$listAuthorLastNames = explode(',', $row["AuthorLastNamesList"]);
+$listAuthorEmails = explode(',', $row["AuthorEmailsList"]);
+
+$jsonArray=array();
+//foreach($row["AuthorFirstNamesList"] as $index => $value){
+
+for($index = 0 ; $index < count($listAuthorFirstNames) ; $index++){
+///echo $index." : ".$listAuthorFirstNames[$index]."<br/>";
+
+$jsonArray[$index]=array(
+				'firstname' => $listAuthorFirstNames[$index],
+				'lastname'  => $listAuthorLastNames[$index],
+				'email'     => $listAuthorEmails[$index]
+				);
+		   
+}
+
+//print_r($jsonArray);
+$authorsListJSON = json_encode($jsonArray);
+
 $selectedTopic=GetTopic($row["Topic"]);
 $selectedCategory=GetCategory($selectedTopic,$row["Category"]);
 //return $query;
@@ -1184,7 +1205,7 @@ $formContent.='<div class="form-group">
 	}
 }
 
-		$formContent.=AuthorList().'<br/><hr/>';
+		$formContent.=AuthorListFromJSONString($authorsListJSON); //AuthorList().'<br/><hr/>';
                  $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit" loc="../'.$loc.'" filename="'.$filename.'">Submit</button>';
 		$formContent.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 
