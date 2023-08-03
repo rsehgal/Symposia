@@ -288,4 +288,18 @@ if((int)$counter===0)
 else
 	return TRUE;
 }
+
+//Will be useful if the function_name is set properly
+function LinkJS(){
+$associatedJS = '<script>
+                $(function(){
+                 $(".link").click(function(e){
+			var funcName=$(this).attr("function_name");
+                        $("#"+funcName).trigger("click");
+                });
+                });
+                </script>';
+return $associatedJS;
+}
+
 ?>

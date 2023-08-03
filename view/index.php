@@ -108,6 +108,9 @@ background: #5b2c6f ;
 </style>
 <script>
 $(document).ready(function(){
+
+	$("#RegistrationForm").hide();
+	
 	//This block control the hover color of drop down menus
 	$(".dropdown-item").hover(function(){
 		$(".dropdown-item").each(function(){
