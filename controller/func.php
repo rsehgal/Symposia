@@ -2133,14 +2133,38 @@ function Register(){
 	//error_reporting(E_ALL);
 
 	session_start();
-	if(!isset($_SESSION["loggedin"]))
-		return  RegistrationFee().Message("Please login to do the registration.","alert-danger");
-
 	if(!EnableMenuItem("Register"))
 	return Message("Will be available soon.","alert-warning");
 
-	//echo RegistrationFee();
 
+				//$loginButton='<input type="button" id="Login" class="round-ended-btn btn-primary" value="Login"/> ';
+	
+	if(!isset($_SESSION["loggedin"])){
+		$loginButton='<a href="#" id="AuthorLogin" function_name="AuthorLogin" class="text-primary link" >Login<a/> ';
+			$returnVal=Message("Please ".$loginButton." to do the registration.","alert-danger");
+		//return $returnVal.LinkJS();
+	}else{
+	$loginButton='<a href="#" id="RegistrationForm" function_name="RegistrationForm" class="text-primary link" ><raman class="font-weight-bold text-primary"><u><i>Click here</i></u></raman><a/> ';
+			$returnVal=Message("Please ".$loginButton." to proceed to your registration.","alert-warning");
+
+	//return RegistrationForm();
+	}
+	$returnVal.= '<div class="row">
+			 	<div class="col-8 border">'.
+				RegistrationFee().
+				'</div>
+				 <div class="col-4 border">'.
+				BankDetails().
+				'</div>
+			</div><hr/>';
+
+
+		//Message("Please login to do the registration.","alert-danger");
+		return $returnVal.LinkJS();
+		//return $returnVal.$associatedJS;
+}
+
+function RegistrationForm(){
 	$obj = new DB();
 	$query = "select reg_start_date,reg_end_date from symposium where volume=67";
 	$result = $obj->GetQueryResult($query);
@@ -2162,6 +2186,7 @@ function Register(){
 	$fieldNames = $obj->GetFieldNames("registration");
 	$forms = new Forms();
 	  return $forms->Register($fieldNames);
+
 }
 
 function Submission_Guidelines(){
@@ -2374,7 +2399,8 @@ return Message("Bank Details","alert-info").$bankdetailsMsg;
 
 function RegistrationFee(){
 
-	$regFeeMsg='<h3>Registration Fees (Non refundable)</h3><hr/>';
+	//$regFeeMsg='<h3>Registration Fees (Non refundable)</h3><hr/>';
+	$regFeeMsg=Message("Registration Fees (Non refundable)","alert-info");
         $table="<table border='1' class='table table-striped'>";
 	$obj = new DB();
 	$result = $obj->GetQueryResult("select regis_payment_due_date from symposium where volume=67");

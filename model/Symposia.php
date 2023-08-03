@@ -219,7 +219,9 @@ $result.='
 	$result.=$this->AddMenuEntry("Accommodation").
 	//$this->AddMenuEntry("Upload_Contribution").
 	$this->AddMenuEntry("HowToReach").
-	$this->AddMenuEntry("Contact").'
+	$this->AddMenuEntry("Contact").
+	//A dummy entry to have registration form on separate click
+	$this->AddMenuEntry("RegistrationForm").'
       </ul>
     </div>
   </nav>
