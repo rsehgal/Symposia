@@ -32,13 +32,30 @@ $footerMsg.='<footer class="footer text-light">
           <p>'.$rowConv["Email"].'</p>
           <p>Tel:'.$rowConv["ContactNumber"].'</p>
         </div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	  <h5>'.$rowLocalConv["Post"].'</h5>
           <p class="font-weight-bold"> '.
           $rowLocalConv["Name"].'</p>
           <p>'.$rowLocalConv["Email"].'</p>
           <p>Tel:'.$rowLocalConv["ContactNumber"].'</p>
        </div>
+	<div class="col-md-1">
+	<div class="row">
+	<div class="col">
+	Visitors counter
+	</div>
+	</div>
+	<div class="row">
+	<div class="col">
+
+		<!-- hitwebcounter Code START -->
+<a href="https://www.hitwebcounter.com" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=8695087&style=0010&nbdigits=6&type=page&initCount=0" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>       	  
+	</div>
+	</div>
+       </div>
+
+       
 
        	<!--<div class="col-md-3">
           <h5>Quick Links</h5>
