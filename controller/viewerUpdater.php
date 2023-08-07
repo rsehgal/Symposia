@@ -70,9 +70,12 @@ $table="<table border='1' class='table table-striped table-responsive'>";
 	if(isset($_SESSION["loggedin"]) && $_SESSION["logintype"]==="Admin"){
 		if($tableName==="user_credentials"){
 		if($_SESSION["username"]==="ADM")
-		        $query = "SELECT * FROM $tableName";
+		        //$query = "SELECT * FROM $tableName ";
+		        $query = "SELECT * FROM $tableName order by creation_date";
 		else
-		        $query = "SELECT uname,firstname,lastname,email,creation_date,phonenum FROM $tableName";
+		        $query = "SELECT uname,firstname,lastname,email,creation_date,phonenum FROM $tableName order by creation_date";
+		}elseif($tableName==="registration"){
+		        $query = "SELECT * FROM $tableName order by regno";
 		}
 	}
         $columnNames = $obj->GetFieldNamesFromQuery($query);
