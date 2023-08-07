@@ -47,10 +47,9 @@ $footerMsg.='<footer class="footer text-light">
 	</div>
 	<div class="row">
 	<div class="col">
-
-		<!-- hitwebcounter Code START -->
+<!-- hitwebcounter Code START -->
 <a href="https://www.hitwebcounter.com" target="_blank">
-<img src="https://hitwebcounter.com/counter/counter.php?page=8695087&style=0010&nbdigits=6&type=page&initCount=0" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>       	  
+<img src="https://hitwebcounter.com/counter/counter.php?page=8695141&style=0010&nbdigits=6&type=page&initCount=0" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>     
 	</div>
 	</div>
        </div>
