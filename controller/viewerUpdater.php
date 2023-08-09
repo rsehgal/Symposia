@@ -279,7 +279,7 @@ $associatedJS='<script>
 			*/
 
 			$("#DownloadCSV_FromTable").click(function(e){
-			  	alert("Download CSV clicked");	
+			  	//alert("Download CSV clicked");	
 				e.preventDefault();
 				data["function_name"]=$(this).attr("function_name");
 				$.ajax({
