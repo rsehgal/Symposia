@@ -327,15 +327,21 @@ if ($result->num_rows > 0)
     $output = fopen('php://output', 'w');
 
     // Output CSV header
-    $header = array_keys($result->fetch_assoc());
-    fputcsv($output, $header);
+    //$header = array_keys($result->fetch_assoc());
+    //fputcsv($output, $header);
 
     // Output CSV data
     //$out="";
+    $counter=0;
     while ($row = $result->fetch_assoc()) {
-        fputcsv($output, $row);
-	//$out.=$row."<br/>";
-	//echo $output;
+	if($counter===0){
+		$header = array_keys($row);
+    		fputcsv($output, $header);
+	        fputcsv($output, $row);
+	}else{
+	        fputcsv($output, $row);
+		$counter++;
+	}
     }
 
 	//return $out;
