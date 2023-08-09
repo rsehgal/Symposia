@@ -302,4 +302,61 @@ $associatedJS = '<script>
 return $associatedJS;
 }
 
+function DownloadCSV_FromTable(){
+//return "DownloadCSV_FromTable....";
+$tablename=$_POST["tablename"];
+$query = "select * from $tablename";
+//return 
+DownloadCSV_FromQuery($query);
+}
+
+function DownloadCSV_FromQuery($query){
+//return "DownloadCSV_FromQuery";
+$obj = new DB();
+$result = $obj->GetQueryResult($query); 
+/*$outp="";
+while($row = $result->fetch_assoc()){
+$outp.=$row."<br/>";
+}
+return $outp;*/
+
+if ($result->num_rows > 0) 
+{
+    // Create a file pointer
+    //$output = fopen('test.csv', 'w');
+    $output = fopen('php://output', 'w');
+
+    // Output CSV header
+    $header = array_keys($result->fetch_assoc());
+    fputcsv($output, $header);
+
+    // Output CSV data
+    //$out="";
+    while ($row = $result->fetch_assoc()) {
+        fputcsv($output, $row);
+	//$out.=$row."<br/>";
+	//echo $output;
+    }
+
+	//return $out;
+
+    // Close the file pointer
+    fclose($output);
+
+    // Set headers for file download
+    //header('Content-Type: text/csv');
+    //header('Content-Disposition: attachment; filename="data.csv"');
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="data.csv"');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+
+    // Output the contents of the file
+    //return readfile('test.csv');
+    return readfile('php://output');
+} 
+else {
+    echo "No records found in the table.";
+}
+}
 ?>
