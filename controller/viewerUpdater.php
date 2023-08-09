@@ -246,15 +246,24 @@ $obj = new DB();
 $query = "select * from mapping";
 $result = $obj->GetQueryResult($query);
 $dropDownMsg='<h2 class="text-primary">Select a table to view</h2>
-	<span class="border bg-info">Primary-Key</span>
+	<span class="border bg-info">Primary-Key</span>';
+$dropDownMsg.='<div class="row">
+		<div class="col=8">
+
 	<select class="custom-select" id="tableToView">';
 while($row = $result->fetch_assoc()){
 $dropDownMsg.='<option class="optionTable" tablename="'.$row["tablename"].'" prikey="'.$row["prikey"].'" deletion="'.$row["deletion"].'">'.$row["taskname"].'</option>';
 }
-$dropDownMsg.='</select><br/><hr/>';
+$dropDownMsg.='</select><br/><hr/>
+		</div>
+		<div class="col-4">';
 
+$dropDownMsg.= '<input type="button" class="btn btn-primary" value="Download Csv" id="DownloadCSV_FromTable" function_name="DownloadCSV_FromTable"/>';
+
+$dropDownMsg.='</div></div>';
 //div to load the table
 $dropDownMsg.='<div id="viewTable"></div>';
+
 
 $associatedJS='<script>
 		$(function(){
@@ -269,7 +278,31 @@ $associatedJS='<script>
 			});
 			*/
 
+			$("#DownloadCSV_FromTable").click(function(e){
+			  	alert("Download CSV clicked");	
+				e.preventDefault();
+				data["function_name"]=$(this).attr("function_name");
+				$.ajax({
+                                    url: "../controller/func.php",
+                                    method: "POST",
+                                    data : data,
+                                    success: function(response) {
+                                    //$("#viewTable").html(response);
+					var csvContent = "data:text/csv;charset=utf-8,";
+					csvContent+=response;
+					var encodedUri = encodeURI(csvContent);
+					var link = document.createElement("a");
+					link.setAttribute("href", encodedUri);
+					link.setAttribute("download", "data.csv");
+					document.body.appendChild(link); // Required for Firefox
+					link.click();
+                                    }
+                                  });
+				
+			});
+
 			$("#tableToView").change(function(e) {
+				data["function_name"]="GenerateUpdaterView";
 				e.preventDefault();
 				data["tablename"]=$(this).children(":selected").attr("tablename");
 				data["prikey"]=$(this).children(":selected").attr("prikey");
