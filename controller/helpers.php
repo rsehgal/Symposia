@@ -338,9 +338,9 @@ if ($result->num_rows > 0)
 		$header = array_keys($row);
     		fputcsv($output, $header);
 	        fputcsv($output, $row);
+		$counter++;
 	}else{
 	        fputcsv($output, $row);
-		$counter++;
 	}
     }
 
