@@ -228,6 +228,7 @@ public function Register($fieldNames){
 
 	$formContent='<br/><div class="container">
                 <h2>Participant Registration</h2>
+		<raman class="text-danger">(Please fill the below mentioned details carefully, as the same will be used to generate the receipt and certificates.)</raman><br/><br/>
                 <form method="POST" id="register" enctype="multipart/form-data" class="">';
 		
 
