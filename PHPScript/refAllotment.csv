@@ -1,0 +1,5 @@
+uname,Topic,Category,Title,Filename,status,AuthorFirstNamesList,AuthorLastNamesList,AuthorEmailsList,PresenterEmail,PresenteUname,refereeName,remarks,refereeList
+proy,C,C,"Test of the level density and photon strength function models using the 114Sn(n,γ) cross-section of astrophysical interest",proy_paper_C_C_1.pdf,submitted,"Sukanya,Pratap","Banerjee,Roy","sukanyabanerjeeiitkgp@gmail.com,roypratap@vecc.gov.in",roypratap@vecc.gov.in,proy,,,ASE;RSE;SSE
+swagato,B,C,"Theoretical study of nuclear multifragmentation around VECC superconducting cyclotron energies",swagato_paper_C_B_1.pdf,submitted,Swagata,Mallik,swagato@vecc.gov.in,swagato@vecc.gov.in,swagato,,,ABE;BRB;SLV
+admin,,,,TESTFILE,,,,,,,,,
+vsingh@vecc.gov.in,C,C,"Re-examining primordial Lithium abundance problem",vsingh@vecc.gov.in_paper_C_C_2.pdf,submitted,"Vinay,Debasis,D N","Singh,Bhowmick,Basu","vsingh@vecc.gov.in,dbhowmick@vecc.gov.in,dnb@vecc.gov.in",vsingh@vecc.gov.in,vsingh@vecc.gov.in,,,RSE;ASE
