@@ -427,14 +427,15 @@ public function Register($fieldNames){
 }
 
 public function RefereeingConfirmation(){
-	//return
+	 	session_start();	
 		$obj=new DB();
 		$query="select UploadLocation from symposium";
 		$result = $obj->GetQueryResult($query); 
 		$row = $result->fetch_assoc();
 		$loc = $row["UploadLocation"];
-
-		$formContent='<br/><div class="container">
+		$fullName=$_SESSION["FullName"];
+		$formContent='<div class="container"> <br/>
+				<input type="button" id="appreciationCertificate" refname="'.$fullName.'" uname="'.$_SESSION["username"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>
                 <h3>Dear Referee, thanks for sparing your time to consider our review request for SNP-2023.</h3>
 		<form method="POST" id="consentForm" enctype="multipart/form-data" server="UpdateConsent" class="">';
 
@@ -457,6 +458,33 @@ public function RefereeingConfirmation(){
 						alert(data["invresult"]);
 				});
 	
+				$("#appreciationCertificate").click(function(e){
+					data={};
+					e.preventDefault();
+					data["function_name"]=$(this).attr("server");
+					data["uname"]=$(this).attr("uname");
+					data["refname"]=$(this).attr("refname");
+					//alert(data["function_name"]);
+					console.log(data);
+				
+					$.ajax({
+						url: "../controller/func.php",
+						method: "POST",
+						data : data,
+						xhrFields: {responseType: "blob"},
+                                                success: function(response) {
+				  			$("#pdfIframe").show();
+							  var reader = new FileReader();
+							  reader.onloadend = function() {
+							  $("#pdfIframe").attr("src", reader.result);
+                                                         };
+                                                         reader.readAsDataURL(response);
+                                                        }
+
+					});
+
+				});
+
 				//$("#submitConsent").click(function(e){
 				$("#consentForm").on("submit",function(e){
 					e.preventDefault();
