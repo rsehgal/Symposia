@@ -98,7 +98,7 @@ function Upload(){
 			//echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				//echo 'File uploaded successfully.<br/>';
-				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorFirstNamesList.'","'.$authorLastNamesList.'","'.$authorEmailsList.'","'.$_SESSION["Email"].'","'.$_SESSION["username"].'","","")';
+				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorFirstNamesList.'","'.$authorLastNamesList.'","'.$authorEmailsList.'","'.$_SESSION["Email"].'","'.$_SESSION["username"].'","","","")';
 				//return $query;
 				//echo $query."<br/>";
 								$obj->GetQueryResult($query);
@@ -114,7 +114,7 @@ SNP-2023
 ";
 
 
-                //SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
+                SendMail("submission",$_SESSION["Email"],"SNP 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -182,7 +182,7 @@ SNP-2023
 ";
 
 
-		//SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
+		SendMail("resubmission",$_SESSION["Email"],"SNP 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
@@ -2037,7 +2037,12 @@ $obj = new DB();
 $query="";
 $queryForConfirmation = "";
 if($prevValue==""){
-$query='insert into refereeAllotment (Filename, refereeName,refnum) values("'.$filename.'","'.$newValue.'","'.$refnum.'")';
+$query = "select * from refereeAllotment";
+$uidCounter=$obj->GetCounterFromQuery($query);
+$uidCounter++;
+$uid="uid_".$uidCounter;
+
+$query='insert into refereeAllotment (Filename, refereeName,refnum,uid) values("'.$filename.'","'.$newValue.'","'.$refnum.'","'.$uid.'")';
 
 $queryForConfirmation = 'insert into refereeConfirmation values ("'.$newValue.'","","allotted",0)';
 $obj->GetQueryResult($queryForConfirmation);
@@ -2428,6 +2433,59 @@ function RegistrationFee(){
         return $regFeeMsg.$table;
 }
 
+/*---------------------------------------
+This function will delete the existing 
+entries in **refereeAllotment** table
+and always make fresh entries based
+on **refAllotment.csv* file.
+---------------------------------------*/
+function AllotRefereesFromFile(){
+$obj = new DB();
+
+$query = "delete from refereeAllotment";
+$obj->GetQueryResult($query);
+
+$file = fopen("../PHPScript/refAllotment.csv", "r");
+    if ($file !== false) {
+	$data = fgetcsv($file) ; //removing the header
+	$uidCounter=0;
+        while (($data = fgetcsv($file)) !== false) {
+		echo $data[0]." : ".$data[4]." : ".$data[13]."<br/>";
+		$refCounter=0;
+		$refs = explode(";",$data[13]);
+		$len = count($refs);
+		for($refCounter=1 ; $refCounter <= $len ; $refCounter++){
+			$refName = $refs[$refCounter-1];
+			$refId = "ref".$refCounter;
+		
+			if($refName!="")
+			$uidCounter++;
+			$uId = "uid_".$uidCounter;
+			//insert into refereeConfirmation values ("'.$newValue.'","","allotted",0)
+			$query = "select * from refereeConfirmation where uname='".$refName."'";
+			$existCounter = $obj->GetCounterFromQuery($query);
+			if($existCounter==0){
+				$query='insert into refereeConfirmation values ("'.$refName.'","","allotted",0)';
+				if($refName!="")
+				$obj->GetQueryResult($query);
+
+			}
+			//echo $refName." : ".$refId."<br/>";
+			$query='insert into refereeAllotment (Filename,refereeName,refnum,uid) values ("'.$data[4].'","'.$refName.'","'.$refId.'","'.$uId.'") ';
+			echo $query."<br/>";
+			if($refName!="")
+			$obj->GetQueryResult($query);
+		}
+		echo "============================== <br/>";
+
+            /*$sql = "INSERT INTO $tableName VALUES ($values)";
+            if ($conn->query($sql) !== TRUE) {
+                echo "Error inserting data: " . $conn->error;
+            }*/
+        }
+        fclose($file);
+}
+}
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {
