@@ -101,6 +101,92 @@ $pdf->Output($pdfFileName, 'I');
 
 }
 
+function DownloadRefereeAppreciationCertificate(){
+$uName=$_POST["uname"];
+$refName=$_POST["refname"];
+
+//GeneratePDF("rsehgal","registration"); //For Testing
+$pdf = new TCPDF();
+   
+$fontname = TCPDF_FONTS::addTTFfont('DejaVuSans.ttf', 'TrueTypeUnicode', '', 96);
+
+$pdf->AddPage('L');
+
+//Adding background border image
+$pdf->Image('../images/border.jpg', 7, 10, 660, 420, 'JPG', '', '', true, '300', '', false, false, 0, false, false, false);
+//$pdf->Image('barc_logo_new.png', 23, 25, 32, 32, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+//$pdf->Image('cottonUniv.png', 250, 25, 20, 25, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+
+$pdf->SetFont('times', 'B', 20);
+$pdf->SetTextColor(0, 63, 127);
+//$pdf->SetTextColor(0, 0, 255);
+$txt="66<sup>th</sup> DAE Symposium on Nuclear Physics, SNP-2022<br/>";
+
+$pdf->writeHTMLCell( 220, 20, 40, 25, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+
+$pdf->SetFont('times', 'B', 16);
+$txt="December 1 - 5, 2022 <br/>Cotton University, Guwahati, Assam, India<br/>";
+$pdf->writeHTMLCell( 220, 20, 40, 35, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+
+
+$pdf->SetTextColor(0, 0, 0);
+
+$pdf->SetFont('times', 'BI', 15);
+
+$pdf->SetFont('times', 'B', 21);
+$txt="<b><u>Certificate of Appreciation</u></b>";
+//$txt="<b><u>Poster Award</u></b>";
+$pdf->SetTextColor(125, 60, 162);
+$pdf->writeHTMLCell( 140, 20, 80, 55, $html =$txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+
+
+//$msg='<p>This is to certify that <b>'.$name.'</b> from '.$affil.' has participated in the
+//67<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at IIT Indore, Indore, Madhya Pradesh, during December 09-13, 2023. ';
+$msg='<p>Dear '.$refName.', We are grateful to you for screening the papers of 66<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at Cotton Universiy, Assam, during December 09-13, 2022. ';
+
+
+//$msg.='<center>'.$title.'</center>.';
+
+$pdf->setCellPadding(0);
+$pdf->setFontSpacing(0);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('times', 'I', 20);
+
+$pdf->WriteHTMLCell(250,60,20,110, $html = '<b><u>'.$title.'<u></b>', $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
+
+$pdf->setCellPadding(0);
+$pdf->setFontSpacing(0);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('times', 'I', 20);
+
+
+$pdf->WriteHTMLCell(245,60,25,68, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'J');//, $autopadding = true );
+
+//Signatures
+
+$sec1="<IMG src='sig_sec.png'><br/>Dr. P. C. Rout<br><i>Secretary</i><br/>SNP-2019";
+$sec2="Dr. Y. K. Gupta<br><i>Secretary</i><br/> SNP-2019";
+$sec="Dr. S. K. Pandit<br><i>Secretary</i>, SNP-2023";
+$conv="Dr. A. Shrivastava<br><i>Convener</i>, SNP-2023";
+
+
+$x=30;
+$y=125;
+
+$pdf->Image('../images/signConv.jpg', $x,$y,40,30, 'JPG', '', '', false, 150, '', false, false,0 , false, false, false);
+$x=225;
+$pdf->Image('../images/signSec.jpg', $x,$y,40,30, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+
+
+$pdf->WriteHTMLCell(60,40,20,150, $html = $sec, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->WriteHTMLCell(60,40,215,150, $html = $conv, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+
+
+$pdfFileName="cert_".$uName.".pdf";
+$pdf->Output($pdfFileName, 'I');
+
+}
+
 function DownloadParticipationCertificate(){
 $uName=$_POST["uname"];
 $filename=$_POST["filename"];
