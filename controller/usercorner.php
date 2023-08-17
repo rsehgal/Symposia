@@ -104,7 +104,7 @@ $pdf->Output($pdfFileName, 'I');
 function DownloadRefereeAppreciationCertificate(){
 $uName=$_POST["uname"];
 $refName=$_POST["refname"];
-
+$appCertReq=$_POST["appCertReq"];
 //GeneratePDF("rsehgal","registration"); //For Testing
 $pdf = new TCPDF();
    

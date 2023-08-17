@@ -380,8 +380,10 @@ function ServeLogin(){
 		$_SESSION["LastName"]=$row["lastname"];
 		$_SESSION["Email"]=$row["email"];
 		$_SESSION["Mobile"]=$row["phonenum"];
-		if($_SESSION["logintype"]==="Referee")
+		if($_SESSION["logintype"]==="Referee"){
 		$_SESSION["FullName"]=$row["refereeName"];
+		$_SESSION["appCertReq"]=$row["appCertReq"];
+		}
 		else
 		$_SESSION["FullName"]=$_SESSION["FirstName"]." ".$_SESSION["LastName"];
 		$result->free();
