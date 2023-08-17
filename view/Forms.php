@@ -436,7 +436,8 @@ public function RefereeingConfirmation(){
 		$fullName=$_SESSION["FullName"];
 		$formContent='<div class="container"> <br/>';
 		if($_SESSION["appCertReq"]==="Yes" || $_SESSION["appCertReq"]==="yes")
-		$formContent.='<input type="button" id="appreciationCertificate" refname="'.$fullName.'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>
+		$formContent.='<input type="button" id="appreciationCertificate" refname="'.$fullName.'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>';
+		$formContent.='
                 <h3>Dear Referee, thanks for sparing your time to consider our review request for SNP-2023.</h3>
 		<form method="POST" id="consentForm" enctype="multipart/form-data" server="UpdateConsent" class="">';
 
@@ -456,7 +457,7 @@ public function RefereeingConfirmation(){
 				$(function(){
 				$(".acceptreject").change(function() {
 						data["invresult"]=$(this).attr("id");
-						alert(data["invresult"]);
+						//alert(data["invresult"]);
 				});
 	
 				$("#appreciationCertificate").click(function(e){
@@ -492,7 +493,7 @@ public function RefereeingConfirmation(){
 					e.preventDefault();
 					//data["function_name"]=$(this).attr("function_name");
 					data["function_name"]=$(this).attr("server");
-					alert(data["function_name"]);
+					//alert(data["function_name"]);
 					console.log(data);
 				
 					$.ajax({
