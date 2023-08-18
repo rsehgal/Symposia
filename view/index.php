@@ -38,7 +38,9 @@ DAE-BRNS Nuclear Physics Symposium
 .tr-lightgreen{
   background-color :   #abebc6 ;
 }
-
+.tr-red{
+background-color: #ff0000;
+}
 .tr-purple{
 background-color: #5b2c6f ;
 }
@@ -59,10 +61,21 @@ background-color: #5b2c6f ;
 .btn-gray{
   background-color: #abb2b9 ;
 }
+.btn-rounded{
+  color: #fff;
+  border-radius: 35px;
+  border: 2px solid rgba(0, 70, 147, 0.75);
+}
 
 .taskbutton {
   color: #fff;
   background-color: #5b2c6f;
+  border-radius: 35px;
+  border: 2px solid rgba(0, 70, 147, 0.75);
+}
+.taskbutton-danger {
+  color: #fff;
+  background-color: #ff0000;
   border-radius: 35px;
   border: 2px solid rgba(0, 70, 147, 0.75);
 }

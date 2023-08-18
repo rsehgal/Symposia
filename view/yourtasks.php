@@ -1,4 +1,5 @@
 <?php
+require_once "../components/Components.php";
 require_once "../model/Symposia.php";
 require_once "Forms.php";
 require_once "../controller/helpers.php";
@@ -73,15 +74,19 @@ function AuthorTasks(){
     $logintype=$_SESSION['logintype'];
 
     $obj = new DB();
-    $query = "select taskname,function_name,logintype,tasktype,registration_required from yourtasks where logintype='".$logintype."' order by sno";
+    $query = "select taskname,function_name,logintype,tasktype,registration_required,colorclass from yourtasks where logintype='".$logintype."' order by sno";
     $result = $obj->GetQueryResult($query);
 
-    $additionalClasses=" yourtask";
+    //$additionalClasses=" yourtask";
+    $additionalClasses=" yourtask ".$row["colorclass"];
 	
 	
 
     while($row = $result->fetch_assoc()){
-    $additionalClasses=" yourtask";
+
+    //$additionalClasses=" yourtask";
+    $additionalClasses=" yourtask ".$row["colorclass"];
+
     if($row["registration_required"]==1){
     if(RegisteredUser()===0)
 	$additionalClasses=" kindlyregister";
@@ -90,7 +95,7 @@ function AuthorTasks(){
     $yourTasksMsg.='<div class="col-lg-4 col-md-12" style="text-align: center;">
                     <div class="about-text">
                     <div class="about-text" align="center">
-                	<p align="center"><a href="#" target="_blank" class="btn taskbutton'.$additionalClasses.'" id="'.$row["function_name"].'" tasktype="'.$row["tasktype"].'" style="width:100%;" readonly="'.$readonly.'">'.$row["taskname"].'</a>   </p>
+                	<p align="center"><a href="#" target="_blank" class="btn '.$additionalClasses.'" id="'.$row["function_name"].'" tasktype="'.$row["tasktype"].'" style="width:100%;" readonly="'.$readonly.'">'.$row["taskname"].'</a>   </p>
                 
                 </div>
                 </div>
@@ -706,5 +711,16 @@ function ViewTable($contr,$queryTab){
 
 	$summaryMsg.='</table>';
 	return $summaryMsg;
+}
+
+function ForScreening(){
+$uploadType = $_POST["allotmentType"];
+$compObj = new Components();
+if($uploadType==="refereeList")
+return $compObj->RenderFileUpload_V2("refereeList.csv");
+if($uploadType==="refereeAllotment")
+return $compObj->RenderFileUpload_V2("refereeAllotment.csv");
+
+//return "For Screening.........";
 }
 ?>
