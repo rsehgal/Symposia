@@ -17,8 +17,61 @@ class Components{
     $this->fvalue = $value;
     $this->fuploadLoc = "";
     }
-   
-     
+
+  public function RenderFileUpload_V2_JS(){
+	$associatedJS = '<script>
+			 var dataUpload = new FormData();
+			$(function(){
+				 $(".custom-file-input").on("change",function(e){
+					var fileName = e.target.files[0].name;
+					//alert(fileName);
+					$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+					dataUpload.append("file",e.target.files[0]);
+		                        dataUpload.append("loc",$(this).attr("loc"));
+		                        dataUpload.append("renamedFileName",$(this).attr("renamedFileName"));
+					dataUpload.append("function_name","JustUpload");
+				});
+
+				$("#myUploadClass").click(function(){
+					console.log(dataUpload);
+					$.ajax({
+						url: "../controller/func.php",
+						method: "POST",
+						data : dataUpload,
+						processData : false,
+						contentType : false,
+						success: function(response) {
+							$("#result").html(response);
+						}
+                        		});
+
+				});
+			});
+			</script>';
+
+	return $associatedJS;
+  }  
+
+  public function Upload(){
+	return "File Uploadedddd....";
+  }
+ 
+  public function RenderFileUpload_V2($renamedFileName){
+	$loc=".";
+	$fileComponent='<div class="custom-file mb-3">
+	<div class="row">
+	<div class="col">
+      <input type="file" class="custom-file-input uploadFile form-control" id="uploadFile" loc="../PHPScript/" renamedFileName="'.$renamedFileName.'" name="uploadFile" required>
+      <label class="custom-file-label" for="uploadFile">Choose file</label>
+	</div>
+	<div class="col">
+      <input type="button" class="btn-primary btn-rounded" id="myUploadClass" value="Upload" />
+	</div>
+      </div>
+    </div>';
+
+	return $fileComponent.$this->RenderFileUpload_V2_JS();
+}     
   public function RenderFileUpload($id='uploadFile',$name='uploadFile',$class='uploadFile',$value='Upload',$loc='/var/www/html/Symposia/Uploads/'){
  	$this->fuploadLoc = $loc;
     	return '<div class="form-group">
@@ -205,5 +258,15 @@ function AuthorList(){
 		    </script>';
 	return $authList;
 }
+
+/*if (isset($_POST['function_name'])) {
+echo "Hello Raman";
+  $function_name = $_POST['function_name'];
+  if (function_exists($function_name)) {
+  echo $function_name;
+    $response_data = call_user_func($function_name);
+    echo $response_data;
+  }
+}*/
 
 ?>

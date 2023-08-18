@@ -9,6 +9,7 @@ require_once "../view/yourtasks.php";
 require_once "usercorner.php";
 require_once "viewerUpdater.php";
 require_once "receiptsAndCertificates.php";
+require_once "../components/Components.php";
 function Contact(){
 $forms = new Forms();
   return $forms->Contact();
@@ -2451,7 +2452,7 @@ $obj = new DB();
 $query = "delete from refereeAllotment";
 $obj->GetQueryResult($query);
 
-$file = fopen("../PHPScript/refAllotment.csv", "r");
+$file = fopen("../PHPScript/refereeAllotment.csv", "r");
     if ($file !== false) {
 	$data = fgetcsv($file) ; //removing the header
 	$uidCounter=0;
@@ -2491,6 +2492,49 @@ $file = fopen("../PHPScript/refAllotment.csv", "r");
         }
         fclose($file);
 }
+}
+
+function FillRefereeList(){
+$obj = new DB();
+
+$Fp=fopen("../PHPScript/refereeList.csv","r"); flock($Fp,LOCK_SH);
+$i=0;
+//$Line=fgetcsv($Fp); //Skip first line
+while (!feof($Fp))
+   {
+   $Line=fgetcsv($Fp);
+        echo $Line[0]." ".$Line[1]." , ".$Line[3]."<br/>" ;
+$query="insert into refereeList values ('".strtoupper($Line[0])."','".$Line[2]."','".$Line[1]."','".$Line[3]."','".$Line[4]."')";
+    //echo $query."<br/>";
+   $obj->GetQueryResult($query);
+   }
+fclose($Fp);
+}
+
+function Execute($filename){
+if($filename==="refereeList.csv")
+return FillRefereeList();
+if($filename==="refereeAllotment.csv")
+return AllotRefereesFromFile();
+
+}
+
+function JustUpload(){
+	//return "TestUPload.....";
+	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+		        $targetDirectory = $_POST['loc']; 
+			$renamedFileName=$_POST['renamedFileName'];
+			$targetFilePath = $targetDirectory.$renamedFileName; // Get the file path
+			//echo "Taget file path :".$targetFilePath."<br/>";
+			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
+			
+				return Message("File Uploaded successfully","alert-info").Execute($renamedFileName);
+			}else{
+				return Message("Error Uploading file","alert-danger");
+				
+			}
+
+	}
 }
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
