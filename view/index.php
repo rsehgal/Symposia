@@ -38,6 +38,13 @@ DAE-BRNS Nuclear Physics Symposium
 .tr-lightgreen{
   background-color :   #abebc6 ;
 }
+.btn-countdown{
+  padding: 2px 2px;
+  color: #fff;
+  border-radius: 35px;
+  border: 2px solid rgba(0, 70, 147, 0.75);
+}
+
 .tr-red{
 background-color: #ff0000;
 }
@@ -380,6 +387,7 @@ require "Forms.php";
 require "footer.php";
 require "header.php";
 require "MyCarousel.php";
+require_once "../controller/countdown.php";
 $objSympo = new Symposia();
 echo "<div class='row'>";
 echo "<div class='col nasiheader'></div>";
@@ -401,6 +409,7 @@ echo "</div>";
 echo SympnpCarousel();
 
 echo "<div id='headerDiv' class='header'>".SympnpHeader()."</div>";
+echo "<div id='countdown' class='countdown'>".CountDown()."</div>";
 //echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
