@@ -12,17 +12,17 @@ $countDownMsg = '<div class="bg-secondary text-center text-light">
 			
 			<div class="container">	
 			   <div  class="row justify-content-center align-items-center text-center">
-				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary " style="text-align: center;">
-					Days : Days</hour></h4> 
+				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary font-weight-bold" style="text-align: center;">
+					<days id="countdownDays"></days>  Days</h4> 
 				</div>
-				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary " style="text-align: center;">
-					Hours : Hours</hour></h4> 
+				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary font-weight-bold " style="text-align: center;">
+					<hours id="countdownHours"></hours>  Hours</h4> 
 				</div>
-				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary " style="text-align: center;">
-					Minutes : Minutes</hour></h4> 
+				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary font-weight-bold" style="text-align: center;">
+					<minutes id="countdownMinutes"></minutes>  Minutes</h4> 
 				</div>
-				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary " style="text-align: center;">
-					Seconds : Seconds</hour> </h4> 
+				<div class="col-lg-2 col-md-2 col-sm-12 btn-countdown btn-primary font-weight-bold" style="text-align: center;">
+					<seconds id="countdownSeconds"></seconds>  Seconds </h4> 
 				</div>
 			</div>
 			</div>
