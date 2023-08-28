@@ -127,7 +127,48 @@ background: #5b2c6f ;
 }
 </style>
 <script>
+
+function startCountdown(currtime,reftime) {
+      const countdownElement = document.getElementById('countdownn');
+
+      function updateCountdown() {
+	//alert("Hello");
+        const timeDifference = reftime-currtime;
+
+        const days = Math.floor(timeDifference / ( 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % ( 60 * 60 * 24)) / (60 * 60));
+        const minutes = Math.floor((timeDifference % ( 60 * 60)) / (60));
+        const seconds = Math.floor((timeDifference % ( 60)) / 1);
+
+	//alert(days+" : "+hours+" : "+minutes+" : "+seconds);
+
+        //countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+	$("#countdownDays").html(days);
+	$("#countdownHours").html(hours);
+	$("#countdownMinutes").html(minutes);
+	$("#countdownSeconds").html(seconds);
+
+	currtime = currtime+1;
+
+        if (timeDifference <= 0) {
+          countdownElement.innerHTML = 'Countdown expired!';
+          clearInterval(interval);
+        }
+      }
+
+      //updateCountdown();
+      const interval = setInterval(updateCountdown, 1000);
+    }
+
+
 $(document).ready(function(){
+
+	$.getJSON('../controller/get_server_time.php', function(data) {
+	      const serverTime = data.currtime ; // Convert seconds to milliseconds
+		console.log(data);
+		startCountdown(data.currtime,data.reftime);
+      		//startCountdown(serverTime);
+    	});
 
 	$("#RegistrationForm").hide();
 	
@@ -410,6 +451,7 @@ echo SympnpCarousel();
 
 echo "<div id='headerDiv' class='header'>".SympnpHeader()."</div>";
 echo "<div id='countdown' class='countdown'>".CountDown()."</div>";
+echo " <div id='countdownn'></div>";
 //echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
