@@ -2219,13 +2219,23 @@ Maximum allowed file size is 1 MB.
 Users would be able to edit/modify the submitted papers via resubmission till <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
 <br/><br/>";
 
-$guidelines.="</h5></div></div>";
+$thesisGuidelines = "Ph.D. theses on the <A href='#' class='linkTopic text-danger'><u>Symposium Topics</u></A> submitted/awarded during the last one year are invited for presentation.<br/><br/>
+The best thesis presentation will be awarded the C.V.K.Baba Prize sponsored by Indian Physics Association (IPA).<br/><br/>
+Thesis contributions must be <A href='#' class='linkUpload text-danger'><u>uploaded</u></A> by <textcolor class='text-primary'>".GetLastDate("theses")."</textcolor>."; 
+
+$guidelines.=$thesisGuidelines."</h5></div></div>";
 
 $associatedJS = '<script>
 		$(function(){
 		 $(".linkTemplate").click(function(){
 			$("#Templates").trigger("click");
+		});$(".linkTopic").click(function(){
+			$("#Topics").trigger("click");
+		});$(".linkUpload").click(function(){
+			$("#Upload_Contribution").trigger("click");
 		});
+
+
 		});
 		</script>';
 
