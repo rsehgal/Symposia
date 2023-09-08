@@ -412,9 +412,15 @@ var dataUp=new FormData();
 
 </head>
 <body>
-<noscript>
-        <p>JavaScript is disabled in your browser.</p>
-</noscript>
+ <noscript>
+        <style>
+            /* Style to hide the entire body when JavaScript is disabled */
+            body { display: none; }
+        </style>
+        <div>
+            <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+        </div>
+    </noscript>
 <?php
 //require_once "../controller/helpers.php";
 //$_SESSION["loggedin"]=TRUE;
