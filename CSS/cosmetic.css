@@ -29,3 +29,19 @@ background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value between 0 and 1 (
   font-weight: bold;
 }
 
+@keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink-animation 1s infinite;
+}
+
