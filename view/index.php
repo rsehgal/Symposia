@@ -412,6 +412,9 @@ var dataUp=new FormData();
 
 </head>
 <body>
+<noscript>
+        <p>JavaScript is disabled in your browser.</p>
+</noscript>
 <?php
 //require_once "../controller/helpers.php";
 //$_SESSION["loggedin"]=TRUE;
