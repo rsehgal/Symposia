@@ -451,7 +451,7 @@ echo SympnpCarousel();
 
 echo "<div id='headerDiv' class='header'>".SympnpHeader()."</div>";
 echo "<div id='countdown' class='countdown'>".CountDown()."</div>";
-echo "div id='message' class='blink font-weight-bold text-danger'>
+echo "<div id='message' class='blink font-weight-bold text-danger'>
 Last date of abstract submission is 15 September 2023
 </div>";
 echo " <div id='countdownn'></div>";
