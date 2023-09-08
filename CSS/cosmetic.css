@@ -32,16 +32,22 @@ background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value between 0 and 1 (
 @keyframes blink-animation {
   0% {
     opacity: 0;
+  }25% {
+    opacity: 0.5;
   }
+
   50% {
     opacity: 1;
+  }75% {
+    opacity: 0.5;
   }
+
   100% {
     opacity: 0;
   }
 }
 
 .blink {
-  animation: blink-animation 1s infinite;
+  animation: blink-animation 2s infinite;
 }
 
