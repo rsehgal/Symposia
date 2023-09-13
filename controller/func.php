@@ -2514,7 +2514,7 @@ while (!feof($Fp))
    {
    $Line=fgetcsv($Fp);
         echo $Line[0]." ".$Line[1]." , ".$Line[3]."<br/>" ;
-$query="insert into refereeList values ('".strtoupper($Line[0])."','".$Line[2]."','".$Line[1]."','".$Line[3]."','".$Line[4]."')";
+$query="insert into refereeList values ('".strtoupper($Line[0])."','".$Line[1]."','".$Line[2]."','".$Line[3]."','".$Line[4]."')";
     //echo $query."<br/>";
    $obj->GetQueryResult($query);
    }
