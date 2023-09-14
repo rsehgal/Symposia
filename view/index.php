@@ -451,7 +451,7 @@ echo SympnpCarousel();
 
 echo "<div id='headerDiv' class='header'>".SympnpHeader()."</div>";
 echo "<div id='countdown' class='countdown'>".CountDown()."</div>";
-echo "<div id='message' class='blink font-weight-bold text-danger text-center fs-2'>
+echo "<div id='message' class='blink font-weight-bold text-danger text-center fs-3'>
 Last date of submission: 15th September
 </div>";
 echo " <div id='countdownn'></div>";
