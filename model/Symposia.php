@@ -28,7 +28,12 @@ function __construct(){
 
 function AddMenuEntry($entry){
 	$menuEntry="";
-	if($entry=="About"){
+	
+	if($entry=="Proceedings"){
+		$menuEntry= '<li class="nav-item dropdown">
+          <a class="nav-link text-warning blink font-weight-bold" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="../../proceedings/index.html"><h5>'.$entry.'</h5></a>';
+	}
+	elseif($entry=="About"){
 /*	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light " id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.'<span>'.$entry.'</span> <span class="arrow">&#9662;</span>'.'</h5></a>';*/
 	$menuEntry= '<li class="nav-item dropdown">
@@ -216,6 +221,7 @@ $result.='
 	$result.=$this->AddMenuEntry("YourTasks");//.
  	$result.=$this->AddMenuEntry("Register");
 	$result.=$this->AddMenuEntry("Submissions");
+	//$result.=$this->AddMenuEntry("Proceedings");
 	$result.=$this->AddMenuEntry("Accommodation").
 	//$this->AddMenuEntry("Upload_Contribution").
 	$this->AddMenuEntry("HowToReach").

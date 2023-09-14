@@ -24,6 +24,10 @@ DAE-BRNS Nuclear Physics Symposium
 .text-Received{
   color :  green;
 }
+.text-Yellow{
+  color :  #ffff00;
+}
+
 .tr-Received{
   background-color: #abebc6;
 
@@ -454,6 +458,10 @@ echo "<div id='countdown' class='countdown'>".CountDown()."</div>";
 echo "<div id='message' class='blink font-weight-bold text-danger text-center fs-3'>
 Last date of submission: 15th September
 </div>";
+echo "<div id='message' class='blink font-weight-bold text-info text-center fs-3'>
+ <a href='../../proceedings/index.html'><u class='text-danger'>Click here</u> </a>to see the previous years proceedings</a>
+</div>";
+
 echo " <div id='countdownn'></div>";
 //echo $objSympo->Menu();
 echo "<div id='container'>";
