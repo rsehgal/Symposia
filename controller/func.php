@@ -2212,6 +2212,7 @@ $guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
 //$guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
 $guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>15-Sep-2023</textcolor>.
 <br/><br/>
+For Resubmit/Withdraw  kindly use the resubmission link available inside View_Contribution in submissions tab. <br/><br/>
 You will need to create a ‘user account’ at the symposium website to submit a paper. Please download<a href='#' class='linkTemplate text-danger'> <u>template</u> </a>file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
 <br/><br/>
 Please note that papers given in the proper format only will be considered for review.
