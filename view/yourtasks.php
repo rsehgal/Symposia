@@ -674,7 +674,7 @@ function ViewContributionsSummary(){
 			ViewTable(TRUE,"select * from topics").$associatedJS;
 }
 
-function ViewTable($contr,$queryTab,$type='C'){
+function ViewTable($contr,$queryTab,$cate='C'){
 	//return "Contribution summary...";
 	//$queryCat = "select * from categories";
 	//$type="category";
@@ -691,7 +691,7 @@ function ViewTable($contr,$queryTab,$type='C'){
 			</tr>';
 	while($rowCat = $resultCat->fetch_assoc()){
 		if($contr)
-			$queryCount = 'select Filename from contributions where Topic="'.$rowCat["code"].'" and Category="'.$type.'" and status <> "Deleted"';
+			$queryCount = 'select Filename from contributions where Topic="'.$rowCat["code"].'" and Category="'.$cate.'" and status <> "Deleted"';
 		else
 			$queryCount = 'select Filename from contributions where Category="'.$rowCat["code"].'" and status <> "Deleted"';
 		$count = $obj->GetCounterFromQuery($queryCount);
