@@ -693,7 +693,7 @@ function ViewTable($contr,$queryTab){
 		if($contr)
 			$queryCount = 'select Filename from contributions where Topic="'.$rowCat["code"].'" and status <> "Deleted"';
 		else
-			$queryCount = 'select Filename from contributions where Category="'.$rowCat["code"].'" status <> "Deleted"';
+			$queryCount = 'select Filename from contributions where Category="'.$rowCat["code"].'" and status <> "Deleted"';
 		$count = $obj->GetCounterFromQuery($queryCount);
 		$summaryMsg.='<tr>
 				<td>'.$rowCat["code"].' . '.$rowCat[$type].'</td>
