@@ -691,9 +691,9 @@ function ViewTable($contr,$queryTab){
 			</tr>';
 	while($rowCat = $resultCat->fetch_assoc()){
 		if($contr)
-			$queryCount = 'select Filename from contributions where Topic="'.$rowCat["code"].'"';
+			$queryCount = 'select Filename from contributions where Topic="'.$rowCat["code"].'" and status <> "Deleted"';
 		else
-			$queryCount = 'select Filename from contributions where Category="'.$rowCat["code"].'"';
+			$queryCount = 'select Filename from contributions where Category="'.$rowCat["code"].'" status <> "Deleted"';
 		$count = $obj->GetCounterFromQuery($queryCount);
 		$summaryMsg.='<tr>
 				<td>'.$rowCat["code"].' . '.$rowCat[$type].'</td>
