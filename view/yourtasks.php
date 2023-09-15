@@ -602,9 +602,9 @@ function ShowDetails(){
 	$topic = $_POST["topic"];
 	$query="";
 	if($topic=="None")
-		$query='select * from contributions where Category="'.$category.'"';
+		$query='select * from contributions where Category="'.$category.'" and status <> "Deleted"';
 	else
-		$query='select * from contributions where Category="'.$category.'" and Topic="'.$topic.'"';
+		$query='select * from contributions where Category="'.$category.'" and Topic="'.$topic.'" and status <> "Deleted"';
 	return ViewPapersTable($query);
 }
 
