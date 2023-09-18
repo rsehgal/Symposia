@@ -456,7 +456,7 @@ echo SympnpCarousel();
 echo "<div id='headerDiv' class='header'>".SympnpHeader()."</div>";
 echo "<div id='countdown' class='countdown'>".CountDown()."</div>";
 echo "<div id='message' class='blink font-weight-bold text-danger text-center fs-3'>
-Last date of submission: 15th September
+Submission of contributory paper is closed. Thesis and Invited talk can still be submitted upto 30<sup>th</sup> September
 </div>";
 echo "<div id='message' class='blink font-weight-bold text-info text-center fs-3'>
  <a href='../../proceedings'><u class='text-danger'>Click here</u> </a>to see the previous years proceedings</a>
