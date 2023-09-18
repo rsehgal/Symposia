@@ -377,7 +377,7 @@ function DownloadCertificate(){
 			if($row["status"]==="Deleted" || $row["status"]==="Rejected"){
 				$paperTab.='<td>NA</td></tr>';
 			}else	
-			 $paperTab.='<td>'.'<input type="button" status="'.$row["status"].'" category="'.$row["Topic"].'" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
+			 $paperTab.='<td>'.'<input type="button" status="'.$row["status"].'" category="'.$row["Topic"].'" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" firstnames="'.$row["AuthorFirstNamesList"].'" lastnames="'.$row["AuthorLastNamesList"].'" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
 				    </tr>';
 		}
 		$paperTab.='</table>';
@@ -396,6 +396,8 @@ function DownloadCertificate(){
 							data["title"]=$(this).attr("title");
 							data["category"]=$(this).attr("category");
 							data["status"]=$(this).attr("status");
+							data["firstnames"]=$(this).attr("firstnames");
+							data["lastnames"]=$(this).attr("lastnames");
 							
 							
 							alert(funcName);
@@ -435,6 +437,7 @@ function GetRefereesComments(){
 //$obj = new DB();
 //$query = 'select '
 }
+/*
 function DownloadAcceptanceCertificate(){
 
 	//return "hello...";
@@ -448,7 +451,7 @@ function DownloadAcceptanceCertificate(){
 	//TODO : LOGIC to generate participation certificate.
 	}
 }
-
+ */
 function DownloadRegistrationReceipt(){
 
 	//return "hello...";
