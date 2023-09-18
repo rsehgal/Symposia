@@ -166,8 +166,8 @@ $pdf->WriteHTMLCell(245,60,25,68, $html = $msg, $border = 0, $ln = 0, $fill = fa
 
 $sec1="<IMG src='sig_sec.png'><br/>Dr. P. C. Rout<br><i>Secretary</i><br/>SNP-2019";
 $sec2="Dr. Y. K. Gupta<br><i>Secretary</i><br/> SNP-2019";
-$sec="Dr. S. K. Pandit<br><i>Secretary</i>, SNP-2023";
-$conv="Dr. A. Shrivastava<br><i>Convener</i>, SNP-2023";
+$sec="Dr. S. K. Pandit<br><i>Secretary</i>, SNP-2022";
+$conv="Dr. S. Santra<br><i>Convener</i>, SNP-2022";
 
 
 $x=30;

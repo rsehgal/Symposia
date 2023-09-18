@@ -492,7 +492,8 @@ return Message("Will be available soon.","alert-warning");
 	$result = $obj->GetQueryResult($query);
 	$row = $result->fetch_assoc();
 	$start_date = $row["contrib_start_date"];
-	$end_date = $row["contrib_end_date"];
+	//$end_date = $row["contrib_end_date"];
+	$end_date = $row["theses_end_date"];
 
 	$now = time();
 	$start_time = GetStartTime($start_date);
@@ -504,7 +505,8 @@ return Message("Will be available soon.","alert-warning");
 	return Message("Contribution submission will start on ".date("d-M-Y",strtotime($start_date)), "alert-info");
 
 	if($now > $end_time)
-	return Message("Contribution submission Deadline crossed on ".date("d-M-Y",strtotime($end_date)).", Kindly contact Convener.", "alert-danger");
+	return Message("Submission Deadline crossed on ".date("d-M-Y",strtotime($end_date)).", Kindly contact Convener.", "alert-danger");
+	//return Message("Contribution submission Deadline crossed on ".date("d-M-Y",strtotime($end_date)).", Kindly contact Convener.", "alert-danger");
 	
 	$returnVal="";
 	if(isset($_SESSION["loggedin"])){
@@ -2209,8 +2211,7 @@ return Message("Will be available soon.","alert-warning");
 $guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
-//$guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
-$guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>15-Sep-2023</textcolor>.
+$guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
 <br/><br/>
 For Resubmit/Withdraw  kindly use the resubmission link available inside View_Contribution in submissions tab. <br/><br/>
 You will need to create a ‘user account’ at the symposium website to submit a paper. Please download<a href='#' class='linkTemplate text-danger'> <u>template</u> </a>file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
@@ -2219,8 +2220,7 @@ Please note that papers given in the proper format only will be considered for r
 <br/><br/>
 Maximum allowed file size is 1 MB.
 <br/><br/>
-<!-- Users would be able to edit/modify the submitted papers via resubmission till <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>. -->
-Users would be able to edit/modify the submitted papers via resubmission till <textcolor class='text-primary'>15-Sep-2023</textcolor>.
+Users would be able to edit/modify the submitted papers via resubmission till <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>. 
 <br/><br/>";
 
 $thesisGuidelines = "Ph.D. theses on the <A href='#' class='linkTopic text-danger'><u>Symposium Topics</u></A> submitted/awarded during the last one year are invited for presentation.<br/><br/>
