@@ -488,7 +488,7 @@ return Message("Will be available soon.","alert-warning");
 	session_start();
 
 	$obj = new DB();
-	$query = "select contrib_start_date,contrib_end_date from symposium where volume=67";
+	$query = "select contrib_start_date,contrib_end_date,theses_end_date from symposium where volume=67";
 	$result = $obj->GetQueryResult($query);
 	$row = $result->fetch_assoc();
 	$start_date = $row["contrib_start_date"];
