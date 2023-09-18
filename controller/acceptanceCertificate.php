@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 // Include the TCPDF library
 //require_once('tcpdf/tcpdf.php');
@@ -56,12 +56,22 @@ class MYPDF extends TCPDF {
 
 
 
-function DownAcceptanceCertificate(){
+function DownloadAcceptanceCertificate(){
 
-$Title = "Hello from Raman";//$_POST['title'];
+$Title = $_POST['title'];
 $AuthorList="Raman Sehgal_Ayush Sehgal";//$_POST['authorlist'];
-$Status="Poster";//"Oral";//$_POST['status'];
+$Status=$_POST['status'];
 $Type="C";//$_POST['type'];
+$AuthorFirstNamesList=explode(",",$_POST['firstnames']);
+$AuthorLastNamesList=explode(",",$_POST['lastnames']);;
+//$authors="Raman Sehgal";
+$authors=$AuthorFirstNamesList[0]." ".$AuthorLastNamesList[0];
+for($i = 1 ; $i < count($AuthorFirstNamesList) ; $i++){
+	if($i===(count($AuthorFirstNamesList)-1))
+		$authors.=" and ".$AuthorFirstNamesList[$i]." ".$AuthorLastNamesList[$i];
+	else
+		$authors.=", ".$AuthorFirstNamesList[$i]." ".$AuthorLastNamesList[$i];
+}
 
 // Create a new PDF document
 //$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -108,7 +118,8 @@ $Text='<p>Dear Author,';
 $Text.='<p>The Organizing Committee of the Symposium is very happy'; 
 $Text.=' to inform you that the paper entitled<br/>';
 $Text.="<i><b>$Title</b></i>".'<br/>';
-$Text.='by '.strtr($AuthorList,'_',' ').'<br/>';
+$Text.='by '.$authors.'<br/>';
+//$Text.='by '.strtr($AuthorList,'_',' ').'<br/>';
 /*if($Type=='Contributed Paper')
  $Text.="has been accepted for <b>$Status presentation</b>.";
 else if($Type=='Thesis Presentation')
@@ -173,5 +184,5 @@ $pdf->writeHTML($warningText, true, 0, true, true);
 $pdf->Output('paper_acceptance_certificate.pdf', 'I');
 
 }
-DownAcceptanceCertificate();
+//DownloadAcceptanceCertificate();
 ?>

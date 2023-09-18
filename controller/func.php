@@ -10,6 +10,7 @@ require_once "usercorner.php";
 require_once "viewerUpdater.php";
 require_once "receiptsAndCertificates.php";
 require_once "../components/Components.php";
+require_once "acceptanceCertificate.php";
 function Contact(){
 $forms = new Forms();
   return $forms->Contact();
