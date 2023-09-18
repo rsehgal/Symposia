@@ -604,6 +604,22 @@ return Message("Will be available soon.","alert-warning");
 	return Message("Will be available soon.","alert-warning");
 }
 function View_Contribution(){
+
+session_start();
+
+        $obj = new DB();
+        $query = "select contrib_end_date,theses_end_date from symposium where volume=67";
+        $result = $obj->GetQueryResult($query);
+        $row = $result->fetch_assoc();
+        $end_date = $row["contrib_end_date"];
+
+        $now = time();
+        $end_time = GetEndTime($end_date);
+
+	$disabled="";
+        if($now > $end_time)
+	$disabled="disabled";
+
 if(!EnableMenuItem("View_Contribution"))
 return Message("Will be available soon.","alert-warning");
 
@@ -656,8 +672,8 @@ return Message("Will be available soon.","alert-warning");
 		$retTable.='<td>'.$authorNamesList.'</td>';
 		$retTable.='<td>'.$authorEmailsList.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
-		$retTable.='<td><input type="button" class="btn form-control resubmit btn-primary" value="Resubmit" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="PopulateResubmissionForm"/></td>';
-		$retTable.='<td><input type="button" id="delete" class="btn form-control withdraw btn-primary" value="Withdraw" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="WithdrawContribution"/></td>';
+		$retTable.='<td><input type="button" class="btn form-control resubmit btn-primary" value="Resubmit" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="PopulateResubmissionForm" '.$disabled.'/></td>';
+		$retTable.='<td><input type="button" id="delete" class="btn form-control withdraw btn-primary" value="Withdraw" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="WithdrawContribution" '.$disabled.'/></td>';
 
 		$retTable.='</tr>';
 
