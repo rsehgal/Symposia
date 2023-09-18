@@ -374,7 +374,7 @@ function DownloadCertificate(){
 					<td>'.$row["status"].'</td>
 					';
 
-			if($row["status"]==="Deleted" || $row["status"]==="Rejected"){
+			if($row["status"]==="Deleted" || $row["status"]==="Rejected" || $row["status"]=="submitted"){
 				$paperTab.='<td>NA</td></tr>';
 			}else	
 			 $paperTab.='<td>'.'<input type="button" status="'.$row["status"].'" category="'.$row["Topic"].'" title="'.$row["Title"].'" filename="'.$row["Filename"].'" uname="'.$_SESSION["username"].'" function_name="'.$certType.'" firstnames="'.$row["AuthorFirstNamesList"].'" lastnames="'.$row["AuthorLastNamesList"].'" class="btn btn-primary DownloadCertificate" value="Download"/>'.'</td>
