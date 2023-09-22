@@ -122,32 +122,41 @@ $pdf->SetTextColor(0, 63, 127);
 //$pdf->SetTextColor(0, 0, 255);
 $txt="66<sup>th</sup> DAE Symposium on Nuclear Physics, SNP-2022<br/>";
 
-$pdf->writeHTMLCell( 220, 20, 40, 25, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->writeHTMLCell( 220, 20, 40, 30, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
 
 $pdf->SetFont('times', 'B', 16);
 $txt="December 1 - 5, 2022 <br/>Cotton University, Guwahati, Assam, India<br/>";
-$pdf->writeHTMLCell( 220, 20, 40, 35, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->writeHTMLCell( 220, 20, 40, 40, $html = $txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
 
 
 $pdf->SetTextColor(0, 0, 0);
 
 $pdf->SetFont('times', 'BI', 15);
 
-$pdf->SetFont('times', 'B', 21);
+$pdf->SetFont('times', 'B', 30);
 $txt="<b><u>Certificate of Appreciation</u></b>";
 //$txt="<b><u>Poster Award</u></b>";
 $pdf->SetTextColor(125, 60, 162);
-$pdf->writeHTMLCell( 140, 20, 80, 55, $html =$txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->writeHTMLCell( 140, 20, 80, 65, $html =$txt, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
 
 
 //$msg='<p>This is to certify that <b>'.$name.'</b> from '.$affil.' has participated in the
 //67<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at IIT Indore, Indore, Madhya Pradesh, during December 09-13, 2023. ';
-$msg='<p>Dear '.$refName.', We are grateful to you for screening the papers of 66<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at Cotton Universiy, Assam, during December 09-13, 2022. ';
+//$msg='<p>Dear '.$refName.', We are grateful to you for screening the papers of 66<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at Cotton Universiy, Guwahati, Assam during December 1-5, 2022. ';
+
+$pdf->SetFont('times', 'B', 25);
+$msg=$refName;
+
+$pdf->SetTextColor(0, 0, 0);
+$pdf->WriteHTMLCell(245,60,25,90, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
 
 
-//$msg.='<center>'.$title.'</center>.';
+$pdf->SetFont('times', '', 20);
+$msg='in appreciation for the screening of contributory abstracts';
+$pdf->WriteHTMLCell(245,60,25,110, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
 
-$pdf->setCellPadding(0);
+
+/*$pdf->setCellPadding(0);
 $pdf->setFontSpacing(0);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('times', 'I', 20);
@@ -161,7 +170,7 @@ $pdf->SetFont('times', 'I', 20);
 
 
 $pdf->WriteHTMLCell(245,60,25,68, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'J');//, $autopadding = true );
-
+*/
 //Signatures
 
 $sec1="<IMG src='sig_sec.png'><br/>Dr. P. C. Rout<br><i>Secretary</i><br/>SNP-2019";
@@ -173,9 +182,9 @@ $conv="Dr. S. Santra<br><i>Convener</i>, SNP-2022";
 $x=30;
 $y=125;
 
-$pdf->Image('../images/signConv.jpg', $x,$y,40,30, 'JPG', '', '', false, 150, '', false, false,0 , false, false, false);
+$pdf->Image('../images/signSec2022.png', $x,$y,40,20, 'PNG', '', '', false, 150, '', false, false,0 , false, false, false);
 $x=225;
-$pdf->Image('../images/signSec.jpg', $x,$y,40,30, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+$pdf->Image('../images/signConv2022.png', $x,$y,40,20, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
 
 
 $pdf->WriteHTMLCell(60,40,20,150, $html = $sec, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
