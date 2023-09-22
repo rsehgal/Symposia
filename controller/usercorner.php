@@ -143,16 +143,20 @@ $pdf->writeHTMLCell( 140, 20, 80, 65, $html =$txt, $border = 0, $ln = 0, $fill =
 //$msg='<p>This is to certify that <b>'.$name.'</b> from '.$affil.' has participated in the
 //67<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at IIT Indore, Indore, Madhya Pradesh, during December 09-13, 2023. ';
 //$msg='<p>Dear '.$refName.', We are grateful to you for screening the papers of 66<sup>th</sup> DAE Symposium on Nuclear Physics,  sponsored by Board of Research in Nuclear Sciences, held at Cotton Universiy, Guwahati, Assam during December 1-5, 2022. ';
+$pdf->SetFont('times', '', 20);
+$pdf->SetTextColor(0, 0, 0);
+$msg='presented to';
+$pdf->WriteHTMLCell(245,60,25,80, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
 
 $pdf->SetFont('times', 'B', 25);
 $msg=$refName;
 
 $pdf->SetTextColor(0, 0, 0);
-$pdf->WriteHTMLCell(245,60,25,90, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
+$pdf->WriteHTMLCell(245,60,25,93, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
 
 
 $pdf->SetFont('times', '', 20);
-$msg='in appreciation for the screening of contributory abstracts';
+$msg='in recongnition of reviewing of the contributory abstracts';
 $pdf->WriteHTMLCell(245,60,25,110, $html = $msg, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C');//, $autopadding = true );
 
 
@@ -179,16 +183,16 @@ $sec="Dr. S. K. Pandit<br><i>Secretary</i>, SNP-2022";
 $conv="Dr. S. Santra<br><i>Convener</i>, SNP-2022";
 
 
-$x=30;
-$y=125;
+$x=40;
+$y=130;
 
 $pdf->Image('../images/signSec2022.png', $x,$y,40,20, 'PNG', '', '', false, 150, '', false, false,0 , false, false, false);
-$x=225;
+$x=220;
 $pdf->Image('../images/signConv2022.png', $x,$y,40,20, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
 
 
-$pdf->WriteHTMLCell(60,40,20,150, $html = $sec, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
-$pdf->WriteHTMLCell(60,40,215,150, $html = $conv, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->WriteHTMLCell(80,40,20,150, $html = $sec, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
+$pdf->WriteHTMLCell(80,40,200,150, $html = $conv, $border = 0, $ln = 0, $fill = false, $reseth = true, $align = 'C', $autopadding = true );
 
 
 $pdfFileName="cert_".$uName.".pdf";
