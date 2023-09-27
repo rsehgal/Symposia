@@ -864,7 +864,7 @@ function Referee_UpdatePaperStatus(){
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	if($_SESSION["appCertReq"]==="Yes" || $_SESSION["appCertReq"]==="yes")
-                $appCertButton='<input type="button" id="appreciationCertificate" refname="'.$fullName.'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>';
+                $appCertButton='<input type="button" id="appreciationCertificate" refname="'.$_SESSION["FullName"].'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>';
 
 	$refInstructions='<div class="text-center">
 			<instruction class="text- text-center text-dark"><b>Important Instructions : </b>
@@ -1020,6 +1020,7 @@ function Referee_UpdatePaperStatus(){
 			});
 
 			$("#appreciationCertificate").click(function(e){
+					//alert("App cert");
                                         data={};
                                         e.preventDefault();
                                         data["function_name"]=$(this).attr("server");
