@@ -2500,16 +2500,16 @@ $file = fopen("../PHPScript/refereeAllotment.csv", "r");
 			$uidCounter++;
 			$uId = "uid_".$uidCounter;
 			//insert into refereeConfirmation values ("'.$newValue.'","","allotted",0)
-			$query = "select * from refereeConfirmation where uname='".$refName."'";
+			$query = "select * from refereeConfirmation where uname='".trim($refName)."'";
 			$existCounter = $obj->GetCounterFromQuery($query);
 			if($existCounter==0){
-				$query='insert into refereeConfirmation values ("'.$refName.'","","allotted",0)';
+				$query='insert into refereeConfirmation values ("'.trim($refName).'","","allotted",0)';
 				if($refName!="")
 				$obj->GetQueryResult($query);
 
 			}
 			//echo $refName." : ".$refId."<br/>";
-			$query='insert into refereeAllotment (Filename,refereeName,refnum,uid) values ("'.$data[4].'","'.$refName.'","'.$refId.'","'.$uId.'") ';
+			$query='insert into refereeAllotment (Filename,refereeName,refnum,uid) values ("'.trim($data[4]).'","'.trim($refName).'","'.trim($refId).'","'.trim($uId).'") ';
 			echo $query."<br/>";
 			if($refName!="")
 			$obj->GetQueryResult($query);
@@ -2535,7 +2535,7 @@ while (!feof($Fp))
    {
    $Line=fgetcsv($Fp);
         echo $Line[0]." ".$Line[1]." , ".$Line[3]."<br/>" ;
-$query="insert into refereeList values ('".strtoupper($Line[0])."','".$Line[1]."','".$Line[2]."','".$Line[3]."','".$Line[4]."')";
+$query="insert into refereeList values ('".strtoupper(trim($Line[0]))."','".trim($Line[1])."','".trim($Line[2])."','".trim($Line[3])."','".trim($Line[4])."')";
     //echo $query."<br/>";
    $obj->GetQueryResult($query);
    }
