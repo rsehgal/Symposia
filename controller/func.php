@@ -864,6 +864,9 @@ function Referee_UpdatePaperStatus(){
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
 
+	$refInstructions='<instruction class="text-danger text-center"><b>Important Instructions : </b>
+			Marks needs to be given on the scale of 0-10</instruction><br/>';
+	
 	$obj = new DB();
 	$query = 'select * from refereeConfirmation where uname="'.$_SESSION["username"].'"';
 	$result = $obj->GetQueryResult($query);
@@ -1012,7 +1015,7 @@ function Referee_UpdatePaperStatus(){
 			
 			</script>';
 	//return $retValue;
-	return $retTable.$associatedJs;
+	return $refInstructions.$retTable.$associatedJs;
 }else{
 
 		return Message("Please login to view your submissions.");
