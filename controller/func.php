@@ -863,9 +863,16 @@ function Referee_UpdatePaperStatus(){
 
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
+	if($_SESSION["appCertReq"]==="Yes" || $_SESSION["appCertReq"]==="yes")
+                $appCertButton='<input type="button" id="appreciationCertificate" refname="'.$fullName.'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>';
 
-	$refInstructions='<instruction class="text-danger text-center"><b>Important Instructions : </b>
-			Marks needs to be given on the scale of 0-10</instruction><br/>';
+	$refInstructions='<div class="text-center">
+			<instruction class="text- text-center text-dark"><b>Important Instructions : </b>
+			Marks needs to be given on the scale of 0-10</instruction></div><br/><br/>';
+	$refInstructions = Message("<b>Important instuctions : </b>Marks needs to be given on the scale of 0-10 ","alert-primary");
+	$refInstructions .=Message("Marks less than 4 :<b> Rejected </b><br/>
+		  Marks greater than or equal to 4 but less than 7 :<b> Poster</b> <br/>
+		  Marks greater than or equal to 7 : <b> Oral </b>","alert-warning");
 	
 	$obj = new DB();
 	$query = 'select * from refereeConfirmation where uname="'.$_SESSION["username"].'"';
@@ -1012,10 +1019,36 @@ function Referee_UpdatePaperStatus(){
 
 			});
 
-			
+			$("#appreciationCertificate").click(function(e){
+                                        data={};
+                                        e.preventDefault();
+                                        data["function_name"]=$(this).attr("server");
+                                        data["uname"]=$(this).attr("uname");
+                                        data["refname"]=$(this).attr("refname");
+                                        data["appCertReq"]=$(this).attr("appCertReq");
+                                        //alert(data["function_name"]);
+                                        console.log(data);
+                                
+                                        $.ajax({
+                                                url: "../controller/func.php",
+                                                method: "POST",
+                                                data : data,
+                                                xhrFields: {responseType: "blob"},
+                                                success: function(response) {
+                                                        $("#pdfIframe").show();
+                                                          var reader = new FileReader();
+                                                          reader.onloadend = function() {
+                                                          $("#pdfIframe").attr("src", reader.result);
+                                                         };
+                                                         reader.readAsDataURL(response);
+                                                        }
+
+                                        });
+
+                                });		
 			</script>';
 	//return $retValue;
-	return $refInstructions.$retTable.$associatedJs;
+	return $appCertButton.$refInstructions.$retTable.$associatedJs;
 }else{
 
 		return Message("Please login to view your submissions.");
