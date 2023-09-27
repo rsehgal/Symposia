@@ -868,11 +868,11 @@ function Referee_UpdatePaperStatus(){
 
 	$refInstructions='<div class="text-center">
 			<instruction class="text- text-center text-dark"><b>Important Instructions : </b>
-			Marks needs to be given on the scale of 0-10</instruction></div><br/><br/>';
-	$refInstructions = Message("<b>Important instuctions : </b>Marks needs to be given on the scale of 0-10 ","alert-primary");
-	$refInstructions .=Message("Marks less than 4 :<b> Rejected </b><br/>
-		  Marks greater than or equal to 4 but less than 7 :<b> Poster</b> <br/>
-		  Marks greater than or equal to 7 : <b> Oral </b>","alert-warning");
+			Merit points needs to be given on the scale of 0 - 10</instruction></div><br/><br/>';
+	$refInstructions = Message("<b>Important instuctions : </b>Merit points needs to be given on the scale of 0 - 10 ","alert-primary");
+	$refInstructions .=Message("Points less than 4 :<b> Rejected </b><br/>
+		  Points greater than or equal to 4 but less than 7 :<b> Poster</b> <br/>
+		  Points greater than or equal to 7 : <b> Oral </b>","alert-warning");
 	
 	$obj = new DB();
 	$query = 'select * from refereeConfirmation where uname="'.$_SESSION["username"].'"';
