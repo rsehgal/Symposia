@@ -887,14 +887,14 @@ function Referee_UpdatePaperStatus(){
    	<li> Clarity in Presentation</li>
    </ul>
 
-2. For Rejected contributions please provide reason (as listed below) in Referee Remarks and assign zero to Merit Points
+2. For Rejected contributions please provide reason (as listed below) in Referee Remarks and assign 1 to Merit Points
   <ul>
    <li> out of scope</li>
    <li> scientifically incorrect</li>
    <li> material in the contribution is not sufficient</li>
    <li> the results are already published in refereed journal or reported earlier in DAE symposium</li>
   </ul>
-3. If a paper has been placed (a) in a wrong category, (b) does not follow the template guidelines, please indicate in Referee Remarks.
+3. If a paper (a) has been placed in a wrong topic, (b) does not follow the template guidelines, please indicate in Referee Remarks.
 
 <br/>
 <br/>
