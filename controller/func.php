@@ -969,7 +969,7 @@ $refInstructions.="<div class='text-center'> <msg class='blink font-weight-bold 
 		$retTable.='<td>'.$authorName.'</td>';
 		//$retTable.='<td>'.$submitterName.'</td>';
 		$retTable.='<td>'.$paperTitle.'</td>';
-		$retTable.='<td>'.$selectedTopic.'</td>';
+		$retTable.='<td>'."(".$queryTopic. ") " .$selectedTopic.'</td>';
 		$retTable.='<td>'.$queryCategory.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'" '.$readonly.'>'.$remarks.'</textarea></td>';
