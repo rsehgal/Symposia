@@ -880,7 +880,7 @@ function Referee_UpdatePaperStatus(){
 			<instruction class="text- text-center text-dark"><b>Important Instructions : </b>
 			Merit points needs to be given on the scale of 0 - 10</instruction></div><br/><br/>';
         $refMsg="
-1. You are requested to evaluate the manuscripts based on following guidelines and assign Merit Points in terms of numbers from 0-10 (Zero being the poorest to 10 being the best). Merit Points above 8 has a high chance of selection for oral presentation.<br/>
+1. You are requested to evaluate the manuscripts based on following guidelines and assign Merit Points in terms of numbers from 1-10 (One being the poorest to 10 being the best). Merit Points above 8 has a high chance of selection for oral presentation.<br/>
    <ul>
 	<li> Scientific Merit</li>
  	<li> Completeness of work</li>

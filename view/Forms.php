@@ -505,7 +505,13 @@ public function RefereeingConfirmation(){
 							$("#loadingGif").hide();
 							//$("#newsubmission input").prop("disabled", false); 
 							//$("#uploadAndSubmit").prop("disabled",false);
+							
 							$("#result").html(response);
+							var accrej=$(".acceptreject").attr("id");
+							if(accrej=="accepted")
+								 $("#YourTasks").show();
+							else
+								alert("Thank you for your time.");
 						}
 					});
 
