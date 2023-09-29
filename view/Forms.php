@@ -507,7 +507,9 @@ public function RefereeingConfirmation(){
 							//$("#uploadAndSubmit").prop("disabled",false);
 							
 							$("#result").html(response);
-							var accrej=$(".acceptreject").attr("id");
+							var accrej=$(".acceptreject").attr("id")
+;
+							alert("Please click on the YourTask link in the top menu.");
 							if( data["invresult"]=="accepted")
 								 $("#YourTasks").show();
 							else
