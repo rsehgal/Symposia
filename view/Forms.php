@@ -508,7 +508,7 @@ public function RefereeingConfirmation(){
 							
 							$("#result").html(response);
 							var accrej=$(".acceptreject").attr("id");
-							if(accrej=="accepted")
+							if( data["invresult"]=="accepted")
 								 $("#YourTasks").show();
 							else
 								alert("Thank you for your time.");
