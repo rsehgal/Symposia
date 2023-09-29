@@ -436,7 +436,7 @@ public function RefereeingConfirmation(){
 		$fullName=$_SESSION["FullName"];
 		$formContent='<div class="container"> <br/>';
 		if($_SESSION["appCertReq"]==="Yes" || $_SESSION["appCertReq"]==="yes")
-		$formContent.='<input type="button" id="appreciationCertificate" refname="'.$fullName.'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>';
+		$formContent.='<input type="button" id="appreciationCertificate" refname="'.$fullName.'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download appreciation Certificate SNP-2022"/><br/>';
 		$formContent.='
                 <h3>Dear Referee, thanks for sparing your time to consider our review request for SNP-2023.</h3>
 		<form method="POST" id="consentForm" enctype="multipart/form-data" server="UpdateConsent" class="">';

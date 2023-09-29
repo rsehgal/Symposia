@@ -532,6 +532,16 @@ $associatedJs = '<script>
 	';
 return $msg.$associatedJs;
 }
+function Message2($message,$colorClass="alert-danger"){
+$msg="<h4 class='alert alert-dismissible fade show ".$colorClass."' role='alert'>".$message."</h4><br/>";
+$associatedJs = '<script>
+		setTimeout(function(){
+        $("refereeUpdateStatus").alert("close");
+        },2000);
+	</script>
+	';
+return $msg.$associatedJs;
+}
 
 function MessageAutoClose($message,$colorClass="alert-danger"){
 return "<h3 class='alert auto-close ".$colorClass." text-center' role='alert'>".$message."</h3><br/>
@@ -864,16 +874,38 @@ function Referee_UpdatePaperStatus(){
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	if($_SESSION["appCertReq"]==="Yes" || $_SESSION["appCertReq"]==="yes")
-                $appCertButton='<input type="button" id="appreciationCertificate" refname="'.$_SESSION["FullName"].'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download Your appreciation Certificate"/><br/>';
+                $appCertButton='<input type="button" id="appreciationCertificate" refname="'.$_SESSION["FullName"].'" uname="'.$_SESSION["username"].'" appCertReq="'.$_SESSION["appCertReq"].'" server="DownloadRefereeAppreciationCertificate" class="btn-primary taskbutton" value="Download appreciation Certificate SNP-2022"/><br/>';
 
 	$refInstructions='<div class="text-center">
 			<instruction class="text- text-center text-dark"><b>Important Instructions : </b>
 			Merit points needs to be given on the scale of 0 - 10</instruction></div><br/><br/>';
-	$refInstructions = Message("<b>Important instuctions : </b>Merit points needs to be given on the scale of 0 - 10 ","alert-primary");
-	$refInstructions .=Message("Points less than 4 :<b> Rejected </b><br/>
+        $refMsg="
+1. You are requested to evaluate the manuscripts based on following guidelines and assign Merit Points in terms of numbers from 0-10 (Zero being the poorest to 10 being the best). Merit Points above 8 has a high chance of selection for oral presentation.<br/>
+   <ul>
+	<li> Scientific Merit</li>
+ 	<li> Completeness of work</li>
+   	<li> Clarity in Presentation</li>
+   </ul>
+
+2. For Rejected contributions please provide reason (as listed below) in Referee Remarks and assign zero to Merit Points
+  <ul>
+   <li> out of scope</li>
+   <li> scientifically incorrect</li>
+   <li> material in the contribution is not sufficient</li>
+   <li> the results are already published in refereed journal or reported earlier in DAE symposium</li>
+  </ul>
+3. If a paper has been placed (a) in a wrong category, (b) does not follow the template guidelines, please indicate in Referee Remarks.
+
+<br/>
+<br/>
+4. If there is a scope for combining similar contributions by the same authors, it may be suggested.";
+	$refInstructions = Message("<b> Please note that this year a new review process is introduced as outlined below </b>","alert-primary");
+/*	$refInstructions .=Message("Points less than 4 :<b> Rejected </b><br/>
 		  Points greater than or equal to 4 but less than 7 :<b> Poster</b> <br/>
 		  Points greater than or equal to 7 : <b> Oral </b>","alert-warning");
-	
+	*/
+	$refInstructions .= Message2($refMsg,"alert-warning");
+$refInstructions.="<div class='text-center'> <msg class='blink font-weight-bold text-danger'>  Kindly LOCK the form by 8th October 2023. It is our humble request.<br/><br/></msg></div>";
 	$obj = new DB();
 	$query = 'select * from refereeConfirmation where uname="'.$_SESSION["username"].'"';
 	$result = $obj->GetQueryResult($query);
@@ -907,7 +939,7 @@ function Referee_UpdatePaperStatus(){
 			<th>Category</th>
 			<th>Uploaded File</th>
 			<th>Referee Remarks</th>
-			<th>Marks</th>
+			<th>Merit Points</th>
 			<th>Update Status</th>
 			</tr>';
 	$decArray=array();
