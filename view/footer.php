@@ -10,8 +10,8 @@ $footerMsg.='<footer id="nasifooter" class="footer bg-dark text-light">
 
         <div class="col-md-4 text-center">
 	  <h5>Convener</h5>
-          <p class="font-weight-bold">Dr. S. M. Yusuf, FNA, FASc, FNASc</p>
-	 Director, Physics Group, BARC
+          <p class="font-weight-bold">Dr. Qwerty Poiuy</p>
+	 KLM Institure, POI.
 
         </div>
 
